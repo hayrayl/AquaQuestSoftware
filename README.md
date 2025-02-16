@@ -1,11 +1,12 @@
 # Drone Water Sampling UI Design
 
 ## Project Overview
-This repository contains the user interface (UI) design for a senior design project focused on drone-based water sampling. The UI is developed using PyQt5, a set of Python bindings for Qt libraries, which allows for the creation of cross-platform applications with native-looking user interfaces.
+This repository contains the user interface (UI) design for a senior design project focused on water sampling using a drone. The UI is developed using PyQt5 and provides features to support learning modules, live data readings, quizzes, and simulations related to water sampling.
 
 ## Features
-- **User-Friendly Interface:** Simplified and intuitive design to control the drone and manage water sampling tasks.
-- **Real-Time Data Display:** Visualization of real-time data collected by the drone during water sampling missions.
-- **Mission Planning:** Tools to plan, execute, and monitor water sampling missions.
-- **Settings:** Customizable options for drone and sampling parameters.
+- **Learning Modules:** Interactive modules to educate users about water sampling and related concepts.
+- **Live Data Reading:** Real-time visualization of data collected during water sampling missions.
+- **Quiz:** Assessment quizzes to test users' understanding of water sampling and environmental science.
+- **Simulation:** Simulation tools to plan and practice water sampling missions.
+
 
