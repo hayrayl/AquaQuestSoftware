@@ -13,8 +13,11 @@ This repository contains the user interface (UI) design for a senior design proj
 
 ### Python Packages 
 PyQt5==5.15.11
+
 PyQt5-Qt5==5.15.2
+
 PyQt5_sip==12.17.0
+
 PyQt5Designer==5.14.1
 
 ### Development Notes:
