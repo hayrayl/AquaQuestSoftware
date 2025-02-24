@@ -9,10 +9,14 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import os 
 
 class UI_simulation(object):
     def setupUi(self, simulation_ui):
+
+        self.current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.background_path = os.path.join(self.current_dir, "images/water_background.jpeg")
+
         simulation_ui.setObjectName("simulation_ui")
         simulation_ui.resize(940, 700)
         self.pushButton_back = QtWidgets.QPushButton(simulation_ui)
@@ -56,6 +60,9 @@ class UI_simulation(object):
         font.setFamily("Cooper Black")
         font.setPointSize(14)
         self.label_S_explanation.setFont(font)
+        
+        self.label_S_explanation.setWordWrap(True)
+
         self.label_S_explanation.setObjectName("label_S_explanation")
         self.layoutWidget = QtWidgets.QWidget(simulation_ui)
         self.layoutWidget.setGeometry(QtCore.QRect(40, 530, 861, 161))
@@ -102,7 +109,10 @@ class UI_simulation(object):
         self.background = QtWidgets.QLabel(simulation_ui)
         self.background.setGeometry(QtCore.QRect(-10, -10, 971, 761))
         self.background.setText("")
-        self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+
+        # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+        self.background.setPixmap(QtGui.QPixmap(self.background_path))
+
         self.background.setScaledContents(True)
         self.background.setObjectName("background")
         self.background.raise_()

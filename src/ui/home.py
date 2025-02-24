@@ -9,16 +9,26 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import os
+
 
 
 class UI_Home(object):
     def setupUi(self, Home_ui):
+        
+        self.current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.background_path = os.path.join(self.current_dir, "images/water_background.jpeg")
+
         Home_ui.setObjectName("Home_ui")
         Home_ui.resize(940, 700)
         self.splitter = QtWidgets.QSplitter(Home_ui)
         self.splitter.setGeometry(QtCore.QRect(50, 160, 511, 501))
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName("splitter")
+
+        # Set the stylesheet to make the spaces between the splinters transparent
+        self.splitter.setStyleSheet("QSplitter::handle { background: transparent; }")
+
         self.pushButton_H_Simulation = QtWidgets.QPushButton(self.splitter)
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
@@ -30,6 +40,7 @@ class UI_Home(object):
         self.pushButton_H_Simulation.setIconSize(QtCore.QSize(16, 16))
         self.pushButton_H_Simulation.setAutoDefault(False)
         self.pushButton_H_Simulation.setObjectName("pushButton_H_Simulation")
+        
         self.pushButton_H_LiveData = QtWidgets.QPushButton(self.splitter)
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
@@ -75,7 +86,10 @@ class UI_Home(object):
         self.background = QtWidgets.QLabel(Home_ui)
         self.background.setGeometry(QtCore.QRect(0, -2, 941, 761))
         self.background.setText("")
-        self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+
+        # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+        self.background.setPixmap(QtGui.QPixmap(self.background_path))
+
         self.background.setScaledContents(True)
         self.background.setObjectName("background")
         self.background.raise_()
@@ -94,12 +108,3 @@ class UI_Home(object):
         self.pushButton_H_Quiz.setText(_translate("Home_ui", "Quiz"))
         self.label_H_main.setText(_translate("Home_ui", "ECO-DRONE"))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Home_ui = QtWidgets.QWidget()
-    ui = Ui_Home_ui()
-    ui.setupUi(Home_ui)
-    Home_ui.show()
-    sys.exit(app.exec_())
