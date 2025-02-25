@@ -151,19 +151,16 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>-2</y>
-     <width>941</width>
-     <height>761</height>
+     <y>0</y>
+     <width>940</width>
+     <height>700</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="pixmap">
-    <pixmap>../src/ui/water_background.jpeg</pixmap>
-   </property>
    <property name="scaledContents">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <zorder>background</zorder>

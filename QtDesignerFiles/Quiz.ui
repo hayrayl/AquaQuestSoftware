@@ -17,16 +17,17 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
-     <width>301</width>
-     <height>101</height>
+     <y>20</y>
+     <width>281</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>22</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -45,26 +46,153 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_learning">
+  <widget class="QPushButton" name="pushButton_Q_answer1">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>310</y>
-     <width>119</width>
-     <height>64</height>
+     <x>40</x>
+     <y>320</y>
+     <width>450</width>
+     <height>100</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>32</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Quiz</string>
+    <string>PushButton</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_Q_question">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>140</y>
+     <width>450</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Q_answer2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>440</y>
+     <width>450</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Q_answer3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>560</y>
+     <width>450</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>-20</x>
+     <y>30</y>
+     <width>940</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Q_next">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>560</y>
+     <width>331</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Next Question</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_Q_results">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>30</y>
+     <width>381</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>pushButton_back</zorder>
+  <zorder>pushButton_Q_answer1</zorder>
+  <zorder>label_Q_question</zorder>
+  <zorder>pushButton_Q_answer2</zorder>
+  <zorder>pushButton_Q_answer3</zorder>
+  <zorder>pushButton_Q_next</zorder>
+  <zorder>label_Q_results</zorder>
  </widget>
  <resources/>
  <connections/>

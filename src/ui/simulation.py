@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\simulation.ui'
+# Form implementation generated from reading ui file '.\Simulation.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -9,29 +9,26 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os 
+
 
 class UI_simulation(object):
     def setupUi(self, simulation_ui):
-
-        self.current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.background_path = os.path.join(self.current_dir, "images/water_background.jpeg")
-
         simulation_ui.setObjectName("simulation_ui")
         simulation_ui.resize(940, 700)
         self.pushButton_back = QtWidgets.QPushButton(simulation_ui)
-        self.pushButton_back.setGeometry(QtCore.QRect(20, 10, 301, 101))
+        self.pushButton_back.setGeometry(QtCore.QRect(20, 10, 281, 71))
         font = QtGui.QFont()
-        font.setPointSize(22)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Cooper Black")
+        font.setPointSize(24)
+        font.setBold(False)
+        font.setWeight(50)
         self.pushButton_back.setFont(font)
         self.pushButton_back.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.pushButton_back.setIconSize(QtCore.QSize(16, 16))
         self.pushButton_back.setAutoDefault(False)
         self.pushButton_back.setObjectName("pushButton_back")
         self.sim_slider = QtWidgets.QSlider(simulation_ui)
-        self.sim_slider.setGeometry(QtCore.QRect(460, 30, 171, 481))
+        self.sim_slider.setGeometry(QtCore.QRect(470, 20, 171, 481))
         font = QtGui.QFont()
         font.setPointSize(1)
         self.sim_slider.setFont(font)
@@ -44,25 +41,22 @@ class UI_simulation(object):
         self.label_S_sliderValue.setGeometry(QtCore.QRect(20, 150, 331, 69))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(34)
+        font.setPointSize(40)
         self.label_S_sliderValue.setFont(font)
         self.label_S_sliderValue.setObjectName("label_S_sliderValue")
         self.label_S_CurrentSimulating = QtWidgets.QLabel(simulation_ui)
-        self.label_S_CurrentSimulating.setGeometry(QtCore.QRect(20, 120, 271, 40))
+        self.label_S_CurrentSimulating.setGeometry(QtCore.QRect(20, 100, 381, 40))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(20)
+        font.setPointSize(28)
         self.label_S_CurrentSimulating.setFont(font)
         self.label_S_CurrentSimulating.setObjectName("label_S_CurrentSimulating")
         self.label_S_explanation = QtWidgets.QLabel(simulation_ui)
         self.label_S_explanation.setGeometry(QtCore.QRect(30, 240, 401, 241))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(14)
+        font.setPointSize(16)
         self.label_S_explanation.setFont(font)
-        
-        self.label_S_explanation.setWordWrap(True)
-
         self.label_S_explanation.setObjectName("label_S_explanation")
         self.layoutWidget = QtWidgets.QWidget(simulation_ui)
         self.layoutWidget.setGeometry(QtCore.QRect(40, 530, 861, 161))
@@ -107,13 +101,9 @@ class UI_simulation(object):
         self.pushButton_S_HeavyMetals.setObjectName("pushButton_S_HeavyMetals")
         self.gridLayout.addWidget(self.pushButton_S_HeavyMetals, 1, 1, 1, 1)
         self.background = QtWidgets.QLabel(simulation_ui)
-        self.background.setGeometry(QtCore.QRect(-10, -10, 971, 761))
+        self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
         self.background.setText("")
-
-        # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
-        self.background.setPixmap(QtGui.QPixmap(self.background_path))
-
-        self.background.setScaledContents(True)
+        self.background.setScaledContents(False)
         self.background.setObjectName("background")
         self.background.raise_()
         self.pushButton_back.raise_()
@@ -137,6 +127,4 @@ class UI_simulation(object):
         self.pushButton_S_Turbidity.setText(_translate("simulation_ui", "Turbidity"))
         self.pushButton_S_Ph.setText(_translate("simulation_ui", "Ph"))
         self.pushButton_S_HeavyMetals.setText(_translate("simulation_ui", "Heavy Metals"))
-
-
 

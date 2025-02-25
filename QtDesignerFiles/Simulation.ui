@@ -18,15 +18,16 @@
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>301</width>
-     <height>101</height>
+     <width>281</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>22</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -48,8 +49,8 @@
   <widget class="QSlider" name="sim_slider">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>30</y>
+     <x>470</x>
+     <y>20</y>
      <width>171</width>
      <height>481</height>
     </rect>
@@ -84,7 +85,7 @@
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>34</pointsize>
+     <pointsize>40</pointsize>
     </font>
    </property>
    <property name="text">
@@ -95,15 +96,15 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>120</y>
-     <width>271</width>
+     <y>100</y>
+     <width>381</width>
      <height>40</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>20</pointsize>
+     <pointsize>28</pointsize>
     </font>
    </property>
    <property name="text">
@@ -122,7 +123,7 @@
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>14</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="text">
@@ -204,20 +205,17 @@
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>-10</y>
-     <width>971</width>
-     <height>761</height>
+     <x>0</x>
+     <y>0</y>
+     <width>940</width>
+     <height>700</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="pixmap">
-    <pixmap>../src/ui/water_background.jpeg</pixmap>
-   </property>
    <property name="scaledContents">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <zorder>background</zorder>
