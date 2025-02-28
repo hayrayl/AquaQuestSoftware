@@ -18,7 +18,7 @@
     <rect>
      <x>50</x>
      <y>160</y>
-     <width>841</width>
+     <width>511</width>
      <height>501</height>
     </rect>
    </property>
@@ -28,9 +28,10 @@
    <widget class="QPushButton" name="pushButton_H_Simulation">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -52,9 +53,10 @@
    <widget class="QPushButton" name="pushButton_H_LiveData">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -76,9 +78,10 @@
    <widget class="QPushButton" name="pushButton_H_Learn">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -100,9 +103,10 @@
    <widget class="QPushButton" name="pushButton_H_Quiz">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -125,23 +129,43 @@
   <widget class="QLabel" name="label_H_main">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>270</x>
      <y>50</y>
-     <width>325</width>
-     <height>64</height>
+     <width>381</width>
+     <height>69</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>32</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>36</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
     <string>ECO-DRONE</string>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>940</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>splitter</zorder>
+  <zorder>label_H_main</zorder>
  </widget>
  <resources/>
  <connections/>
