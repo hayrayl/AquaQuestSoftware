@@ -62,7 +62,7 @@ class QuizScreen(QtWidgets.QWidget, UI_quiz):
 
     def parse_questions(self):
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(current_dir, "../quizes/question1.txt")
+        file_path = os.path.join(current_dir, "../materials/question1.txt")
 
 
         with open(file_path, 'r') as file:
