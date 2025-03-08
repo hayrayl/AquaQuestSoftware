@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class UI_simulation(object):
+class Ui_simulation_ui(object):
     def setupUi(self, simulation_ui):
         simulation_ui.setObjectName("simulation_ui")
         simulation_ui.resize(940, 700)
@@ -28,7 +28,7 @@ class UI_simulation(object):
         self.pushButton_back.setAutoDefault(False)
         self.pushButton_back.setObjectName("pushButton_back")
         self.sim_slider = QtWidgets.QSlider(simulation_ui)
-        self.sim_slider.setGeometry(QtCore.QRect(470, 20, 171, 481))
+        self.sim_slider.setGeometry(QtCore.QRect(350, 20, 171, 481))
         font = QtGui.QFont()
         font.setPointSize(1)
         self.sim_slider.setFont(font)
@@ -38,25 +38,27 @@ class UI_simulation(object):
         self.sim_slider.setTickPosition(QtWidgets.QSlider.NoTicks)
         self.sim_slider.setObjectName("sim_slider")
         self.label_S_sliderValue = QtWidgets.QLabel(simulation_ui)
-        self.label_S_sliderValue.setGeometry(QtCore.QRect(20, 150, 331, 69))
+        self.label_S_sliderValue.setGeometry(QtCore.QRect(520, 100, 331, 69))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(40)
         self.label_S_sliderValue.setFont(font)
         self.label_S_sliderValue.setObjectName("label_S_sliderValue")
         self.label_S_CurrentSimulating = QtWidgets.QLabel(simulation_ui)
-        self.label_S_CurrentSimulating.setGeometry(QtCore.QRect(20, 100, 381, 40))
+        self.label_S_CurrentSimulating.setGeometry(QtCore.QRect(520, 20, 381, 40))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(28)
         self.label_S_CurrentSimulating.setFont(font)
         self.label_S_CurrentSimulating.setObjectName("label_S_CurrentSimulating")
         self.label_S_explanation = QtWidgets.QLabel(simulation_ui)
-        self.label_S_explanation.setGeometry(QtCore.QRect(30, 240, 401, 241))
+        self.label_S_explanation.setGeometry(QtCore.QRect(520, 200, 391, 271))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(16)
         self.label_S_explanation.setFont(font)
+        self.label_S_explanation.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_S_explanation.setWordWrap(False)
         self.label_S_explanation.setObjectName("label_S_explanation")
         self.layoutWidget = QtWidgets.QWidget(simulation_ui)
         self.layoutWidget.setGeometry(QtCore.QRect(40, 530, 861, 161))
@@ -105,6 +107,11 @@ class UI_simulation(object):
         self.background.setText("")
         self.background.setScaledContents(False)
         self.background.setObjectName("background")
+        self.archie = QtWidgets.QLabel(simulation_ui)
+        self.archie.setGeometry(QtCore.QRect(0, 100, 400, 400))
+        self.archie.setText("")
+        self.archie.setScaledContents(False)
+        self.archie.setObjectName("archie")
         self.background.raise_()
         self.pushButton_back.raise_()
         self.sim_slider.raise_()
@@ -112,6 +119,7 @@ class UI_simulation(object):
         self.label_S_CurrentSimulating.raise_()
         self.label_S_explanation.raise_()
         self.layoutWidget.raise_()
+        self.archie.raise_()
 
         self.retranslateUi(simulation_ui)
         QtCore.QMetaObject.connectSlotsByName(simulation_ui)
@@ -127,4 +135,3 @@ class UI_simulation(object):
         self.pushButton_S_Turbidity.setText(_translate("simulation_ui", "Turbidity"))
         self.pushButton_S_Ph.setText(_translate("simulation_ui", "Ph"))
         self.pushButton_S_HeavyMetals.setText(_translate("simulation_ui", "Heavy Metals"))
-

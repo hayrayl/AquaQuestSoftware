@@ -7,9 +7,9 @@ import utils
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
-from home import UI_Home  # Import the generated UI class
+from home import Ui_Home_ui  # Import the generated UI class
 
-class HomeScreen(QtWidgets.QWidget, UI_Home):
+class HomeScreen(QtWidgets.QWidget, Ui_Home_ui):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)  # Call the setupUi method
@@ -35,6 +35,7 @@ class HomeScreen(QtWidgets.QWidget, UI_Home):
     
     def design_setup(self):
         utils.set_background(self.background)
+        utils.archie_arm_out(self.archie)
 
         self.splitter.setStyleSheet("QSplitter::handle { background: transparent; }")
 

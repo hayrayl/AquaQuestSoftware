@@ -6,13 +6,13 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import utils
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
-from simulation import UI_simulation  # Import the generated UI class
+from simulation import Ui_simulation_ui  # Import the generated UI class
 
 
 
 
 
-class SimulationScreen(QtWidgets.QWidget, UI_simulation):
+class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
@@ -51,6 +51,7 @@ class SimulationScreen(QtWidgets.QWidget, UI_simulation):
 
     def show_temperature(self):
         self.label_S_CurrentSimulating.setText("Temperature:")
+        self.label_S_CurrentSimulating.adjustSize()
         try:
             self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
         except TypeError:
@@ -60,6 +61,7 @@ class SimulationScreen(QtWidgets.QWidget, UI_simulation):
 
     def show_ph(self):
         self.label_S_CurrentSimulating.setText("Ph:")
+        self.label_S_CurrentSimulating.adjustSize()
         try:
             self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
         except TypeError:
@@ -69,6 +71,8 @@ class SimulationScreen(QtWidgets.QWidget, UI_simulation):
 
     def show_turbidity(self):
         self.label_S_CurrentSimulating.setText("Turbidity:")
+        self.label_S_CurrentSimulating.adjustSize()
+        self.label_S_CurrentSimulating.adjustSize()
         try:
             self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
         except TypeError:
@@ -78,6 +82,7 @@ class SimulationScreen(QtWidgets.QWidget, UI_simulation):
     
     def show_heavyMetals(self):
         self.label_S_CurrentSimulating.setText("Heavy Metals:")
+        self.label_S_CurrentSimulating.adjustSize()
         try:
             self.sim_slider.valueChanged.disconnect()
         except TypeError:
@@ -178,22 +183,29 @@ class SimulationScreen(QtWidgets.QWidget, UI_simulation):
 
     def border_green(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#84DC7D")
+        utils.archie_sampling(self.archie)
 
     def border_darkblue(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#81C4FB")
+        utils.archie_sampling(self.archie)
 
     def border_blue(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#81FBF5")
+        utils.archie_sampling(self.archie)
 
     def border_orange(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#F6B14E")
+        utils.archie_sampling_nervous(self.archie)
     
     def border_yellow(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#F5F57E")
+        utils.archie_sampling_nervous(self.archie)
     
     def border_red(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#D40407")
+        utils.archie_sampling_bad(self.archie)
 
     def border_none(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#1E2F97")
+        utils.archie_sampling(self.archie)
     

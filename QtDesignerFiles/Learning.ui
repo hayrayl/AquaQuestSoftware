@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label_L_title">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>380</x>
      <y>20</y>
      <width>500</width>
      <height>122</height>
@@ -46,16 +46,16 @@
   <widget class="QPushButton" name="pushButton_L_parameters">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>380</x>
      <y>170</y>
      <width>511</width>
-     <height>122</height>
+     <height>110</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>28</pointsize>
+     <pointsize>26</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -79,16 +79,16 @@
   <widget class="QPushButton" name="pushButton_L_whyTest">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>380</x>
      <y>350</y>
      <width>511</width>
-     <height>122</height>
+     <height>110</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>28</pointsize>
+     <pointsize>26</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -97,7 +97,7 @@
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="text">
-    <string>Why test water</string>
+    <string>why do we test water?</string>
    </property>
    <property name="iconSize">
     <size>
@@ -109,19 +109,19 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_L_howMove">
+  <widget class="QPushButton" name="pushButton_L_what_pollutes">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>380</x>
      <y>530</y>
      <width>511</width>
-     <height>122</height>
+     <height>110</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>28</pointsize>
+     <pointsize>26</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -130,7 +130,7 @@
     <enum>Qt::LeftToRight</enum>
    </property>
    <property name="text">
-    <string>How Water Moves </string>
+    <string>what pollutes water?</string>
    </property>
    <property name="iconSize">
     <size>
@@ -188,12 +188,29 @@
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="archie">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>270</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>label_L_title</zorder>
+  <zorder>pushButton_back</zorder>
+  <zorder>archie</zorder>
   <zorder>pushButton_L_parameters</zorder>
   <zorder>pushButton_L_whyTest</zorder>
-  <zorder>pushButton_L_howMove</zorder>
-  <zorder>pushButton_back</zorder>
+  <zorder>pushButton_L_what_pollutes</zorder>
  </widget>
  <resources/>
  <connections/>

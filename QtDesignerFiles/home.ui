@@ -16,7 +16,7 @@
   <widget class="QSplitter" name="splitter">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>400</x>
      <y>160</y>
      <width>511</width>
      <height>501</height>
@@ -129,9 +129,9 @@
   <widget class="QLabel" name="label_H_main">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>150</x>
      <y>50</y>
-     <width>381</width>
+     <width>640</width>
      <height>69</height>
     </rect>
    </property>
@@ -144,7 +144,10 @@
     </font>
    </property>
    <property name="text">
-    <string>ECO-DRONE</string>
+    <string>Archie's AquaQuest</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="background">
@@ -163,9 +166,26 @@
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="archie">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>270</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>splitter</zorder>
   <zorder>label_H_main</zorder>
+  <zorder>archie</zorder>
  </widget>
  <resources/>
  <connections/>

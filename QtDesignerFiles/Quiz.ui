@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>940</width>
-    <height>700</height>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,10 +49,10 @@
   <widget class="QPushButton" name="pushButton_Q_answer1">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>320</y>
+     <x>450</x>
+     <y>300</y>
      <width>450</width>
-     <height>100</height>
+     <height>75</height>
     </rect>
    </property>
    <property name="font">
@@ -68,16 +68,16 @@
   <widget class="QLabel" name="label_Q_question">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>140</y>
-     <width>450</width>
-     <height>141</height>
+     <x>460</x>
+     <y>20</y>
+     <width>441</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>18</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="text">
@@ -93,10 +93,10 @@
   <widget class="QPushButton" name="pushButton_Q_answer2">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>440</y>
+     <x>450</x>
+     <y>400</y>
      <width>450</width>
-     <height>100</height>
+     <height>75</height>
     </rect>
    </property>
    <property name="font">
@@ -112,10 +112,10 @@
   <widget class="QPushButton" name="pushButton_Q_answer3">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>560</y>
+     <x>450</x>
+     <y>500</y>
      <width>450</width>
-     <height>100</height>
+     <height>75</height>
     </rect>
    </property>
    <property name="font">
@@ -131,8 +131,8 @@
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>-20</x>
-     <y>30</y>
+     <x>0</x>
+     <y>0</y>
      <width>940</width>
      <height>700</height>
     </rect>
@@ -144,10 +144,10 @@
   <widget class="QPushButton" name="pushButton_Q_next">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>560</y>
-     <width>331</width>
-     <height>100</height>
+     <x>450</x>
+     <y>600</y>
+     <width>450</width>
+     <height>75</height>
     </rect>
    </property>
    <property name="font">
@@ -163,16 +163,16 @@
   <widget class="QLabel" name="label_Q_results">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>30</y>
-     <width>381</width>
-     <height>191</height>
+     <x>30</x>
+     <y>140</y>
+     <width>411</width>
+     <height>241</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>18</pointsize>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="text">
@@ -185,6 +185,22 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="archie">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>270</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
   <zorder>background</zorder>
   <zorder>pushButton_back</zorder>
   <zorder>pushButton_Q_answer1</zorder>
@@ -193,6 +209,7 @@
   <zorder>pushButton_Q_answer3</zorder>
   <zorder>pushButton_Q_next</zorder>
   <zorder>label_Q_results</zorder>
+  <zorder>archie</zorder>
  </widget>
  <resources/>
  <connections/>

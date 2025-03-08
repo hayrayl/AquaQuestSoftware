@@ -8,14 +8,14 @@ import utils
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'ui'))
 
-from classroom import UI_Classroom # Import the generated UI class
+from how_pollute import Ui_How_Pollute # Import the generated UI class
 
-class ClassroomScreen(QtWidgets.QWidget, UI_Classroom):
+class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
         
-        # to know what topic to be on 
+        # # to know what topic to be on 
         self.count = 0
 
         self.topics = self.parse_file()
@@ -31,40 +31,41 @@ class ClassroomScreen(QtWidgets.QWidget, UI_Classroom):
         self.parent().setCurrentIndex(4)  # back to the learning module 
 
     def design_setup(self):
-        utils.classroom_background(self.background)
+        # utils.how_pol_background(self.background, "images/First_Last.png")
 
-        utils.class_buttons(self.pushButton_back)
-        utils.class_buttons(self.pushButton_next)
-        utils.class_buttons(self.pushButton_previous)
-        
-        utils.class_chalkbaord(self.label_chalkboard)
-        utils.class_chalkbaord(self.label_chalkboard_title)
+        utils.how_pol_button(self.pushButton_back)
+        utils.how_pol_button(self.pushButton_next)
+        utils.how_pol_button(self.pushButton_previous)
+        utils.how_pol_text(self.label_explanation)
 
     def new_slide(self):
+        try: 
+            screen, explanation = self.topics[self.count]
+
+            utils.how_pol_background(self.background, screen)
+            self.label_explanation.setText(explanation)
+            self.label_explanation.adjustSize()
+
+        except:
+            self.label_explanation.setText("")
+            utils.how_pol_background(self.background, "images/First_Last.png")
+
         if self.count == 0:
             self.pushButton_previous.hide()
-        else:
+
+        elif self.count == len(self.topics) - 1:
+            self.pushButton_next.hide()
+        
+        else: 
+            self.pushButton_next.show()
             self.pushButton_previous.show()
 
-        if self.count == len(self.topics):
-            self.pushButton_next.hide()
-        else:
-            self.pushButton_next.show()
-
-        if self.count < len(self.topics):
-            title, explanation = self.topics[self.count]
-            self.label_chalkboard_title.setText(title)
-            self.label_chalkboard.setText(explanation)
-        else:
-            self.label_chalkboard_title.setText("")
-            self.label_chalkboard.setText("That is all we have for today! Good job studying with Archie!")
-
         if self.count % 3 == 0:
-            utils.archie_arm_out_teach(self.archie)
+            utils.archie_arm_out(self.archie)
         if self.count % 3 == 1:
-            utils.archie_arms_down_teach(self.archie)
+            utils.archie_arms_down(self.archie)
         if self.count % 3 == 2:
-            utils.archie_arms_out_teach(self.archie)
+            utils.archie_arms_out(self.archie)
         
     
     def go_next(self):
@@ -79,7 +80,7 @@ class ClassroomScreen(QtWidgets.QWidget, UI_Classroom):
 
     def parse_file(self):
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            file_path = os.path.join(current_dir, "../../materials/parameters.txt")
+            file_path = os.path.join(current_dir, "../../materials/how_pollute.txt")
 
 
             with open(file_path, 'r') as file:
@@ -88,11 +89,8 @@ class ClassroomScreen(QtWidgets.QWidget, UI_Classroom):
             topics = []
             for block in content:
                 lines = block.strip().split('\n')
-                title = lines[0]
+                screen = lines[0]
                 explanation = lines[1]
-                topics.append((title, explanation))
+                topics.append((screen, explanation))
 
             return topics
-
-   
-        

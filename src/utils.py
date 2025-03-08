@@ -5,35 +5,35 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 def set_background(background):
     background.setScaledContents(True)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    background_path = os.path.join(current_dir, "images/water.png")
-    # background_path = os.path.join(current_dir, "images/water_background.jpeg")
-    # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+    background_path = os.path.join(current_dir, "images/pond_background.jpg")
     background.setPixmap(QtGui.QPixmap(background_path))
 
 def blue_background_White_text(button):
-    button.setStyleSheet("background-color: #1E2F97; color: #FFFFFF; border-radius: 15px;")
+    button.setStyleSheet("background-color: #78CFE2; color: black; border-radius: 15px;border: 8px solid black")
 
 def text_blue(text):
-    text.setStyleSheet("color: #1E2F97;")
+    # text.setStyleSheet("color: #1E2F97;")background-color: #f5fbfb;
+    # text.setStyleSheet(" color: black; border-radius: 15px;border: 2px solid #8e9387")
+    text.setStyleSheet("background-color: rgba(251, 247, 245, 150); color: black; border-radius: 15px;")
 
 def simulation_explanation_change(label, color):
-    label.setStyleSheet(f'border: 12px solid {color}; padding: 10px;background-color: #1E2F97; color: #FFFFFF; border-radius: 15px;')
+    label.setStyleSheet(f'border: 12px solid {color}; padding: 10px;background-color: rgba(120, 207, 226, 150); color: black; border-radius: 15px;')
 
 # used for the slider in the simulation page
 def slider(slider):
     slider.setStyleSheet("""
         QSlider::groove:vertical {
-            background: #B1E3FA;  /* Change this to your desired color */
+            background: #37A8C8;  /* Change this to your desired color */
             width: 20px;  /* Adjust the width of the pole */
         }
 
         QSlider::handle:vertical {
-            background: #00bcf2;  /* Change this to your desired color */
-            border: 5px solid #B1E3FA;
-            height: 100px;  /* Adjust the height of the slider handle */
-            width: 20px;  /* Adjust the width of the slider handle */
-            margin: -40px;  /* Move the slider handle in/out */
-            border-radius: 45px;  /* Make the handle circular */
+            background: #CBEDEE;  /* Change this to your desired color */
+            border: 5px solid #37A8C8;
+            height: 80px;  /* Adjust the height of the slider handle */
+            width: 25px;  /* Adjust the width of the slider handle */
+            margin: -30px;  /* Move the slider handle in/out */
+            border-radius: 35px;  /* Make the handle circular */
         }
         """)
     
@@ -51,4 +51,61 @@ def class_buttons(button):
 
 def class_chalkbaord(text):
     text.setStyleSheet("color: #fbf7f5;")
+
+
+def how_pol_background(background, path):
+    background.setScaledContents(True)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    background_path = os.path.join(current_dir, path)
+        # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+    background.setPixmap(QtGui.QPixmap(background_path))
+
+def how_pol_button(button):
+    button.setStyleSheet("background-color: #A8CC5C; color: black; border-radius: 15px; border: 8px solid black;")
+
+def how_pol_text(text):
+    text.setStyleSheet("background-color: rgba(251, 247, 245, 150); color: black; border-radius: 15px;")
+
+def archie_arm_out(archie):
+    archie_set(archie, "images/archie_one_arm.png")
+
+def archie_arm_out_teach(archie):
+    archie_set(archie, "images/archie_one_arm_teach.png")
+
+def archie_arm_out_quiz(archie):
+    archie_set(archie, "images/archie_one_arm_quiz.png")
+
+def archie_arms_out(archie):
+    archie_set(archie, "images/archie_arms_out.png")
+
+def archie_arms_out_quiz(archie):
+    archie_set(archie, "images/archie_arms_out_quiz.png")
+
+def archie_arms_out_teach(archie):
+    archie_set(archie, "images/archie_arms_out_teach.png")
+
+def archie_arms_down(archie):
+    archie_set(archie, "images/archie_arms_down.png")    
+
+def archie_arms_down_teach(archie):
+    archie_set(archie, "images/archie_arms_down_teach.png")    
+
+def archie_arms_down_quiz(archie):
+    archie_set(archie, "images/archie_arms_down_quiz.png")    
+
+def archie_sampling(archie):
+    archie_set(archie, "images/archie_sampling_happy.png")
+
+def archie_sampling_nervous(archie):
+    archie_set(archie, "images/archie_sampling_nervous.png")
+
+def archie_sampling_bad(archie):
+    archie_set(archie, "images/archie_sampling_bad.png")
+
+def archie_set(archie, path):
+    archie.setScaledContents(True)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    background_path = os.path.join(current_dir, path)
+    archie.setPixmap(QtGui.QPixmap(background_path))
+
 

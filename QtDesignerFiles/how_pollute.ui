@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Classroom</class>
- <widget class="QWidget" name="Classroom">
+ <class>How_Pollute</class>
+ <widget class="QWidget" name="How_Pollute">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,37 +13,20 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton_back">
+  <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>281</width>
-     <height>71</height>
+     <x>0</x>
+     <y>0</y>
+     <width>940</width>
+     <height>700</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Cooper Black</family>
-     <pointsize>24</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
    <property name="text">
-    <string>BACK</string>
+    <string/>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_previous">
@@ -112,13 +95,62 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_chalkboard">
+  <widget class="QPushButton" name="pushButton_back">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>130</y>
-     <width>511</width>
-     <height>260</height>
+     <x>10</x>
+     <y>10</y>
+     <width>281</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>BACK</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="archie">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>350</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_explanation">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>30</y>
+     <width>561</width>
+     <height>551</height>
     </rect>
    </property>
    <property name="font">
@@ -145,75 +177,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="background">
-   <property name="geometry">
-    <rect>
-     <x>-10</x>
-     <y>0</y>
-     <width>940</width>
-     <height>700</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_chalkboard_title">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>95</y>
-     <width>511</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Cooper Black</family>
-     <pointsize>28</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="lineWidth">
-    <number>-3</number>
-   </property>
-   <property name="text">
-    <string>TOPIC</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="wordWrap">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="archie">
-   <property name="geometry">
-    <rect>
-     <x>-20</x>
-     <y>200</y>
-     <width>350</width>
-     <height>350</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <zorder>background</zorder>
-  <zorder>pushButton_back</zorder>
-  <zorder>pushButton_previous</zorder>
-  <zorder>pushButton_next</zorder>
-  <zorder>label_chalkboard_title</zorder>
-  <zorder>archie</zorder>
-  <zorder>label_chalkboard</zorder>
  </widget>
  <resources/>
  <connections/>
