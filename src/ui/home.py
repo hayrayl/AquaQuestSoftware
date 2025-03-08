@@ -11,12 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class UI_Home(object):
+class Ui_Home_ui(object):
     def setupUi(self, Home_ui):
         Home_ui.setObjectName("Home_ui")
         Home_ui.resize(940, 700)
         self.splitter = QtWidgets.QSplitter(Home_ui)
-        self.splitter.setGeometry(QtCore.QRect(50, 160, 511, 501))
+        self.splitter.setGeometry(QtCore.QRect(400, 160, 511, 501))
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName("splitter")
         self.pushButton_H_Simulation = QtWidgets.QPushButton(self.splitter)
@@ -64,22 +64,29 @@ class UI_Home(object):
         self.pushButton_H_Quiz.setAutoDefault(False)
         self.pushButton_H_Quiz.setObjectName("pushButton_H_Quiz")
         self.label_H_main = QtWidgets.QLabel(Home_ui)
-        self.label_H_main.setGeometry(QtCore.QRect(270, 50, 381, 69))
+        self.label_H_main.setGeometry(QtCore.QRect(150, 50, 640, 69))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(36)
         font.setBold(False)
         font.setWeight(50)
         self.label_H_main.setFont(font)
+        self.label_H_main.setAlignment(QtCore.Qt.AlignCenter)
         self.label_H_main.setObjectName("label_H_main")
         self.background = QtWidgets.QLabel(Home_ui)
         self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
         self.background.setText("")
         self.background.setScaledContents(False)
         self.background.setObjectName("background")
+        self.archie = QtWidgets.QLabel(Home_ui)
+        self.archie.setGeometry(QtCore.QRect(0, 270, 400, 400))
+        self.archie.setText("")
+        self.archie.setScaledContents(False)
+        self.archie.setObjectName("archie")
         self.background.raise_()
         self.splitter.raise_()
         self.label_H_main.raise_()
+        self.archie.raise_()
 
         self.retranslateUi(Home_ui)
         QtCore.QMetaObject.connectSlotsByName(Home_ui)
@@ -91,6 +98,5 @@ class UI_Home(object):
         self.pushButton_H_LiveData.setText(_translate("Home_ui", "Live Data"))
         self.pushButton_H_Learn.setText(_translate("Home_ui", "Learning Module"))
         self.pushButton_H_Quiz.setText(_translate("Home_ui", "Quiz"))
-        self.label_H_main.setText(_translate("Home_ui", "ECO-DRONE"))
-
+        self.label_H_main.setText(_translate("Home_ui", "Archie\'s AquaQuest"))
 

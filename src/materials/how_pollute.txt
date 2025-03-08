@@ -1,0 +1,14 @@
+images/First_Last.png
+Welcome! We are going to learn about what pollutes our water! Join me on a walk around town! 
+
+images/Farm_Pesticides.png
+Fertilizers and Pesticides: Farmers use fertilizers to help their crops grow and pesticides to keep bugs away. When it rains, these chemicals can wash into rivers and lakes, making the water dirty and unsafe for fish and plants.
+
+images/plastic.png
+Plastic Trash: Many plastic items, like straws, bottles, and bags, end up in the water. Plastic doesn't break down easily, so it stays in the water for a long time and can hurt animals that mistake it for food.
+
+images/factories.png
+Chemicals from Factories: Factories sometimes use chemicals to make things like clothes, paper, and other products. When these chemicals aren't disposed of properly, they can get into rivers and lakes.
+
+images/First_Last.png
+That is all we have for today! Remember to recycle and keep our waters clean! 
