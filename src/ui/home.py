@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Home_ui(object):
     def setupUi(self, Home_ui):
         Home_ui.setObjectName("Home_ui")
-        Home_ui.resize(940, 700)
+        Home_ui.resize(1024, 600)
         self.splitter = QtWidgets.QSplitter(Home_ui)
-        self.splitter.setGeometry(QtCore.QRect(400, 160, 511, 501))
+        self.splitter.setGeometry(QtCore.QRect(490, 160, 501, 391))
         self.splitter.setOrientation(QtCore.Qt.Vertical)
         self.splitter.setObjectName("splitter")
         self.pushButton_H_Simulation = QtWidgets.QPushButton(self.splitter)
@@ -74,12 +74,12 @@ class Ui_Home_ui(object):
         self.label_H_main.setAlignment(QtCore.Qt.AlignCenter)
         self.label_H_main.setObjectName("label_H_main")
         self.background = QtWidgets.QLabel(Home_ui)
-        self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
+        self.background.setGeometry(QtCore.QRect(0, 0, 1024, 600))
         self.background.setText("")
         self.background.setScaledContents(False)
         self.background.setObjectName("background")
         self.archie = QtWidgets.QLabel(Home_ui)
-        self.archie.setGeometry(QtCore.QRect(0, 270, 400, 400))
+        self.archie.setGeometry(QtCore.QRect(30, 160, 400, 400))
         self.archie.setText("")
         self.archie.setScaledContents(False)
         self.archie.setObjectName("archie")
@@ -100,3 +100,12 @@ class Ui_Home_ui(object):
         self.pushButton_H_Quiz.setText(_translate("Home_ui", "Quiz"))
         self.label_H_main.setText(_translate("Home_ui", "Archie\'s AquaQuest"))
 
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Home_ui = QtWidgets.QWidget()
+    ui = Ui_Home_ui()
+    ui.setupUi(Home_ui)
+    Home_ui.show()
+    sys.exit(app.exec_())
