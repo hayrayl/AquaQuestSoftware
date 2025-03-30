@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 def set_background(background):
     background.setScaledContents(True)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    background_path = os.path.join(current_dir, "images/pond_background.jpg")
+    background_path = os.path.join(current_dir, "images/background/pond_background.jpg")
     background.setPixmap(QtGui.QPixmap(background_path))
 
 def blue_background_White_text(button):
@@ -37,12 +37,27 @@ def slider(slider):
         }
         """)
     
+# Live Data Section 
+def water_background(background):
+    background.setScaledContents(True)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    background_path = os.path.join(current_dir, "images/background/water_background.jpeg")
+    # background_path = os.path.join(current_dir, "images/water.png")
+    background.setPixmap(QtGui.QPixmap(background_path))
+
+def new_image(image, file):
+    image.setScaledContents(True)
+    filepath = f'images/liveData/{file}'
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    background_path = os.path.join(current_dir, filepath)
+        # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
+    image.setPixmap(QtGui.QPixmap(background_path))
 
 # different color combinations for the classroom 
 def classroom_background(background):
     background.setScaledContents(True)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    background_path = os.path.join(current_dir, "images/classroom.png")
+    background_path = os.path.join(current_dir, "images/background/classroom.png")
         # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
     background.setPixmap(QtGui.QPixmap(background_path))
 
@@ -67,40 +82,40 @@ def how_pol_text(text):
     text.setStyleSheet("background-color: rgba(251, 247, 245, 150); color: black; border-radius: 15px;")
 
 def archie_arm_out(archie):
-    archie_set(archie, "images/archie_one_arm.png")
+    archie_set(archie, "images/archie/archie_one_arm.png")
 
 def archie_arm_out_teach(archie):
-    archie_set(archie, "images/archie_one_arm_teach.png")
+    archie_set(archie, "images/archie/archie_one_arm_teach.png")
 
 def archie_arm_out_quiz(archie):
-    archie_set(archie, "images/archie_one_arm_quiz.png")
+    archie_set(archie, "images/archie/archie_one_arm_quiz.png")
 
 def archie_arms_out(archie):
-    archie_set(archie, "images/archie_arms_out.png")
+    archie_set(archie, "images/archie/archie_arms_out.png")
 
 def archie_arms_out_quiz(archie):
-    archie_set(archie, "images/archie_arms_out_quiz.png")
+    archie_set(archie, "images/archie/archie_arms_out_quiz.png")
 
 def archie_arms_out_teach(archie):
-    archie_set(archie, "images/archie_arms_out_teach.png")
+    archie_set(archie, "images/archie/archie_arms_out_teach.png")
 
 def archie_arms_down(archie):
-    archie_set(archie, "images/archie_arms_down.png")    
+    archie_set(archie, "images/archie/archie_arms_down.png")    
 
 def archie_arms_down_teach(archie):
-    archie_set(archie, "images/archie_arms_down_teach.png")    
+    archie_set(archie, "images/archie/archie_arms_down_teach.png")    
 
 def archie_arms_down_quiz(archie):
-    archie_set(archie, "images/archie_arms_down_quiz.png")    
+    archie_set(archie, "images/archie/archie_arms_down_quiz.png")    
 
 def archie_sampling(archie):
-    archie_set(archie, "images/archie_sampling_happy.png")
+    archie_set(archie, "images/archie/archie_sampling_happy.png")
 
 def archie_sampling_nervous(archie):
-    archie_set(archie, "images/archie_sampling_nervous.png")
+    archie_set(archie, "images/archie/archie_sampling_nervous.png")
 
 def archie_sampling_bad(archie):
-    archie_set(archie, "images/archie_sampling_bad.png")
+    archie_set(archie, "images/archie/archie_sampling_bad.png")
 
 def archie_set(archie, path):
     archie.setScaledContents(True)

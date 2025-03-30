@@ -48,7 +48,7 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
 
         except:
             self.label_explanation.setText("")
-            utils.how_pol_background(self.background, "images/First_Last.png")
+            utils.how_pol_background(self.background, "images/background/First_Last.png")
 
         if self.count == 0:
             self.pushButton_previous.hide()
