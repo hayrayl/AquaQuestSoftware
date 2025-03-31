@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1031</width>
-    <height>600</height>
+    <width>1024</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>600</height>
+     <height>540</height>
     </rect>
    </property>
    <property name="text">
@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>500</y>
+     <y>450</y>
      <width>300</width>
      <height>71</height>
     </rect>
@@ -66,7 +66,7 @@
    <property name="geometry">
     <rect>
      <x>674</x>
-     <y>500</y>
+     <y>450</y>
      <width>300</width>
      <height>71</height>
     </rect>
@@ -131,8 +131,8 @@
   <widget class="QLabel" name="archie">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>120</y>
+     <x>30</x>
+     <y>90</y>
      <width>350</width>
      <height>350</height>
     </rect>
@@ -147,10 +147,10 @@
   <widget class="QLabel" name="label_explanation">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>60</y>
+     <x>410</x>
+     <y>70</y>
      <width>561</width>
-     <height>361</height>
+     <height>321</height>
     </rect>
    </property>
    <property name="font">

@@ -42,8 +42,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.stackedWidget.setCurrentIndex(0)
 
-        self.resize(1024,600) # setting the size of the screen 
-        self.setMaximumSize(1024,600)
+        self.resize(1024,538) # setting the size of the screen 
+        self.setMaximumSize(1024,538)
 
         self.move(0,0)
         

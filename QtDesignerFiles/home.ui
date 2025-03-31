@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>600</height>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QSplitter" name="splitter">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>160</y>
-     <width>501</width>
-     <height>391</height>
+     <x>460</x>
+     <y>150</y>
+     <width>541</width>
+     <height>351</height>
     </rect>
    </property>
    <property name="orientation">
@@ -130,7 +130,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>50</y>
+     <y>30</y>
      <width>640</width>
      <height>69</height>
     </rect>
@@ -170,7 +170,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>160</y>
+     <y>130</y>
      <width>400</width>
      <height>400</height>
     </rect>
