@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>600</height>
+    <width>1039</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>190</y>
+     <y>170</y>
      <width>491</width>
      <height>75</height>
     </rect>
@@ -71,7 +71,7 @@
      <x>460</x>
      <y>20</y>
      <width>501</width>
-     <height>141</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="font">
@@ -94,7 +94,7 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>290</y>
+     <y>260</y>
      <width>491</width>
      <height>75</height>
     </rect>
@@ -113,7 +113,7 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>390</y>
+     <y>350</y>
      <width>491</width>
      <height>75</height>
     </rect>
@@ -134,7 +134,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>700</height>
+     <height>600</height>
     </rect>
    </property>
    <property name="text">
@@ -145,7 +145,7 @@
    <property name="geometry">
     <rect>
      <x>470</x>
-     <y>490</y>
+     <y>440</y>
      <width>491</width>
      <height>75</height>
     </rect>
@@ -166,7 +166,7 @@
      <x>30</x>
      <y>100</y>
      <width>411</width>
-     <height>151</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
@@ -188,8 +188,8 @@
   <widget class="QLabel" name="archie">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>230</y>
+     <x>40</x>
+     <y>190</y>
      <width>350</width>
      <height>350</height>
     </rect>
