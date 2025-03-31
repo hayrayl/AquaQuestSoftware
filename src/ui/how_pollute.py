@@ -14,14 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_How_Pollute(object):
     def setupUi(self, How_Pollute):
         How_Pollute.setObjectName("How_Pollute")
-        How_Pollute.resize(940, 700)
+        How_Pollute.resize(1031, 600)
         self.background = QtWidgets.QLabel(How_Pollute)
-        self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
+        self.background.setGeometry(QtCore.QRect(0, 0, 1024, 600))
         self.background.setText("")
         self.background.setScaledContents(True)
         self.background.setObjectName("background")
         self.pushButton_previous = QtWidgets.QPushButton(How_Pollute)
-        self.pushButton_previous.setGeometry(QtCore.QRect(30, 600, 281, 71))
+        self.pushButton_previous.setGeometry(QtCore.QRect(50, 500, 300, 71))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(24)
@@ -33,7 +33,7 @@ class Ui_How_Pollute(object):
         self.pushButton_previous.setAutoDefault(False)
         self.pushButton_previous.setObjectName("pushButton_previous")
         self.pushButton_next = QtWidgets.QPushButton(How_Pollute)
-        self.pushButton_next.setGeometry(QtCore.QRect(620, 600, 281, 71))
+        self.pushButton_next.setGeometry(QtCore.QRect(674, 500, 300, 71))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(24)
@@ -57,12 +57,12 @@ class Ui_How_Pollute(object):
         self.pushButton_back.setAutoDefault(False)
         self.pushButton_back.setObjectName("pushButton_back")
         self.archie = QtWidgets.QLabel(How_Pollute)
-        self.archie.setGeometry(QtCore.QRect(10, 190, 350, 350))
+        self.archie.setGeometry(QtCore.QRect(20, 120, 350, 350))
         self.archie.setText("")
         self.archie.setScaledContents(False)
         self.archie.setObjectName("archie")
         self.label_explanation = QtWidgets.QLabel(How_Pollute)
-        self.label_explanation.setGeometry(QtCore.QRect(320, 30, 561, 551))
+        self.label_explanation.setGeometry(QtCore.QRect(420, 60, 561, 361))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(18)
@@ -87,4 +87,11 @@ class Ui_How_Pollute(object):
         self.label_explanation.setText(_translate("How_Pollute", "What are we going to learn about??"))
 
 
-
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    How_Pollute = QtWidgets.QWidget()
+    ui = Ui_How_Pollute()
+    ui.setupUi(How_Pollute)
+    How_Pollute.show()
+    sys.exit(app.exec_())

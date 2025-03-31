@@ -8,9 +8,9 @@ import utils
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'ui'))
 
-from classroom import UI_Classroom # Import the generated UI class
+from classroom import Ui_Classroom # Import the generated UI class
 
-class ClassroomScreen(QtWidgets.QWidget, UI_Classroom):
+class ClassroomScreen(QtWidgets.QWidget, Ui_Classroom):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)

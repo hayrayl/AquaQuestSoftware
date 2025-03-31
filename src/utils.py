@@ -17,7 +17,7 @@ def text_blue(text):
     text.setStyleSheet("background-color: rgba(251, 247, 245, 150); color: black; border-radius: 15px;")
 
 def simulation_explanation_change(label, color):
-    label.setStyleSheet(f'border: 12px solid {color}; padding: 10px;background-color: rgba(120, 207, 226, 150); color: black; border-radius: 15px;')
+    label.setStyleSheet(f'border: 12px solid {color}; padding: 10px;background-color: rgba(120, 207, 226, 200); color: black; border-radius: 15px;')
 
 # used for the slider in the simulation page
 def slider(slider):

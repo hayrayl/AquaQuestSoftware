@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_learning_ui(object):
     def setupUi(self, learning_ui):
         learning_ui.setObjectName("learning_ui")
-        learning_ui.resize(940, 700)
+        learning_ui.resize(1024, 600)
         self.label_L_title = QtWidgets.QLabel(learning_ui)
         self.label_L_title.setGeometry(QtCore.QRect(380, 20, 500, 122))
         font = QtGui.QFont()
@@ -28,7 +28,7 @@ class Ui_learning_ui(object):
         self.label_L_title.setWordWrap(True)
         self.label_L_title.setObjectName("label_L_title")
         self.pushButton_L_parameters = QtWidgets.QPushButton(learning_ui)
-        self.pushButton_L_parameters.setGeometry(QtCore.QRect(380, 170, 511, 110))
+        self.pushButton_L_parameters.setGeometry(QtCore.QRect(460, 180, 530, 110))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(26)
@@ -40,7 +40,7 @@ class Ui_learning_ui(object):
         self.pushButton_L_parameters.setAutoDefault(False)
         self.pushButton_L_parameters.setObjectName("pushButton_L_parameters")
         self.pushButton_L_whyTest = QtWidgets.QPushButton(learning_ui)
-        self.pushButton_L_whyTest.setGeometry(QtCore.QRect(380, 350, 511, 110))
+        self.pushButton_L_whyTest.setGeometry(QtCore.QRect(460, 310, 530, 110))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(26)
@@ -52,7 +52,7 @@ class Ui_learning_ui(object):
         self.pushButton_L_whyTest.setAutoDefault(False)
         self.pushButton_L_whyTest.setObjectName("pushButton_L_whyTest")
         self.pushButton_L_what_pollutes = QtWidgets.QPushButton(learning_ui)
-        self.pushButton_L_what_pollutes.setGeometry(QtCore.QRect(380, 530, 511, 110))
+        self.pushButton_L_what_pollutes.setGeometry(QtCore.QRect(460, 440, 530, 110))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(26)
@@ -76,11 +76,11 @@ class Ui_learning_ui(object):
         self.pushButton_back.setAutoDefault(False)
         self.pushButton_back.setObjectName("pushButton_back")
         self.background = QtWidgets.QLabel(learning_ui)
-        self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
+        self.background.setGeometry(QtCore.QRect(0, 0, 1024, 600))
         self.background.setText("")
         self.background.setObjectName("background")
         self.archie = QtWidgets.QLabel(learning_ui)
-        self.archie.setGeometry(QtCore.QRect(0, 270, 400, 400))
+        self.archie.setGeometry(QtCore.QRect(20, 170, 400, 400))
         self.archie.setText("")
         self.archie.setScaledContents(False)
         self.archie.setObjectName("archie")
@@ -104,3 +104,12 @@ class Ui_learning_ui(object):
         self.pushButton_L_what_pollutes.setText(_translate("learning_ui", "what pollutes water?"))
         self.pushButton_back.setText(_translate("learning_ui", "BACK"))
 
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    learning_ui = QtWidgets.QWidget()
+    ui = Ui_learning_ui()
+    ui.setupUi(learning_ui)
+    learning_ui.show()
+    sys.exit(app.exec_())
