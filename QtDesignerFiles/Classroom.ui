@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>700</height>
+    <width>1024</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,8 +49,8 @@
   <widget class="QPushButton" name="pushButton_previous">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>600</y>
+     <x>70</x>
+     <y>510</y>
      <width>281</width>
      <height>71</height>
     </rect>
@@ -82,8 +82,8 @@
   <widget class="QPushButton" name="pushButton_next">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>600</y>
+     <x>660</x>
+     <y>510</y>
      <width>281</width>
      <height>71</height>
     </rect>
@@ -115,16 +115,16 @@
   <widget class="QLabel" name="label_chalkboard">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>390</x>
      <y>130</y>
-     <width>511</width>
-     <height>260</height>
+     <width>461</width>
+     <height>201</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>18</pointsize>
+     <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -148,14 +148,17 @@
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>-10</x>
+     <x>0</x>
      <y>0</y>
-     <width>940</width>
-     <height>700</height>
+     <width>1024</width>
+     <height>600</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../src/images/background/Classroom.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -164,9 +167,9 @@
   <widget class="QLabel" name="label_chalkboard_title">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>95</y>
-     <width>511</width>
+     <x>390</x>
+     <y>80</y>
+     <width>451</width>
      <height>51</height>
     </rect>
    </property>
@@ -194,17 +197,14 @@
   <widget class="QLabel" name="archie">
    <property name="geometry">
     <rect>
-     <x>-20</x>
-     <y>200</y>
+     <x>20</x>
+     <y>190</y>
      <width>350</width>
      <height>350</height>
     </rect>
    </property>
    <property name="text">
     <string/>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
    </property>
   </widget>
   <zorder>background</zorder>

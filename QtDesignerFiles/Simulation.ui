@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>700</height>
+    <width>1024</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,9 +50,9 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>20</y>
+     <y>10</y>
      <width>171</width>
-     <height>481</height>
+     <height>411</height>
     </rect>
    </property>
    <property name="font">
@@ -76,9 +76,9 @@
   <widget class="QLabel" name="label_S_sliderValue">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>570</x>
      <y>100</y>
-     <width>331</width>
+     <width>301</width>
      <height>69</height>
     </rect>
    </property>
@@ -95,7 +95,7 @@
   <widget class="QLabel" name="label_S_CurrentSimulating">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>570</x>
      <y>20</y>
      <width>381</width>
      <height>40</height>
@@ -114,10 +114,10 @@
   <widget class="QLabel" name="label_S_explanation">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>200</y>
-     <width>391</width>
-     <height>271</height>
+     <x>540</x>
+     <y>220</y>
+     <width>431</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="font">
@@ -140,9 +140,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>530</y>
-     <width>861</width>
-     <height>161</height>
+     <y>470</y>
+     <width>941</width>
+     <height>112</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -161,8 +161,8 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_S_Turbidity">
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_S_HeavyMetals">
       <property name="font">
        <font>
         <family>Cooper Black</family>
@@ -172,7 +172,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Turbidity</string>
+       <string>Heavy Metals</string>
       </property>
      </widget>
     </item>
@@ -191,8 +191,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_S_HeavyMetals">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pushButton_S_Turbidity">
       <property name="font">
        <font>
         <family>Cooper Black</family>
@@ -202,7 +202,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Heavy Metals</string>
+       <string>Turbidity</string>
       </property>
      </widget>
     </item>
@@ -213,8 +213,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>940</width>
-     <height>700</height>
+     <width>1024</width>
+     <height>600</height>
     </rect>
    </property>
    <property name="text">
@@ -227,10 +227,10 @@
   <widget class="QLabel" name="archie">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>100</y>
-     <width>400</width>
-     <height>400</height>
+     <width>350</width>
+     <height>350</height>
     </rect>
    </property>
    <property name="text">

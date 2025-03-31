@@ -11,10 +11,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class UI_Classroom(object):
+class Ui_Classroom(object):
     def setupUi(self, Classroom):
         Classroom.setObjectName("Classroom")
-        Classroom.resize(940, 700)
+        Classroom.resize(1024, 765)
         self.pushButton_back = QtWidgets.QPushButton(Classroom)
         self.pushButton_back.setGeometry(QtCore.QRect(10, 10, 281, 71))
         font = QtGui.QFont()
@@ -28,7 +28,7 @@ class UI_Classroom(object):
         self.pushButton_back.setAutoDefault(False)
         self.pushButton_back.setObjectName("pushButton_back")
         self.pushButton_previous = QtWidgets.QPushButton(Classroom)
-        self.pushButton_previous.setGeometry(QtCore.QRect(30, 600, 281, 71))
+        self.pushButton_previous.setGeometry(QtCore.QRect(70, 510, 281, 71))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(24)
@@ -40,7 +40,7 @@ class UI_Classroom(object):
         self.pushButton_previous.setAutoDefault(False)
         self.pushButton_previous.setObjectName("pushButton_previous")
         self.pushButton_next = QtWidgets.QPushButton(Classroom)
-        self.pushButton_next.setGeometry(QtCore.QRect(620, 600, 281, 71))
+        self.pushButton_next.setGeometry(QtCore.QRect(660, 510, 281, 71))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(24)
@@ -52,10 +52,10 @@ class UI_Classroom(object):
         self.pushButton_next.setAutoDefault(False)
         self.pushButton_next.setObjectName("pushButton_next")
         self.label_chalkboard = QtWidgets.QLabel(Classroom)
-        self.label_chalkboard.setGeometry(QtCore.QRect(310, 130, 511, 260))
+        self.label_chalkboard.setGeometry(QtCore.QRect(390, 130, 461, 201))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(18)
+        font.setPointSize(16)
         font.setBold(False)
         font.setWeight(50)
         self.label_chalkboard.setFont(font)
@@ -65,12 +65,13 @@ class UI_Classroom(object):
         self.label_chalkboard.setWordWrap(True)
         self.label_chalkboard.setObjectName("label_chalkboard")
         self.background = QtWidgets.QLabel(Classroom)
-        self.background.setGeometry(QtCore.QRect(0, 0, 940, 700))
+        self.background.setGeometry(QtCore.QRect(0, 0, 1024, 600))
         self.background.setText("")
+        self.background.setPixmap(QtGui.QPixmap(".\\../src/images/background/Classroom.png"))
         self.background.setScaledContents(True)
         self.background.setObjectName("background")
         self.label_chalkboard_title = QtWidgets.QLabel(Classroom)
-        self.label_chalkboard_title.setGeometry(QtCore.QRect(310, 95, 511, 51))
+        self.label_chalkboard_title.setGeometry(QtCore.QRect(390, 80, 451, 51))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(28)
@@ -82,9 +83,8 @@ class UI_Classroom(object):
         self.label_chalkboard_title.setWordWrap(True)
         self.label_chalkboard_title.setObjectName("label_chalkboard_title")
         self.archie = QtWidgets.QLabel(Classroom)
-        self.archie.setGeometry(QtCore.QRect(-20, 200, 350, 350))
+        self.archie.setGeometry(QtCore.QRect(20, 190, 350, 350))
         self.archie.setText("")
-        self.archie.setScaledContents(False)
         self.archie.setObjectName("archie")
         self.background.raise_()
         self.pushButton_back.raise_()
@@ -107,3 +107,11 @@ class UI_Classroom(object):
         self.label_chalkboard_title.setText(_translate("Classroom", "TOPIC"))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Classroom = QtWidgets.QWidget()
+    ui = Ui_Classroom()
+    ui.setupUi(Classroom)
+    Classroom.show()
+    sys.exit(app.exec_())
