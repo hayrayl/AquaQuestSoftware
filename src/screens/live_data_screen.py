@@ -9,10 +9,15 @@ import utils
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from liveData import Ui_live_data_ui
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'AD_HAT'))
+from sensorRead import SensorReader
+
 class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+
+        self.sensorRead = SensorReader()
 
         self.pushButton_back.clicked.connect(self.go_back)
 
@@ -83,6 +88,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_side.show()
         self.label_image.show()
         utils.new_image(image=self.label_image, file=file)
+        self.sensorRead.haylie_test()
 
 
     # Define modular functions for each step
