@@ -33,7 +33,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature", "", partial(self.read_temp)),
+            ("Temperature", "", partial(self.read_temp, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
 
@@ -101,30 +101,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         utils.new_image(image=self.label_image, file=file)
         self.sensorRead.haylie_test()
 
-    # def read_temp(self):
-    #     self.label_explanation_side.hide()
-    #     self.label_image.hide()
-    #     self.label_explanation_middle.show()
-
-    #     temp_readings = []
-    #     start_time = time.time()
-
-    #     while (time.time() - start_time) < 10:
-    #         temp = SensorReader.get_temperature()
-    #         temp_readings.append(temp)
-    #         print(f"Reading: {temp:.1f}°F")
-    #         self.label_explanation_middle.setText(f'reading temperature: {temp}°F')
-    #         time.sleep(1)
-
-    #     final_temp = sum(temp_readings.slice(-5)) / 5
-    #     print(f"\nAverage Temperature: {final_temp:.1f}°F")
-
-    #     self.label_explanation_middle.setText(f'The average temperature is: {final_temp}°F')
-
         
-
-    def read_temp(self):
-
+    def read_sensor(self, function, measurement, unit):
         self.label_explanation_side.hide()
         self.label_image.hide()
         self.label_explanation_middle.show()
@@ -140,7 +118,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
     def show_next_button(self, value, parameter, units):
         self.label_title.setText(f'{parameter}: {value:.1f}{units}')
-        self.label_explanation_middle.setText("Temperature Collection Complete!")
+        self.label_explanation_middle.setText(f"{parameter} Collection Complete!")
+        self.collected_values.append(value)
         self.pushButton_bottom.show()
 
 from PyQt5.QtCore import QThread, pyqtSignal
@@ -148,6 +127,12 @@ from PyQt5.QtCore import QThread, pyqtSignal
 class SensorReaderThread(QThread):
     value_signal = pyqtSignal(float, str, str)
     finished_signal = pyqtSignal(float, str, str)
+
+    STABILITY_THRESHOLDS = {
+        "Turbidity": 0.10,  # 10% variation allowed
+        "TDS": 0.07,  # 7% variation allowed
+        "pH": 0.03,  # 3% variation for better accuracy
+    }
 
     def __init__(self, sensorRead, read_function, parameter, unit):
         super().__init__()
@@ -157,6 +142,16 @@ class SensorReaderThread(QThread):
         self.units = unit
 
     def run(self):
+        # lookup what case
+        cases = {
+            'Temperature': self.get_temp,
+            'Turbidity': self.get_turbidity,
+        }
+        func = cases.get(self.parameter, self.default_function)
+        final_value = func()
+        self.finished_signal.emit(final_value, self.parameter, self.units)
+
+    def get_temp(self):
         readings = []
         start_time = time.time()
         while (time.time() - start_time) < 10:
@@ -165,7 +160,32 @@ class SensorReaderThread(QThread):
             self.value_signal.emit(value, self.parameter, self.units)
             time.sleep(1)
         final_value = sum(readings[-5:]) / 5
-        self.finished_signal.emit(final_value, self.parameter, self.units)
+        return final_value
+        # self.finished_signal.emit(final_value, self.parameter, self.units)
 
+    def get_turbidity(self):
+        readings = []
+        start_time = time.time()
+
+        while (time.time() - start_time) < 15:
+            sample_readings = []
+
+            #takes 1.5 sec 
+            value = self.read_function()
+            sample_readings.append(value)
+            self.value_signal.emit(value, self.parameter, self.units)
+
+            if len(readings) > 5:  # Use last 5 readings for stability
+                avg = sum(readings[-5:]) / 5
+                threshold = 0.1
+                if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
+                    return avg
+
+        avg_reading = sum(readings[-5:]) / 5
+        # print(f"\nStable {self.SENSOR_INFO[channel]['name']} Reading: {avg_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
+        return avg_reading
+    
+    def default_function(self):
+        print("default function")
 
 

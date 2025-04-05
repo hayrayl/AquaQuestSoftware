@@ -127,77 +127,106 @@ class SensorReader:
 
 
     def get_temperature(self):
-        """
-        Reads temperature every 2 seconds for 10 seconds and returns the average.
-        """
-        print("\nStep 1: Place temperature probe in water.")
-        # input("Press Enter when the probe is in the water...")
-        print(f"\nGetting stable temperature reading...")
-
-        return read_temp()
-
-        # temp_readings = []
-        # start_time = time.time()
-
-        # while (time.time() - start_time) < 10:
-        #     temp = read_temp()
-        #     self.active_temp = temp
-        #     temp_readings.append(temp)
-        #     print(f"Reading: {temp:.1f}°F")
-        #     time.sleep(2)
-
-        # avg_temp = sum(temp_readings) / len(temp_readings)
-        # print(f"\nAverage Temperature: {avg_temp:.1f}°F")
-        # return avg_temp
-
-
+        return read_temp()    
     
-
     def get_stable_reading(self, channel, conversion_func=None, temp_func=None):
         print(f"\nStep {channel + 2}: Place {self.SENSOR_INFO[channel]['name']} sensor in water.")
-        input("Press Enter when the sensor is in the water...")
+        # input("Press Enter when the sensor is in the water...")
         print(f"\nGetting stable reading for {self.SENSOR_INFO[channel]['name']}...")
 
-        readings = []
-        start_time = time.time()
-        stable = False
+        sample_readings = []
+        sample_start = time.time()
 
-        while (time.time() - start_time) < 10:
-            sample_readings = []
-            sample_start = time.time()
+        self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
+        time.sleep(1)
 
-            self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
-            time.sleep(1)
+        self.ADC.ADS1263_SetChannel(channel)
+        self.ADC.ADS1263_WaitDRDY()
 
-            self.ADC.ADS1263_SetChannel(channel)
-            self.ADC.ADS1263_WaitDRDY()
+        while (time.time() - sample_start) < 2:  # Collect data for 2 seconds
+            voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
 
-            while (time.time() - sample_start) < 2:  # Collect data for 2 seconds
-                voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
+            if temp_func:
+                temperature = temp_func()
+                reading = conversion_func(voltage, temperature)
+            else:
+                reading = conversion_func(voltage) if conversion_func else voltage
 
-                if temp_func:
-                    temperature = temp_func()
-                    reading = conversion_func(voltage, temperature)
-                else:
-                    reading = conversion_func(voltage) if conversion_func else voltage
+            sample_readings.append(reading)
+            time.sleep(0.25)  # Faster sampling (optional)
 
-                sample_readings.append(reading)
-                time.sleep(0.25)  # Faster sampling (optional)
+        avg_sampled_reading = sum(sample_readings) / len(sample_readings)
+        print(f"Average Reading: {avg_sampled_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
+        return avg_sampled_reading
+    
+    def get_turbidity(self):
+        sample_readings = []
+        sample_start = time.time()
 
-            avg_sampled_reading = sum(sample_readings) / len(sample_readings)
-            readings.append(avg_sampled_reading)
-            print(f"Reading: {avg_sampled_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
+        self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
+        time.sleep(0.5)
 
-            if len(readings) > 5:  # Use last 5 readings for stability
-                avg = sum(readings[-5:]) / 5
-                threshold = self.STABILITY_THRESHOLDS[self.SENSOR_INFO[channel]['name']]
-                if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
-                    stable = True
-                    break
+        self.ADC.ADS1263_SetChannel(0)
+        self.ADC.ADS1263_WaitDRDY()
 
-        avg_reading = sum(readings) / len(readings)
-        print(f"\nStable {self.SENSOR_INFO[channel]['name']} Reading: {avg_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
-        return avg_reading
+        while (time.time() - sample_start) < 1.5:  # Collect data for 2 seconds
+            voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
+
+            reading = self.turbidity_voltage_to_ntu(voltage)
+
+            sample_readings.append(reading)
+            time.sleep(0.2)  # Faster sampling (optional)
+
+        avg_sampled_reading = sum(sample_readings) / len(sample_readings)
+        print(f"Average Reading: {avg_sampled_reading:.2f} for turbidity")
+        return avg_sampled_reading
+
+
+    # def get_stable_reading(self, channel, conversion_func=None, temp_func=None):
+    #     print(f"\nStep {channel + 2}: Place {self.SENSOR_INFO[channel]['name']} sensor in water.")
+    #     # input("Press Enter when the sensor is in the water...")
+    #     print(f"\nGetting stable reading for {self.SENSOR_INFO[channel]['name']}...")
+
+    #     readings = []
+    #     start_time = time.time()
+    #     stable = False
+
+    #     while (time.time() - start_time) < 10:
+    #         sample_readings = []
+    #         sample_start = time.time()
+
+    #         self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
+    #         time.sleep(1)
+
+    #         self.ADC.ADS1263_SetChannel(channel)
+    #         self.ADC.ADS1263_WaitDRDY()
+
+    #         while (time.time() - sample_start) < 2:  # Collect data for 2 seconds
+    #             voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
+
+    #             if temp_func:
+    #                 temperature = temp_func()
+    #                 reading = conversion_func(voltage, temperature)
+    #             else:
+    #                 reading = conversion_func(voltage) if conversion_func else voltage
+
+    #             sample_readings.append(reading)
+    #             time.sleep(0.25)  # Faster sampling (optional)
+
+    #         avg_sampled_reading = sum(sample_readings) / len(sample_readings)
+    #         readings.append(avg_sampled_reading)
+    #         print(f"Reading: {avg_sampled_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
+
+    #         if len(readings) > 5:  # Use last 5 readings for stability
+    #             avg = sum(readings[-5:]) / 5
+    #             threshold = self.STABILITY_THRESHOLDS[self.SENSOR_INFO[channel]['name']]
+    #             if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
+    #                 stable = True
+    #                 break
+
+    #     avg_reading = sum(readings) / len(readings)
+    #     print(f"\nStable {self.SENSOR_INFO[channel]['name']} Reading: {avg_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
+    #     return avg_reading
 
     def calibrate_ph(self):
         """
