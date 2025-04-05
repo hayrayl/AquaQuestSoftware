@@ -37,8 +37,12 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
             ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
+            ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
 
-            # Add more steps as neededStep 2: Turbidity (How Cloudy is the Water?)  Place the turbidity sensor in the water.   
+            # Total Dissolved Solids  Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water.  
         ]
 
         self.current_step_index = 0  # Track the current step
@@ -146,7 +150,8 @@ class SensorReaderThread(QThread):
         # lookup what case
         cases = {
             'Temperature': self.get_temp,
-            'Turbidity': self.get_turbidity,
+            'Turbidity': self.get_turb_tds,
+            'TDS': self.get_turb_tds,
         }
         func = cases.get(self.parameter, self.default_function)
         final_value = func()
@@ -164,7 +169,7 @@ class SensorReaderThread(QThread):
         return final_value
         # self.finished_signal.emit(final_value, self.parameter, self.units)
 
-    def get_turbidity(self):
+    def get_turb_tds(self):
         readings = []
         start_time = time.time()
 
