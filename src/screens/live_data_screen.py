@@ -36,7 +36,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
-            ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
+            ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
 
             # Add more steps as neededStep 2: Turbidity (How Cloudy is the Water?)  Place the turbidity sensor in the water.   
         ]
