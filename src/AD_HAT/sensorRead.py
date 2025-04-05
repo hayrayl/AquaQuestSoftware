@@ -32,12 +32,20 @@ class SensorReader:
 
         atexit.register(self.cleanup_gpio)  # Register the cleanup function
         try:
-            ADC = ADS1263.ADS1263()
-            if ADC.ADS1263_init_ADC1('ADS1263_400SPS') == -1:
+            self.ADC = ADS1263.ADS1263()
+            if self.ADC.ADS1263_init_ADC1('ADS1263_400SPS') == -1:
                 exit()
-            ADC.ADS1263_SetMode(0)
+            self.ADC.ADS1263_SetMode(0)
 
             results = {}
+
+        except IOError as e:
+            print(e)
+        except KeyboardInterrupt:
+            print("\nctrl + c: Program end")
+            self.ADC.ADS1263_Exit()
+            exit()
+
 
             # # Step 1: Temperature Measurement
             # results["Temperature"] = get_temperature()
@@ -62,13 +70,7 @@ class SensorReader:
 
             # print("\nData collection completed.")
 
-        except IOError as e:
-            print(e)
-        except KeyboardInterrupt:
-            print("\nctrl + c: Program end")
-            ADC.ADS1263_Exit()
-            exit()
-
+        
 
         # Initializing active variables 
         self.active_temp = None
@@ -160,19 +162,28 @@ class SensorReader:
         return avg_sampled_reading
     
     def get_turbidity(self):
+        return self.get_reading_turb_tds(channel=0)
+
+    def get_reading_turb_tds(self, channel):
         sample_readings = []
         sample_start = time.time()
 
         self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
         time.sleep(0.5)
 
-        self.ADC.ADS1263_SetChannel(0)
+        self.ADC.ADS1263_SetChannel(channel)
         self.ADC.ADS1263_WaitDRDY()
 
         while (time.time() - sample_start) < 1.5:  # Collect data for 2 seconds
             voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
 
-            reading = self.turbidity_voltage_to_ntu(voltage)
+            # this is Turbidity 
+            if channel == 0:
+                reading = self.turbidity_voltage_to_ntu(voltage)
+            # this is TDS 
+            if channel == 1:
+                temperature = read_temp()
+                reading = self.tds_voltage_to_ppm(voltage, temperature)
 
             sample_readings.append(reading)
             time.sleep(0.2)  # Faster sampling (optional)
