@@ -33,9 +33,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature", None, partial(self.read_temp)),
+            ("Temperature", "", partial(self.read_temp)),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            # Add more steps as needed
+            ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
+
+            # Add more steps as neededStep 2: Turbidity (How Cloudy is the Water?)  Place the turbidity sensor in the water.   
         ]
 
         self.current_step_index = 0  # Track the current step
@@ -128,13 +130,13 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.show()
         self.pushButton_bottom.hide()
         
-        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'temperature','°F' )
+        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Temperature','°F' )
         self.temp_thread.value_signal.connect(self.update_display)
         self.temp_thread.finished_signal.connect(self.show_next_button)
         self.temp_thread.start()
 
     def update_display(self, value, parameter, units):
-        self.label_explanation_middle.setText(f'reading {parameter}: {value:.1f}{units}')
+        self.label_explanation_middle.setText(f'Reading {parameter}: {value:.1f}{units}')
 
     def show_next_button(self, value, parameter, units):
         self.label_title.setText(f'{parameter}: {value:.1f}{units}')
