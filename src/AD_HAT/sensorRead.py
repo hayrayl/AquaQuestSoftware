@@ -106,8 +106,6 @@ class SensorReader:
 
         return max(ntu_value, 0)  # Ensure NTU is never negative
 
-
-
     def tds_voltage_to_ppm(self, voltage, temperature):
         """Convert voltage from TDS sensor to ppm with temperature compensation."""
 
@@ -125,7 +123,6 @@ class SensorReader:
         tds_value = 3688.5* compensated_voltage -442.62
 
         return max(tds_value, 0)  # Ensure no negative values
-
 
 
     def get_temperature(self):
@@ -163,6 +160,9 @@ class SensorReader:
     
     def get_turbidity(self):
         return self.get_reading_turb_tds(channel=0)
+    
+    def get_tds(self):
+        return self.get_reading_turb_tds(channel=1)
 
     def get_reading_turb_tds(self, channel):
         sample_readings = []
