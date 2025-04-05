@@ -153,7 +153,7 @@ class SensorReaderThread(QThread):
         while (time.time() - start_time) < 10:
             value = self.read_function()
             readings.append(value)
-            self.value_signal.emit(value, self.message)
+            self.value_signal.emit(value, self.message, self.units)
             time.sleep(1)
         final_value = sum(readings[-5:]) / 5
         self.value_signal.emit(final_value, f'The average {self.message.lower()} is', self.units)
