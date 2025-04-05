@@ -195,6 +195,8 @@ class SensorReader:
             if channel == 1:
                 temperature = read_temp()
                 reading = self.tds_voltage_to_ppm(voltage, temperature)
+            else:
+                reading = voltage
 
             sample_readings.append(reading)
             time.sleep(0.2)  # Faster sampling (optional)
