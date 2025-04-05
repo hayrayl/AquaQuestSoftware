@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets
 from functools import partial
 import time
 from PyQt5.QtCore import QTimer
+import numpy as np
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import utils
@@ -33,16 +34,18 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
+            # ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
-            ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
+            # ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
-            ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
+            # ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("pH Calibration","For the last sensor, we need to calibrate it!\nWhat is Calibration?\nIt's like teaching the sensor the **correct answers** so it doesn\’t guess wrong!",partial(self.only_explanation)),
-            ("pH Calibration","Why do we need it?\nIf we don\’t **train** the sensor, it might **think lemonade is water!**🍋💦We use **special pH solutions (4, 7, and 10)** to help it **learn!** 🧪",partial(self.only_explanation)),
+            ("pH Calibration","We need to calibrate the last sensor!\nBut what is Calibration?\nIt's like teaching the sensor the \"correct answers\" so it doesn’t guess wrong!",partial(self.only_explanation)),
+            ("pH Calibration","Why do we need it?\nIf we don’t train the sensor, it might think lemonade is water!\nWe use special pH solutions (4, 7, and 10) to help it \"learn!\"",partial(self.only_explanation)),
+            ("pH Calibration","Get the red 4.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
+            ("pHCalibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
 
             # To 
 
@@ -100,8 +103,6 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             self.pushButton_back.show()
             self.pushButton_bottom.hide()
 
-
-
     def image_explanation(self, file):
         self.label_explanation_middle.hide()
         self.label_explanation_side.show()
@@ -152,12 +153,16 @@ class SensorReaderThread(QThread):
         self.parameter = parameter
         self.units = unit
 
+        self.ph_values = [4.00, 7.00, 10.01]
+        
+
     def run(self):
         # lookup what case
         cases = {
             'Temperature': self.get_temp,
-            'Turbidity': self.get_turb_tds,
-            'TDS': self.get_turb_tds,
+            'Turbidity': self.get_turb_tds_ph,
+            'TDS': self.get_turb_tds_ph,
+            'Voltage': self.get_turb_tds_ph
         }
         func = cases.get(self.parameter, self.default_function)
         final_value = func()
@@ -175,7 +180,7 @@ class SensorReaderThread(QThread):
         return final_value
         # self.finished_signal.emit(final_value, self.parameter, self.units)
 
-    def get_turb_tds(self):
+    def get_turb_tds_ph(self):
         readings = []
         start_time = time.time()
 
@@ -183,10 +188,11 @@ class SensorReaderThread(QThread):
             threshold = 0.1
         elif self.parameter == "TDS":
             threshold = 0.07
+        elif self.parameter == "Voltage":
+            threshold = 0.3 
 
         while (time.time() - start_time) < 15:
             sample_readings = []
-
             #takes 1.5 sec 
             value = self.read_function()
             sample_readings.append(value)
@@ -200,8 +206,20 @@ class SensorReaderThread(QThread):
                     return avg
 
         avg_reading = sum(readings[-5:]) / 5
-        # print(f"\nStable {self.SENSOR_INFO[channel]['name']} Reading: {avg_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
         return avg_reading
+    
+    def calibrate_ph(self):
+        avg_voltage = self.get_turb_tds_ph()
+
+    
+    def find_linear_fit(self):
+        # Use linear fit (1st-degree polynomial) since we now have 3 points
+        coefficients = np.polyfit(self.voltage_values, self.ph_values, 1)  
+        
+        print("\nCalibration Complete! Curve fit generated:")
+        print(f"pH = {coefficients[0]:.1f} * Voltage + {coefficients[1]:.1f}")
+
+        return coefficients  # Returns the coefficients for linear fit
     
     def default_function(self):
         print("default function")

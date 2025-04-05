@@ -37,6 +37,8 @@ class SensorReader:
                 exit()
             self.ADC.ADS1263_SetMode(0)
 
+            self.voltage_values = []
+
             results = {}
 
         except IOError as e:
@@ -163,6 +165,15 @@ class SensorReader:
     
     def get_tds(self):
         return self.get_reading_turb_tds(channel=1)
+    
+    def get_cal_ph(self):
+        voltage = self.get_reading_turb_tds(channel=2)
+        self.voltage_values.append(voltage)
+        print(self.voltage_values)
+        return voltage
+    
+    def get_voltage_values(self):
+        return self.voltage_values
 
     def get_reading_turb_tds(self, channel):
         sample_readings = []
@@ -189,55 +200,21 @@ class SensorReader:
             time.sleep(0.2)  # Faster sampling (optional)
 
         avg_sampled_reading = sum(sample_readings) / len(sample_readings)
-        print(f"Average Reading: {avg_sampled_reading:.2f} for turbidity")
+        print(f"Average Reading: {avg_sampled_reading:.2f} ")
         return avg_sampled_reading
 
+    def append_voltage(self, voltage):
+        self.voltage_values.append(voltage)
 
-    # def get_stable_reading(self, channel, conversion_func=None, temp_func=None):
-    #     print(f"\nStep {channel + 2}: Place {self.SENSOR_INFO[channel]['name']} sensor in water.")
-    #     # input("Press Enter when the sensor is in the water...")
-    #     print(f"\nGetting stable reading for {self.SENSOR_INFO[channel]['name']}...")
+    def get_linear_fit(self):
+        ph_values = [4.00, 7.00, 10.01]
+        coefficients = np.polyfit(self.voltage_values, ph_values, 1)  
+        
+        print("\nCalibration Complete! Curve fit generated:")
+        print(f"pH = {coefficients[0]:.1f} * Voltage + {coefficients[1]:.1f}")
 
-    #     readings = []
-    #     start_time = time.time()
-    #     stable = False
+        return coefficients  # Returns the coefficients for linear fit
 
-    #     while (time.time() - start_time) < 10:
-    #         sample_readings = []
-    #         sample_start = time.time()
-
-    #         self.ADC.ADS1263_SetChannel(8)  # Force ADC to read GND before switching
-    #         time.sleep(1)
-
-    #         self.ADC.ADS1263_SetChannel(channel)
-    #         self.ADC.ADS1263_WaitDRDY()
-
-    #         while (time.time() - sample_start) < 2:  # Collect data for 2 seconds
-    #             voltage = self.ADC.ADS1263_Read_ADC_Data() * self.REF / 0x7FFFFFFF
-
-    #             if temp_func:
-    #                 temperature = temp_func()
-    #                 reading = conversion_func(voltage, temperature)
-    #             else:
-    #                 reading = conversion_func(voltage) if conversion_func else voltage
-
-    #             sample_readings.append(reading)
-    #             time.sleep(0.25)  # Faster sampling (optional)
-
-    #         avg_sampled_reading = sum(sample_readings) / len(sample_readings)
-    #         readings.append(avg_sampled_reading)
-    #         print(f"Reading: {avg_sampled_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
-
-    #         if len(readings) > 5:  # Use last 5 readings for stability
-    #             avg = sum(readings[-5:]) / 5
-    #             threshold = self.STABILITY_THRESHOLDS[self.SENSOR_INFO[channel]['name']]
-    #             if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
-    #                 stable = True
-    #                 break
-
-    #     avg_reading = sum(readings) / len(readings)
-    #     print(f"\nStable {self.SENSOR_INFO[channel]['name']} Reading: {avg_reading:.2f} {self.SENSOR_INFO[channel]['unit']}")
-    #     return avg_reading
 
     def calibrate_ph(self):
         """
@@ -311,6 +288,8 @@ class SensorReader:
         print(f"pH = {coefficients[0]:.1f} * Voltage + {coefficients[1]:.1f}")
 
         return coefficients  # Returns the coefficients for linear fit
+
+    
 
 
     def measure_ph(self, coefficients):
