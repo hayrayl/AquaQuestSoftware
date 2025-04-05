@@ -134,19 +134,22 @@ class SensorReader:
         # input("Press Enter when the probe is in the water...")
         print(f"\nGetting stable temperature reading...")
 
-        temp_readings = []
-        start_time = time.time()
+        return read_temp()
 
-        while (time.time() - start_time) < 10:
-            temp = read_temp()
-            self.active_temp = temp
-            temp_readings.append(temp)
-            print(f"Reading: {temp:.1f}°F")
-            time.sleep(2)
+        # temp_readings = []
+        # start_time = time.time()
 
-        avg_temp = sum(temp_readings) / len(temp_readings)
-        print(f"\nAverage Temperature: {avg_temp:.1f}°F")
-        return avg_temp
+        # while (time.time() - start_time) < 10:
+        #     temp = read_temp()
+        #     self.active_temp = temp
+        #     temp_readings.append(temp)
+        #     print(f"Reading: {temp:.1f}°F")
+        #     time.sleep(2)
+
+        # avg_temp = sum(temp_readings) / len(temp_readings)
+        # print(f"\nAverage Temperature: {avg_temp:.1f}°F")
+        # return avg_temp
+
 
     
 
