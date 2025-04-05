@@ -25,3 +25,5 @@ designer is a drag-and-drop used to get the layout. Once the package is installe
 **warning**: this will override whatever was in the python file before. Make sure you are backing up to your branch. 
 
 Do not directly push to the main branch. Create your own branch that you can push to first so that someone can check the merge request. 
+
+let me know if you have any questions -Haylie 

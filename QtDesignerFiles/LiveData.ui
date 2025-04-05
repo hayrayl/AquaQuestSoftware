@@ -6,27 +6,194 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>700</height>
+    <width>1024</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QLabel" name="label_title">
+   <property name="geometry">
+    <rect>
+     <x>287</x>
+     <y>20</y>
+     <width>450</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>34</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="lineWidth">
+    <number>-3</number>
+   </property>
+   <property name="text">
+    <string>TITLE</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_bottom">
+   <property name="geometry">
+    <rect>
+     <x>342</x>
+     <y>460</y>
+     <width>340</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>26</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>NEXT </string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_explanation_middle">
+   <property name="geometry">
+    <rect>
+     <x>162</x>
+     <y>140</y>
+     <width>700</width>
+     <height>300</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>28</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="lineWidth">
+    <number>-3</number>
+   </property>
+   <property name="text">
+    <string>MIDDLE</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_explanation_side">
+   <property name="geometry">
+    <rect>
+     <x>42</x>
+     <y>120</y>
+     <width>440</width>
+     <height>320</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>22</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="lineWidth">
+    <number>-3</number>
+   </property>
+   <property name="text">
+    <string>SIDE</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_image">
+   <property name="geometry">
+    <rect>
+     <x>542</x>
+     <y>120</y>
+     <width>440</width>
+     <height>320</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Cooper Black</family>
+     <pointsize>32</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="lineWidth">
+    <number>-3</number>
+   </property>
+   <property name="text">
+    <string>IMAGE</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton_back">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>301</width>
-     <height>101</height>
+     <width>281</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>22</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -45,26 +212,13 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_LiveData">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>310</y>
-     <width>288</width>
-     <height>64</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>32</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Live Data </string>
-   </property>
-  </widget>
+  <zorder>background</zorder>
+  <zorder>label_title</zorder>
+  <zorder>pushButton_bottom</zorder>
+  <zorder>label_explanation_middle</zorder>
+  <zorder>label_explanation_side</zorder>
+  <zorder>label_image</zorder>
+  <zorder>pushButton_back</zorder>
  </widget>
  <resources/>
  <connections/>

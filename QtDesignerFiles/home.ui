@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>700</height>
+    <width>1024</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QSplitter" name="splitter">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>160</y>
-     <width>841</width>
-     <height>501</height>
+     <x>460</x>
+     <y>150</y>
+     <width>541</width>
+     <height>351</height>
     </rect>
    </property>
    <property name="orientation">
@@ -28,9 +28,10 @@
    <widget class="QPushButton" name="pushButton_H_Simulation">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -52,9 +53,10 @@
    <widget class="QPushButton" name="pushButton_H_LiveData">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -76,9 +78,10 @@
    <widget class="QPushButton" name="pushButton_H_Learn">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -100,9 +103,10 @@
    <widget class="QPushButton" name="pushButton_H_Quiz">
     <property name="font">
      <font>
-      <pointsize>22</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -125,23 +129,63 @@
   <widget class="QLabel" name="label_H_main">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>50</y>
-     <width>325</width>
-     <height>64</height>
+     <x>150</x>
+     <y>30</y>
+     <width>640</width>
+     <height>69</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>32</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <family>Cooper Black</family>
+     <pointsize>36</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
-    <string>ECO-DRONE</string>
+    <string>Archie's AquaQuest</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="archie">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>400</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>splitter</zorder>
+  <zorder>label_H_main</zorder>
+  <zorder>archie</zorder>
  </widget>
  <resources/>
  <connections/>
