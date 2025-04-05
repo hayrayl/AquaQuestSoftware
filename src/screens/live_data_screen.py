@@ -130,9 +130,6 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.setText(f'{message}: {value:.1f}°F')
 
 
-
-
-
     # Define modular functions for each step
     def initialize_system(self):
         print("Initializing the system...")
