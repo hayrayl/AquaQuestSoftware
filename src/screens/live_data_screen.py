@@ -27,7 +27,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
-            ("Temperature","Place the metal temperature probe into the water sample.  ", partial(self.image_explanation,file="temp_probe.png")),
+            ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
+            ("Temperature","", partial(self.read_temp)),
             # Add more steps as needed
         ]
 
@@ -90,6 +91,14 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         utils.new_image(image=self.label_image, file=file)
         self.sensorRead.haylie_test()
 
+    def read_temp(self):
+        self.label_explanation_middle.show()
+        self.label_explanation_side.hide()
+        self.label_image.hide()
+
+        self.label_explanation_middle.setText(f'reading temperature: :{self.sensorRead.active_temp}°F')
+        temperature = self.sensorRead.get_temperature()
+        self.label_explanation_middle.setText(f'Average Temperature: {temperature}°F')
 
     # Define modular functions for each step
     def initialize_system(self):

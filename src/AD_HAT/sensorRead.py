@@ -131,7 +131,7 @@ class SensorReader:
         Reads temperature every 2 seconds for 10 seconds and returns the average.
         """
         print("\nStep 1: Place temperature probe in water.")
-        input("Press Enter when the probe is in the water...")
+        # input("Press Enter when the probe is in the water...")
         print(f"\nGetting stable temperature reading...")
 
         temp_readings = []
@@ -139,6 +139,7 @@ class SensorReader:
 
         while (time.time() - start_time) < 10:
             temp = read_temp()
+            self.active_temp = temp
             temp_readings.append(temp)
             print(f"Reading: {temp:.1f}°F")
             time.sleep(2)
