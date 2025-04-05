@@ -121,13 +121,18 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_side.hide()
         self.label_image.hide()
         self.label_explanation_middle.show()
+        self.pushButton_bottom.hide()
         
         self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Reading temperature')
         self.temp_thread.value_signal.connect(self.update_display)
+        self.temp_thread.finished_signal.connect(self.show_next_button)
         self.temp_thread.start()
 
     def update_display(self, value, message):
         self.label_explanation_middle.setText(f'{message}: {value:.1f}°F')
+
+    def show_next_button(self):
+        self.pushButton_bottom.show()
 
 
     # Define modular functions for each step
@@ -151,6 +156,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 
 class SensorReaderThread(QThread):
     value_signal = pyqtSignal(float, str)
+    finished_signal = pyqtSignal()
 
     def __init__(self, sensorRead, read_function, message):
         super().__init__()
@@ -168,6 +174,7 @@ class SensorReaderThread(QThread):
             time.sleep(1)
         final_value = sum(readings[-5:]) / 5
         self.value_signal.emit(final_value, f'The average {self.message.lower()} is')
+        self.finished_signal.emit()
 
 
 

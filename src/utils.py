@@ -57,7 +57,7 @@ def new_image(image, file):
 def classroom_background(background):
     background.setScaledContents(True)
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    background_path = os.path.join(current_dir, "images/background/classroom.png")
+    background_path = os.path.join(current_dir, "images/background/Classroom.png")
         # self.background.setPixmap(QtGui.QPixmap(".\\../src/ui/water_background.jpeg"))
     background.setPixmap(QtGui.QPixmap(background_path))
 
