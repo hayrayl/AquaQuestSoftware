@@ -46,6 +46,15 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("pH Calibration","Why do we need it?\nIf we don’t train the sensor, it might think lemonade is water!\nWe use special pH solutions (4, 7, and 10) to help it \"learn!\"",partial(self.only_explanation)),
             ("pH Calibration","Get the red 4.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
             ("pHCalibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("pH Calibration","Get the clear 7.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
+            ("pHCalibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("pH Calibration","Get the blue 10.01 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
+            ("pHCalibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
+
 
             # To 
 
