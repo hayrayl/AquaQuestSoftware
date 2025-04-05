@@ -33,9 +33,10 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature", "", partial(self.read_temp, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
+            ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
+            ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
 
             # Add more steps as neededStep 2: Turbidity (How Cloudy is the Water?)  Place the turbidity sensor in the water.   
         ]
@@ -108,7 +109,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.show()
         self.pushButton_bottom.hide()
         
-        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Temperature','°F' )
+        self.temp_thread = SensorReaderThread(sensorRead=self.sensorRead, read_function=function, parameter=measurement, unit=unit  )
         self.temp_thread.value_signal.connect(self.update_display)
         self.temp_thread.finished_signal.connect(self.show_next_button)
         self.temp_thread.start()
