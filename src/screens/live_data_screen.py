@@ -103,13 +103,13 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         start_time = time.time()
 
         while (time.time() - start_time) < 10:
-            temp = SensorReader.get_temperature()
+            temp = self.sensorRead.get_temperature()
             temp_readings.append(temp)
             print(f"Reading: {temp:.1f}°F")
             self.label_explanation_middle.setText(f'reading temperature: {temp}°F')
             time.sleep(1)
 
-        final_temp = sum(temp_readings.slice(-5)) / 5
+        final_temp = sum(temp_readings[-5:]) / 5
         print(f"\nAverage Temperature: {final_temp:.1f}°F")
 
         self.label_explanation_middle.setText(f'The average temperature is: {final_temp}°F')
