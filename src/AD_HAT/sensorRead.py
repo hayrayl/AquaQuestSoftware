@@ -150,6 +150,7 @@ class SensorReader:
         # print(f"\nAverage Temperature: {avg_temp:.1f}°F")
         # return avg_temp
 
+
     
 
     def get_stable_reading(self, channel, conversion_func=None, temp_func=None):

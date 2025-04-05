@@ -29,9 +29,9 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
-            ("Temperature","Place the metal temperature probe into the water sample then press the button to start reading the temperature", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature","", partial(self.read_temp))
 
+            ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
+            ("Temperature","", partial(self.read_temp)),
             # Add more steps as needed
         ]
 
@@ -117,6 +117,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         
 
     def read_temp(self):
+
         self.label_explanation_side.hide()
         self.label_image.hide()
         self.label_explanation_middle.show()
@@ -127,6 +128,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
     def update_display(self, value, message):
         self.label_explanation_middle.setText(f'{message}: {value:.1f}°F')
+
 
 
 
