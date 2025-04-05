@@ -29,9 +29,9 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
-
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
             ("Temperature","", partial(self.read_temp)),
+            ("","Pour Distilled “Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             # Add more steps as needed
         ]
 
@@ -121,42 +121,31 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_side.hide()
         self.label_image.hide()
         self.label_explanation_middle.show()
+        self.pushButton_bottom.hide()
         
-        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Reading temperature')
+        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Reading temperature','°F' )
         self.temp_thread.value_signal.connect(self.update_display)
+        self.temp_thread.finished_signal.connect(self.show_next_button)
         self.temp_thread.start()
 
-    def update_display(self, value, message):
-        self.label_explanation_middle.setText(f'{message}: {value:.1f}°F')
+    def update_display(self, value, message, units):
+        self.label_explanation_middle.setText(f'{message}: {value:.1f}{units}')
 
-
-    # Define modular functions for each step
-    def initialize_system(self):
-        print("Initializing the system...")
-
-    def load_configuration(self):
-        print("Loading configuration files...")
-
-    def start_data_acquisition(self):
-        print("Starting data acquisition...")
-
-    def process_data(self):
-        print("Processing data...")
-
-    def display_results(self):
-        print("Displaying results...")
-
+    def show_next_button(self):
+        self.pushButton_bottom.show()
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
 class SensorReaderThread(QThread):
-    value_signal = pyqtSignal(float, str)
+    value_signal = pyqtSignal(float, str, str)
+    finished_signal = pyqtSignal()
 
-    def __init__(self, sensorRead, read_function, message):
+    def __init__(self, sensorRead, read_function, message, unit):
         super().__init__()
         self.sensorRead = sensorRead
         self.read_function = read_function
         self.message = message
+        self.units = unit
 
     def run(self):
         readings = []
@@ -167,7 +156,8 @@ class SensorReaderThread(QThread):
             self.value_signal.emit(value, self.message)
             time.sleep(1)
         final_value = sum(readings[-5:]) / 5
-        self.value_signal.emit(final_value, f'The average {self.message.lower()} is')
+        self.value_signal.emit(final_value, f'The average {self.message.lower()} is', self.units)
+        self.finished_signal.emit()
 
 
 
