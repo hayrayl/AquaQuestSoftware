@@ -19,6 +19,9 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         super().__init__(parent)
         self.setupUi(self)
 
+        # this will have the collected final values 
+        self.collected_values = []
+
         self.sensorRead = SensorReader()
 
         self.pushButton_back.clicked.connect(self.go_back)
@@ -30,8 +33,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            ("Temperature","", partial(self.read_temp)),
-            ("","Pour Distilled “Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("Temperature", None, partial(self.read_temp)),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             # Add more steps as needed
         ]
 
@@ -66,10 +69,12 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             step_title, step_description, step_function = self.steps[self.current_step_index]
 
             # Update the explanation label with the step description
-            self.label_explanation_middle.setText(step_description)
-            self.label_explanation_side.setText(step_description)
-            self.label_title.setText(step_title)
-
+            if step_title != None: 
+                self.label_title.setText(step_title)
+            if step_description != None:
+                self.label_explanation_middle.setText(step_description)
+                self.label_explanation_side.setText(step_description)
+            
             # Execute the corresponding function
             step_function()
 
@@ -123,28 +128,30 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.show()
         self.pushButton_bottom.hide()
         
-        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'Reading temperature','°F' )
+        self.temp_thread = SensorReaderThread(self.sensorRead, self.sensorRead.get_temperature, 'temperature','°F' )
         self.temp_thread.value_signal.connect(self.update_display)
         self.temp_thread.finished_signal.connect(self.show_next_button)
         self.temp_thread.start()
 
-    def update_display(self, value, message, units):
-        self.label_explanation_middle.setText(f'{message}: {value:.1f}{units}')
+    def update_display(self, value, parameter, units):
+        self.label_explanation_middle.setText(f'reading {parameter}: {value:.1f}{units}')
 
-    def show_next_button(self):
+    def show_next_button(self, value, parameter, units):
+        self.label_title.setText(f'{parameter}: {value:.1f}{units}')
+        self.label_explanation_middle.setText("Temperature Collection Complete!")
         self.pushButton_bottom.show()
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
 class SensorReaderThread(QThread):
     value_signal = pyqtSignal(float, str, str)
-    finished_signal = pyqtSignal()
+    finished_signal = pyqtSignal(float, str, str)
 
-    def __init__(self, sensorRead, read_function, message, unit):
+    def __init__(self, sensorRead, read_function, parameter, unit):
         super().__init__()
         self.sensorRead = sensorRead
         self.read_function = read_function
-        self.message = message
+        self.parameter = parameter
         self.units = unit
 
     def run(self):
@@ -153,11 +160,10 @@ class SensorReaderThread(QThread):
         while (time.time() - start_time) < 10:
             value = self.read_function()
             readings.append(value)
-            self.value_signal.emit(value, self.message, self.units)
+            self.value_signal.emit(value, self.parameter, self.units)
             time.sleep(1)
         final_value = sum(readings[-5:]) / 5
-        self.value_signal.emit(final_value, f'The average {self.message.lower()} is', self.units)
-        self.finished_signal.emit()
+        self.finished_signal.emit(final_value, self.parameter, self.units)
 
 
 
