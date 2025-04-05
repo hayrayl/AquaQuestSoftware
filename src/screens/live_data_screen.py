@@ -41,8 +41,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
             ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("pH Calibration","For the last sensor, we need to calibrate it!\nWhat is Calibration?\nIt's like teaching the sensor the **correct answers** so it doesn\’t guess wrong!",partial(self.only_explanation)),
+            ("pH Calibration","Why do we need it?\nIf we don\’t **train** the sensor, it might **think lemonade is water!**🍋💦We use **special pH solutions (4, 7, and 10)** to help it **learn!** 🧪",partial(self.only_explanation)),
 
-            # Total Dissolved Solids  Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water.  
+            # To 
+
         ]
 
         self.current_step_index = 0  # Track the current step
@@ -104,8 +107,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_side.show()
         self.label_image.show()
         utils.new_image(image=self.label_image, file=file)
-        self.sensorRead.haylie_test()
 
+    def only_explanation(self):
+        self.label_explanation_middle.show()
+        self.label_explanation_side.hide()
+        self.label_image.hide()
         
     def read_sensor(self, function, measurement, unit):
         self.label_explanation_side.hide()
@@ -173,6 +179,11 @@ class SensorReaderThread(QThread):
         readings = []
         start_time = time.time()
 
+        if self.parameter == "Turbidity":
+            threshold = 0.1
+        elif self.parameter == "TDS":
+            threshold = 0.07
+
         while (time.time() - start_time) < 15:
             sample_readings = []
 
@@ -185,6 +196,7 @@ class SensorReaderThread(QThread):
                 avg = sum(readings[-5:]) / 5
                 threshold = 0.1
                 if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
+                    print(readings)
                     return avg
 
         avg_reading = sum(readings[-5:]) / 5
