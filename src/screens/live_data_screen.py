@@ -206,7 +206,9 @@ class SensorReaderThread(QThread):
                     print(readings)
                     return avg
 
-        avg_reading = sum(readings[-5:]) / 5
+        avg_reading = sum(readings[-5:]) / 5.0
+        print(readings[-5:])
+        print(sum(readings[-5:]))
         print("testing_____ AVERAGE FINAL READING")
         print(avg_reading)
         return avg_reading
