@@ -193,10 +193,10 @@ class SensorReaderThread(QThread):
             threshold = 0.3 
 
         while (time.time() - start_time) < 15:
-            sample_readings = []
+            readings = []
             #takes 1.5 sec 
             value = self.read_function()
-            sample_readings.append(value)
+            readings.append(value)
             self.value_signal.emit(value, self.parameter, self.units)
 
             if len(readings) > 5:  # Use last 5 readings for stability
