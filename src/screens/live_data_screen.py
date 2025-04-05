@@ -193,7 +193,6 @@ class SensorReaderThread(QThread):
             threshold = 0.3 
 
         while (time.time() - start_time) < 15:
-            readings = []
             #takes 1.5 sec 
             value = self.read_function()
             readings.append(value)
