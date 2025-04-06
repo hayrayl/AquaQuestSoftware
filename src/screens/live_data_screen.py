@@ -29,19 +29,19 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
         # Define steps as a list of tuples: (step description, function to run)
         self.steps = [
-            # ("Setup","Place the beakers, 4.00 pH solution, and test tube in the tray", partial(self.image_explanation,file="testing_tray.png")),
-            # ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
-            # ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
-            # ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
-            # ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
-            # ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
-            # (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            # ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
-            # ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
-            # (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            # ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
-            # ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
-            # (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("Setup","Place the beakers, 4.00 pH solution, and test tube in the tray", partial(self.image_explanation,file="testing_tray.png")),
+            ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
+            ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
+            ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
+            ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
+            ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
+            ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+            ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
+            ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("pH Calibration","We need to calibrate the last sensor!\nBut what is Calibration?\nIt's like teaching the sensor the \"correct answers\" so it doesn’t guess wrong!",partial(self.only_explanation)),
             ("pH Calibration","Why do we need it?\nIf we don’t train the sensor, it might think lemonade is water!\nWe use special pH solutions (4, 7, and 10) to help it \"learn!\"",partial(self.only_explanation)),
             ("pH Calibration","Get the red 4.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
@@ -55,10 +55,9 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
             ("pH", "", partial(self.read_sensor, function= self.sensorRead.get_ph, measurement = 'pH', unit=None)),
+            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             
-
             # To 
-
         ]
 
         self.current_step_index = 0  # Track the current step
@@ -105,11 +104,13 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             self.current_step_index += 1
         else:
             # Handle case where all steps are completed
-            self.label_explanation_middle.setText("All steps completed!")
-            self.label_explanation_side.hide()
-            self.label_explanation_middle.show()
+            txt = f'Temperature: {self.collected_values[0]}°F\nTurbidity: {self.collected_values[1]}NTU\nTDS: {self.collected_values[2]}ppm\npH: {self.collected_values[3]}'
+            utils.archie_sampling(self.label_image)
+            self.label_explanation_side.setText(txt)
+            self.label_explanation_side.show()
+            self.label_explanation_middle.hide()
             self.label_title.hide()
-            self.label_image.hide()
+            self.label_image.show()
             self.pushButton_back.show()
             self.pushButton_bottom.hide()
 
