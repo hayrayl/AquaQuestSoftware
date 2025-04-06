@@ -140,7 +140,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
     def show_next_button(self, value, parameter, units):
         self.label_title.setText(f'{parameter}: {value:.1f}{units}')
         self.label_explanation_middle.setText(f"{parameter} Collection Complete!")
-        self.collected_values.append(value)
+        if parameter == "Voltage":
+            print("We are in the show_next_button under voltage")
+            self.sensorRead.append_voltage(voltage= value)
+        else: 
+            self.collected_values.append(value)
         self.pushButton_bottom.show()
 
 from PyQt5.QtCore import QThread, pyqtSignal
@@ -194,6 +198,7 @@ class SensorReaderThread(QThread):
         readings = []
         start_time = time.time()
 
+
         if self.parameter == "Turbidity":
             threshold = 0.1
         elif self.parameter == "TDS":
@@ -201,16 +206,20 @@ class SensorReaderThread(QThread):
         elif self.parameter == "Voltage":
             threshold = 0.3 
 
+        print("threshold")
+        print(threshold)
+
         while (time.time() - start_time) < 15:
             #takes 1.5 sec 
             value = self.read_function()
             readings.append(value)
             self.value_signal.emit(value, self.parameter, self.units)
 
-            if len(readings) > 5:  # Use last 5 readings for stability
+            if len(readings) >= 5:  # Use last 5 readings for stability
                 avg = sum(readings[-5:]) / 5
                 threshold = 0.1
                 if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
+                    print("coa")
                     print(readings)
                     return avg
 
