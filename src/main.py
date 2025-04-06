@@ -7,6 +7,7 @@ from screens.live_data_screen import LiveDataScreen
 from screens.quiz_screen import QuizScreen
 from screens.learning_modules.classroom_screen import ClassroomScreen
 from screens.learning_modules.how_pollutants_screen import HowPolluteScreen
+from screens.test_strips_screen import TestStripScreen
 
 
 # Index for which screen: 
@@ -17,6 +18,7 @@ from screens.learning_modules.how_pollutants_screen import HowPolluteScreen
 # 4 : learning modules 
 # 5 : Classroom Learning Module 
 # 6 : How water become poluted Learning Module 
+# 7 : Test Strips Collection Screen 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -31,6 +33,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.learning_screen = LearningScreen(self)
         self.classroom_screen = ClassroomScreen(self)
         self.howPollute_screen = HowPolluteScreen(self)
+        self.test_strip_screen = TestStripScreen(self)
         
         self.stackedWidget.addWidget(self.home_screen)          # 0
         self.stackedWidget.addWidget(self.simulation_screen)    # 1
@@ -39,6 +42,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stackedWidget.addWidget(self.learning_screen)      # 4
         self.stackedWidget.addWidget(self.classroom_screen)     # 5 
         self.stackedWidget.addWidget(self.howPollute_screen)    # 6 
+        self.stackedWidget.addWidget(self.test_strip_screen)    # 7 
 
         self.stackedWidget.setCurrentIndex(0)
 
@@ -49,6 +53,9 @@ class MainWindow(QtWidgets.QMainWindow):
         
     def setIndex(self, index):
         self.stackedWidget.setCurrentIndex(int(index))
+
+    def get_teststrip_results(self):
+        return self.test_strip_screen.get_results()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
