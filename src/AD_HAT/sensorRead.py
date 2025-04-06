@@ -162,13 +162,18 @@ class SensorReader:
         return avg_sampled_reading
     
     def get_turbidity(self):
-        return self.get_reading_turb_tds(channel=0)
+        return self.get_reading_turb_tds_ph(channel=0)
     
     def get_tds(self):
-        return self.get_reading_turb_tds(channel=1)
+        return self.get_reading_turb_tds_ph(channel=1)
     
     def get_cal_ph(self):
-        return self.get_reading_turb_tds(channel=2)
+        return self.get_reading_turb_tds_ph(channel=2)
+    
+    def get_ph(self):
+        if self.coefficients == None:
+            self.get_linear_fit()
+        return self.get_reading_turb_tds_ph(channel=2)
     
     def append_voltage(self, voltage):
         self.voltage_values.append(voltage)
@@ -179,7 +184,7 @@ class SensorReader:
     def get_voltage_values(self):
         return self.voltage_values
 
-    def get_reading_turb_tds(self, channel):
+    def get_reading_turb_tds_ph(self, channel):
         sample_readings = []
         sample_start = time.time()
 
@@ -196,9 +201,12 @@ class SensorReader:
             if channel == 0:
                 reading = self.turbidity_voltage_to_ntu(voltage)
             # this is TDS 
-            if channel == 1:
+            elif channel == 1:
                 temperature = read_temp()
                 reading = self.tds_voltage_to_ppm(voltage, temperature)
+            elif channel == 2 and self.coefficients != None:
+                pH_value = self.coefficients[0] * voltage + self.coefficients[1]
+                sample_readings.append(pH_value)
             else:
                 reading = voltage
 
