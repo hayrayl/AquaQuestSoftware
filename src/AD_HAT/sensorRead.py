@@ -206,7 +206,7 @@ class SensorReader:
                 reading = self.tds_voltage_to_ppm(voltage, temperature)
             elif channel == 2 and len(self.coefficients) != 0:
                 pH_value = self.coefficients[0] * voltage + self.coefficients[1]
-                sample_readings.append(pH_value)
+                reading.append(pH_value)
             else:
                 reading = voltage
 
