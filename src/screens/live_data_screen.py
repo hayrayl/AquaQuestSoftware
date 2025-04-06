@@ -158,14 +158,15 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.pushButton_bottom.show()
 
 # all the testing strips screens are in a different section. This will jump right back to this screen after 
-    def go_to_testing_strips(self):
-        self.parent().setCurrentIndex(7)
-
-    def get_testing_strip_results(self, file):
+    def go_to_testing_strips(self, file):
         if file == None:
             utils.archie_sampling(self.label_image)
         else:
             utils.new_image(image=self.label_image, file=file)
+        self.parent().setCurrentIndex(7)
+
+    def get_testing_strip_results(self):
+        
         self.parent().get_teststrip_results()
 
 from PyQt5.QtCore import QThread, pyqtSignal
