@@ -218,10 +218,10 @@ class SensorReaderThread(QThread):
 
             if len(readings) >= 5:  # Use last 5 readings for stability
                 avg = sum(readings[-5:]) / 5
-                threshold = 0.1
-                if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
-                    print(f'averaged with threshold: {avg}')
-                    return avg
+                if avg != 0:
+                    if all(abs(r - avg) / avg < threshold for r in readings[-5:]):
+                        print(f'averaged with threshold: {avg}')
+                        return avg
 
         avg_reading = sum(readings[-5:]) / 5.0
         print(f"timed out avg:{avg_reading}")
