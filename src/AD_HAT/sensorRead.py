@@ -172,6 +172,8 @@ class SensorReader:
     
     def append_voltage(self, voltage):
         self.voltage_values.append(voltage)
+        print("appending voltages")
+        print(self.voltage_values)
         print(f'Appended Voltages:{self.voltage_values}')
     
     def get_voltage_values(self):
@@ -204,7 +206,7 @@ class SensorReader:
             time.sleep(0.2)  # Faster sampling (optional)
 
         avg_sampled_reading = sum(sample_readings) / len(sample_readings)
-        print(f"Average Reading: {avg_sampled_reading:.2f} ")
+        # print(f"Average Reading: {avg_sampled_reading:.2f} ")
         return avg_sampled_reading
 
     
