@@ -38,6 +38,7 @@ class SensorReader:
             self.ADC.ADS1263_SetMode(0)
 
             self.voltage_values = []
+            self.coefficients = None
 
             results = {}
 
@@ -167,10 +168,11 @@ class SensorReader:
         return self.get_reading_turb_tds(channel=1)
     
     def get_cal_ph(self):
-        voltage = self.get_reading_turb_tds(channel=2)
+        return self.get_reading_turb_tds(channel=2)
+    
+    def append_voltage(self, voltage):
         self.voltage_values.append(voltage)
-        print(self.voltage_values)
-        return voltage
+        print(f'Appended Voltages:{self.voltage_values}')
     
     def get_voltage_values(self):
         return self.voltage_values
@@ -205,17 +207,15 @@ class SensorReader:
         print(f"Average Reading: {avg_sampled_reading:.2f} ")
         return avg_sampled_reading
 
-    def append_voltage(self, voltage):
-        self.voltage_values.append(voltage)
+    
 
     def get_linear_fit(self):
         ph_values = [4.00, 7.00, 10.01]
-        coefficients = np.polyfit(self.voltage_values, ph_values, 1)  
+        self.coefficients = np.polyfit(self.voltage_values, ph_values, 1)  
         
         print("\nCalibration Complete! Curve fit generated:")
-        print(f"pH = {coefficients[0]:.1f} * Voltage + {coefficients[1]:.1f}")
+        print(f"pH = {self.coefficients[0]:.1f} * Voltage + {self.coefficients[1]:.1f}")
 
-        return coefficients  # Returns the coefficients for linear fit
 
 
     def calibrate_ph(self):
@@ -290,9 +290,6 @@ class SensorReader:
         print(f"pH = {coefficients[0]:.1f} * Voltage + {coefficients[1]:.1f}")
 
         return coefficients  # Returns the coefficients for linear fit
-
-    
-
 
     def measure_ph(self, coefficients):
         """
