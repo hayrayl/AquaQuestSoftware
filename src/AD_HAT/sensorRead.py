@@ -38,7 +38,7 @@ class SensorReader:
             self.ADC.ADS1263_SetMode(0)
 
             self.voltage_values = []
-            self.coefficients = None
+            self.coefficients = []
 
             results = {}
 
@@ -171,7 +171,7 @@ class SensorReader:
         return self.get_reading_turb_tds_ph(channel=2)
     
     def get_ph(self):
-        if self.coefficients == None:
+        if len(self.coefficients) == 0:
             self.get_linear_fit()
         return self.get_reading_turb_tds_ph(channel=2)
     
@@ -204,7 +204,7 @@ class SensorReader:
             elif channel == 1:
                 temperature = read_temp()
                 reading = self.tds_voltage_to_ppm(voltage, temperature)
-            elif channel == 2 and self.coefficients != None:
+            elif channel == 2 and len(self.coefficients) != 0:
                 pH_value = self.coefficients[0] * voltage + self.coefficients[1]
                 sample_readings.append(pH_value)
             else:
