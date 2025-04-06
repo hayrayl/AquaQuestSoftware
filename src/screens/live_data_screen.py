@@ -56,12 +56,13 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             # ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
             # ("pH", "", partial(self.read_sensor, function= self.sensorRead.get_ph, measurement = 'pH', unit=None)),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("Test Strips","Another way to test water is using things called test strips,\nThese test strips are like detectives—they look for clues in water to find out if there are any \"bad guys\" like heavy metals (lead, mercury, etc.) or nitrates/nitrites.", partial(self.only_explanation)),
-            ("Test Strips Setup","Pour the water sample collected into the test tube on the side of the testing tray. We need to use the test tube to dip the test strips in the water completely.", partial(self.image_explanation,file="test_tube_strip.jpg")),
+            ("Test Strips","Another way to test water is using things called test strips. These test strips are like detectives, they look for clues in water to find out if there are any \"bad guys\" like heavy metals (lead, mercury, etc.) or nitrates/nitrites.", partial(self.only_explanation)),
+            ("Test Strips Setup","Pour the water sample collected into the test tube on the side of the testing tray. We need to use the test tube to dip the test strips in the water completely.", partial(self.image_explanation,file="test_tube_strips.jpg")),
             ("Nitrates/Nitrites","Open the Nitrate/Nitrite bottle and grab out one of the test strips", partial(self.image_explanation,file="nitrate_bottle.jpg")),
-            ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\nCount to 2!!\nNow remove the test strip from the water", partial(self.image_explanation,file="nitrate_bottle.jpg")),
-            ("","", partial(self.go_to_testing_strips)),
-            ("YAYAYAYAYA","YOU GO HERE!!!!!!", partial(self.only_explanation)),
+            ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nitrate_bottle.jpg")),
+            ("Heavy Metal","Now for the nest test strip! Open the Heavy Metals Test Strip bottle and grab out one of the test strips", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
+            ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="heavy_metal_bottle.png")),
+            ("Well Done!","This completes the testing! Are you ready to see the results?!", partial(self.go_to_testing_strips, file= None)),
             
             # To 
         ]
@@ -160,7 +161,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
     def go_to_testing_strips(self):
         self.parent().setCurrentIndex(7)
 
-    def get_testing_strip_results(self):
+    def get_testing_strip_results(self, file):
+        if file == None:
+            utils.archie_sampling(self.label_image)
+        else:
+            utils.new_image(image=self.label_image, file=file)
         self.parent().get_teststrip_results()
 
 from PyQt5.QtCore import QThread, pyqtSignal
