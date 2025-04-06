@@ -104,7 +104,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             self.current_step_index += 1
         else:
             # Handle case where all steps are completed
-            txt = f'Temperature: {self.collected_values[0]}°F\nTurbidity: {self.collected_values[1]}NTU\nTDS: {self.collected_values[2]}ppm\npH: {self.collected_values[3]}'
+            txt = f'Temperature: {self.collected_values[0]:.1f}°F\nTurbidity: {self.collected_values[1]:.1f} NTU\nTDS: {self.collected_values[2]:.1f} ppm\npH: {self.collected_values[3]:.1f}'
             utils.archie_sampling(self.label_image)
             self.label_explanation_side.setText(txt)
             self.label_explanation_side.show()
