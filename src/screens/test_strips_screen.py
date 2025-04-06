@@ -43,7 +43,7 @@ class TestStripScreen(QtWidgets.QWidget, Ui_test_strip):
             "Mercury": "mercury_highlight.png",
             "Chromium": "chromium_highlight.png",
             "Magnesium": "magnesium_highlight.png",
-            "Cadmium": "cadmium_highlight.png",
+            "Cadmium": "cadium_highlight.png",
             "Calcium": "calcium_highlight.png"
         }
 
@@ -59,6 +59,18 @@ class TestStripScreen(QtWidgets.QWidget, Ui_test_strip):
             "Cadmium": "0",
             "Calcium": "0"
         }
+
+        self.units = {
+            "Nitrite": " ppm",
+            "Nitrate": " ppm",
+            "Lead": " ppb",
+            "Mercury": " mg/L",
+            "Chromium": " mg/L",
+            "Magnesium": " mg/L",
+            "Cadmium": " mg/L",
+            "Calcium": " mg/L",
+        }
+
         self.key_count = len(list(self.results.keys()))
 
         self.design_setup()
@@ -115,6 +127,7 @@ class TestStripScreen(QtWidgets.QWidget, Ui_test_strip):
         key = list(self.data.keys())[self.count] 
 
         # set the result 
+
         self.results[key] = self.data[key][value]
 
         print(self.results)
@@ -153,10 +166,10 @@ class TestStripScreen(QtWidgets.QWidget, Ui_test_strip):
         self.label_explanation_side.show()
 
         if self.count == 2:
-            txt = f'{keys[0]}: {self.results[keys[0]]}\n{keys[1]}: {self.results[keys[1]]}'
+            txt = f'{keys[0]}: {self.results[keys[0]]}{self.units[keys[0]]}\n{keys[1]}: {self.results[keys[1]]}{self.units[keys[1]]}'
             file = "nitrate_bottle.jpg"
         else:
-            txt = f'{keys[2]}: {self.results[keys[2]]}\n{keys[3]}: {self.results[keys[3]]}\n{keys[4]}: {self.results[keys[4]]}\n{keys[5]}: {self.results[keys[5]]}\n{keys[6]}: {self.results[keys[6]]}\n{keys[7]}: {self.results[keys[7]]}'
+            txt = f'{keys[2]}: {self.results[keys[2]]}{self.units[keys[2]]}\n{keys[3]}: {self.results[keys[3]]}{self.units[keys[3]]}\n{keys[4]}: {self.results[keys[4]]}{self.units[keys[4]]}\n{keys[5]}: {self.results[keys[5]]}{self.units[keys[5]]}\n{keys[6]}: {self.results[keys[6]]}{self.units[keys[6]]}\n{keys[7]}: {self.results[keys[7]]}{self.units[keys[7]]}'
             file = "heavy_metal_bottle.png"
 
         utils.new_image(image=self.label_image, file=file)
