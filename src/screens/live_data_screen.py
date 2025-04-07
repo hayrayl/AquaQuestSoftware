@@ -21,7 +21,12 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.setupUi(self)
 
         # this will have the collected final values 
-        self.collected_values = []
+        self.collected_values = {
+            "Temperature": 0.0,
+            'Turbidity': 0.0,
+            'TDS': 0.0,
+            'pH': 0.0,
+        }
 
         self.sensorRead = SensorReader()
 
@@ -114,6 +119,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             self.current_step_index += 1
         else:
             # Handle case where all steps are completed
+            self.parent().setCurrentIndex(8)
             txt = "You are done"
             # txt = f'Temperature: {self.collected_values[0]:.1f}°F\nTurbidity: {self.collected_values[1]:.1f} NTU\nTDS: {self.collected_values[2]:.1f} ppm\npH: {self.collected_values[3]:.1f}'
             utils.archie_sampling(self.label_image)
@@ -157,7 +163,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             print("We are in the show_next_button under voltage")
             self.sensorRead.append_voltage(voltage= value)
         else: 
-            self.collected_values.append(value)
+            self.collected_values[parameter] = value
         self.pushButton_bottom.show()
 
 # all the testing strips screens are in a different section. This will jump right back to this screen after 
@@ -168,8 +174,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             utils.new_image(image=self.label_image, file=file)
         self.parent().setCurrentIndex(7)
 
-    def get_testing_strip_results(self):
-        self.parent().get_teststrip_results()
+    def get_collected_data(self):
+        return self.collected_values
 
     def countdown_30(self):
         self.label_explanation_side.show()
