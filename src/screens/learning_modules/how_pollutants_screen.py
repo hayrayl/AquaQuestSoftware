@@ -52,9 +52,11 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
 
         if self.count == 0:
             self.pushButton_previous.hide()
+            self.pushButton_next.show()
 
         elif self.count == len(self.topics) - 1:
             self.pushButton_next.hide()
+            self.pushButton_previous.show()
         
         else: 
             self.pushButton_next.show()
