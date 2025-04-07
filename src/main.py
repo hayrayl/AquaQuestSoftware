@@ -66,6 +66,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def get_is_collection_complete(self):
         return self.live_data_screen.get_data_bool()
+    
+    def get_learning_module(self):
+        return self.learning_screen.get_learning_module()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

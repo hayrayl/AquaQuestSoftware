@@ -11,16 +11,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'ui'))
 from how_pollute import Ui_How_Pollute # Import the generated UI class
 
 class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
-    def __init__(self, parent=None):
+    def __init__(self, main_window, parent=None):
         super().__init__(parent)
         self.setupUi(self)
-        
-        # # to know what topic to be on 
-        self.count = 0
+        self.main_window = main_window
 
-        self.topics = self.parse_file()
-
-        self.new_slide()
         self.design_setup()
         self.pushButton_back.clicked.connect(self.go_back)
         self.pushButton_next.clicked.connect(self.go_next)
@@ -47,8 +42,13 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
             self.label_explanation.adjustSize()
 
         except:
+            x = self.main_window.get_learning_module()
             self.label_explanation.setText("")
-            utils.how_pol_background(self.background, "images/background/First_Last.png")
+
+            if x == 0:
+                utils.how_pol_background(self.background, "images/background/First_Last.png")
+            else: 
+                utils.how_pol_background(self.background, "images/background/basic_pond.png")
 
         if self.count == 0:
             self.pushButton_previous.hide()
@@ -67,6 +67,12 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
         if self.count % 3 == 2:
             utils.archie_arms_out(self.archie)
         
+    # this will update the screen upon each entry of the screen 
+    def showEvent(self, event):
+        super().showEvent(event)  # Call the base class implementation
+        self.count = 0
+        self.topics = self.parse_file()
+        self.new_slide()
     
     def go_next(self):
         if self.count < len(self.topics):
@@ -79,8 +85,15 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
         self.new_slide()
 
     def parse_file(self):
+            
+            x = self.main_window.get_learning_module()
+
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            file_path = os.path.join(current_dir, "../../materials/how_pollute.txt")
+
+            if x == 0:
+                file_path = os.path.join(current_dir, "../../materials/how_pollute.txt")
+            else:
+                file_path = os.path.join(current_dir, "../../materials/why_test.txt")
 
 
             with open(file_path, 'r') as file:

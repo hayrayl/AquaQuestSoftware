@@ -100,12 +100,3 @@ class Ui_Home_ui(object):
         self.pushButton_H_Quiz.setText(_translate("Home_ui", "Quiz"))
         self.label_H_main.setText(_translate("Home_ui", "Archie\'s AquaQuest"))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Home_ui = QtWidgets.QWidget()
-    ui = Ui_Home_ui()
-    ui.setupUi(Home_ui)
-    Home_ui.show()
-    sys.exit(app.exec_())

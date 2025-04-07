@@ -1,0 +1,5 @@
+images/background/basic_pond.png
+Hello again! We are learning why it is important to test our fresh water sources! Join me on a walk around town! 
+
+images/background/basic_pond.png
+Water might look clean, but sometimes it can have things hiding inside that could make people, animals, or plants sick. Testing fresh water is like solving a mystery to make sure the water is safe and healthy for everyone.
