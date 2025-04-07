@@ -63,6 +63,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
             ("Heavy Metal","Now for the next test strip! Open the Heavy Metals Test Strip bottle and grab out one of the test strips", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
             ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="heavy_metal_bottle.png")),
+            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
             ("Well Done!","This completes the testing! Are you ready to see the results?!", partial(self.go_to_testing_strips, file= None)),
             
             # To 
