@@ -11,9 +11,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from learning import Ui_learning_ui # Import the generated UI class
 
 class LearningScreen(QtWidgets.QWidget, Ui_learning_ui):
-    def __init__(self, parent=None):
+    def __init__(self, main_window, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+        self.main_window =main_window
         self.design_setup()
         self.index = 0
         self.pushButton_back.clicked.connect(self.go_back)
@@ -29,7 +30,7 @@ class LearningScreen(QtWidgets.QWidget, Ui_learning_ui):
 
     def go_how_pollute(self, x):
         self.index = x
-        self.parent().setCurrentIndex(6)
+        self.main_window.setCurrentIndex(6)
 
     def get_learning_module(self):
         return self.index
