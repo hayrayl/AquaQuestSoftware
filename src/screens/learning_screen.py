@@ -33,11 +33,11 @@ class LearningScreen(QtWidgets.QWidget, Ui_learning_ui):
 
     def set_index_why_test(self):
         self.index = 1
-        self.go_how_pollute
+        self.go_how_pollute()
     
     def set_index_how_pollute(self):
         self.index = 0
-        self.go_how_pollute
+        self.go_how_pollute()
 
     def get_learning_module(self):
         return self.index
