@@ -60,6 +60,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Test Strips Setup","Pour the water sample collected into the test tube on the side of the testing tray. We need to use the test tube to dip the test strips in the water completely.", partial(self.image_explanation,file="test_tube_strips.jpg")),
             ("Nitrates/Nitrites","Open the Nitrate/Nitrite bottle and grab out one of the test strips", partial(self.image_explanation,file="nitrate_bottle.jpg")),
             ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nitrate_bottle.jpg")),
+            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips",partial(self.countdown_30))
             ("Heavy Metal","Now for the next test strip! Open the Heavy Metals Test Strip bottle and grab out one of the test strips", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
             ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="heavy_metal_bottle.png")),
             ("Well Done!","This completes the testing! Are you ready to see the results?!", partial(self.go_to_testing_strips, file= None)),
@@ -166,14 +167,35 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.parent().setCurrentIndex(7)
 
     def get_testing_strip_results(self):
-        
         self.parent().get_teststrip_results()
+
+    def countdown_30(self):
+        self.label_explanation_side.show()
+        self.label_image.clear()
+        self.label_explanation_middle.hide()
+        self.pushButton_bottom.hide()
+        
+        self.temp_thread = SensorReaderThread(sensorRead=self.sensorRead, read_function=None, parameter='Timer', unit=None  )
+        self.temp_thread.timer_signal.connect(self.display_timer)
+        self.temp_thread.timer_finished.connect(self.timer_end)
+        self.temp_thread.start()
+
+    def display_timer(self, value):
+        self.label_image.setText(f'{value} seconds')
+
+    def timer_end(self):
+        self.label_explanation_side.setText("Now you can start comparing the colors on the test stip to the color chart on the bottle!")
+        utils.new_image(image=self.label_image, file="compare_color.png")
+        self.pushButton_bottom.show()
+
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
 class SensorReaderThread(QThread):
     value_signal = pyqtSignal(float, str, str)
     finished_signal = pyqtSignal(float, str, str)
+    timer_signal = pyqtSignal(int)
+    timer_finished = pyqtSignal()
 
     STABILITY_THRESHOLDS = {
         "Turbidity": 0.10,  # 10% variation allowed
@@ -198,12 +220,15 @@ class SensorReaderThread(QThread):
             'Turbidity': self.get_turb_tds_ph,
             'TDS': self.get_turb_tds_ph,
             'Voltage': self.get_turb_tds_ph,
-            'pH': self.get_turb_tds_ph
+            'pH': self.get_turb_tds_ph,
+            'Timer': self.count_30
         }
+
         func = cases.get(self.parameter, self.default_function)
         final_value = func()
-        print(f'Final READING {final_value}')
-        self.finished_signal.emit(final_value, self.parameter, self.units)
+        if self.parameter != 'Timer':
+            print(f'Final READING {final_value}')
+            self.finished_signal.emit(final_value, self.parameter, self.units)
 
     def get_temp(self):
         readings = []
@@ -263,4 +288,11 @@ class SensorReaderThread(QThread):
     def default_function(self):
         print("default function")
 
+    def count_30(self):
+        count = 30 
+        while count > 0:
+            self.timer_signal.emit(count)
+            time.sleep(1)
+            count -= 1
+        self.finished_signal.emit()
 
