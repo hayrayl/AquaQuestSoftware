@@ -15,9 +15,11 @@ class LearningScreen(QtWidgets.QWidget, Ui_learning_ui):
         super().__init__(parent)
         self.setupUi(self)
         self.design_setup()
+        self.index = 0
         self.pushButton_back.clicked.connect(self.go_back)
         self.pushButton_L_parameters.clicked.connect(self.go_classroom)
-        self.pushButton_L_what_pollutes.clicked.connect(self.go_how_pollute)
+        self.pushButton_L_what_pollutes.clicked.connect(self.go_how_pollute(x=0))
+        self.pushButton_L_whyTest.clicked.connect(self.go_how_pollute(x=1))
 
     def go_back(self):
         self.parent().setCurrentIndex(0)  # Assuming the main screen is at index 0 in the QStackedWidget
@@ -25,8 +27,12 @@ class LearningScreen(QtWidgets.QWidget, Ui_learning_ui):
     def go_classroom(self):
         self.parent().setCurrentIndex(5)
 
-    def go_how_pollute(self):
+    def go_how_pollute(self, x):
+        self.index = x
         self.parent().setCurrentIndex(6)
+
+    def get_learning_module(self):
+        return self.index
 
     def design_setup(self):
         utils.set_background(self.background)
