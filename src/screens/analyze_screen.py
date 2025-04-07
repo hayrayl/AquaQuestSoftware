@@ -68,13 +68,19 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
     def get_collected_data(self):
         parent = self.parentWidget()
         if parent:
-            sensor_data = parent.get_sensor_results()
-            strips_data = parent.get_teststrip_results()
-            self.collected_data = sensor_data.copy()  # Start with a copy of collected_values
-            self.collected_data.update(strips_data)
-            print(f'\nCOLLECTED DATA \n\n{self.collected_data}')
+            print(f"Parent widget detected: {type(parent)}")
         else:
-            print("parent widget not found")
+            print("Parent widget is None!")
+
+        # parent = self.parentWidget()
+        # if parent: 
+        #     sensor_data = parent.get_sensor_results()
+        #     strips_data = parent.get_teststrip_results()
+        #     self.collected_data = sensor_data.copy()  # Start with a copy of collected_values
+        #     self.collected_data.update(strips_data)
+        #     print(f'\nCOLLECTED DATA \n\n{self.collected_data}')
+        # else:
+        #     print("parent widget not found")
 
     def showEvent(self, event):
         super().showEvent(event)  # Call the base class implementation
