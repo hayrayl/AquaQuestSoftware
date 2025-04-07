@@ -1,5 +1,14 @@
 images/background/basic_pond.png
-Hello again! We are learning why it is important to test our fresh water sources! Join me on a walk around town! 
+Hello again! We are learning why it is important to test our fresh water sources!
 
 images/background/basic_pond.png
 Water might look clean, but sometimes it can have things hiding inside that could make people, animals, or plants sick. Testing fresh water is like solving a mystery to make sure the water is safe and healthy for everyone.
+
+images/background/basic_pond.png
+Now why is it important to test the water? Let's go find out!!
+
+images/background/protect_wildlife.png
+Protecting Animals and Plants! Many creatures live in lakes, rivers, and ponds. Testing water ensures it has the right balance to keep fish, frogs, plants, and other wildlife healthy.
+
+images/background/treatment_plant.png
+Safe Drinking Water! We need fresh water to drink and stay healthy. Testing helps us know if water is clean or if it needs to be treated before we use it. Treatment plants are used to make the water safe to use!
