@@ -82,6 +82,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         utils.text_blue(self.label_title)
         utils.blue_background_White_text(self.pushButton_bottom)
         utils.blue_background_White_text(self.pushButton_back)
+        utils.text_blue(self.label_image)
 
         self.label_explanation_side.hide()
         self.label_image.hide()
