@@ -66,8 +66,8 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         self.label_explanation_side.setText(txt[:-1])
 
     def get_collected_data(self):
-        sensor_data = self.parent.get_sensor_results()
-        strips_data = self.parent.get_teststrip_results()
+        sensor_data = self.parentWidget().get_sensor_results()
+        strips_data = self.parentWidget().get_teststrip_results()
         self.collected_data = sensor_data.copy()  # Start with a copy of collected_values
         self.collected_data.update(strips_data)
         print(f'\nCOLLECTED DATA \n\n{self.collected_data}')
