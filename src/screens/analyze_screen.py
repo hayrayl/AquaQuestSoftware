@@ -14,9 +14,6 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         super().__init__(parent)
         self.setupUi(self)  # Call the setupUi method
 
-        self.sensor_data = parent.get_sensor_results()
-        self.strips_data = parent.get_teststrip_results()
-
         self.count = 0
         self.collected_data = {}
 
@@ -40,8 +37,6 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         }
 
         self.design_setup()
-        self.get_collected_data()
-        self.display_data()
         
     def go_to_home(self):
         self.parentWidget().setCurrentIndex(0)  
@@ -51,6 +46,7 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
     def pb_previous(self):
         self.count = 0
+        self.display_data
 
     def display_data(self):
         utils.archie_sampling(self.label_image)
@@ -70,11 +66,16 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         self.label_explanation_side.setText(txt[:-1])
 
     def get_collected_data(self):
-        
-        self.collected_data = self.sensor_data.copy()  # Start with a copy of collected_values
-        self.collected_data.update(self.strips_data)
+        sensor_data = self.parent.get_sensor_results()
+        strips_data = self.parent.get_teststrip_results()
+        self.collected_data = sensor_data.copy()  # Start with a copy of collected_values
+        self.collected_data.update(strips_data)
         print(f'\nCOLLECTED DATA \n\n{self.collected_data}')
 
+    def showEvent(self, event):
+        super().showEvent(event)  # Call the base class implementation
+        self.get_collected_data()  # Run update_screen whenever this screen is shown
+        self.display_data()
 
     def design_setup(self):
         utils.water_background(self.background)
