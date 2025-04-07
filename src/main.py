@@ -64,6 +64,9 @@ class MainWindow(QtWidgets.QMainWindow):
     def get_sensor_results(self):
         return self.live_data_screen.get_collected_data()
 
+    def get_is_collection_complete(self):
+        return self.live_data_screen.get_data_bool()
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = MainWindow()

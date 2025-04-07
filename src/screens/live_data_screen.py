@@ -32,6 +32,8 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
         self.pushButton_back.clicked.connect(self.go_back)
 
+        self.is_data_collection_complete = False
+
         # Define steps as a list of tuples: (step description, function to run)
         self.steps = [
             # ("Setup","Place the beakers, 4.00 pH solution, and test tube in the tray", partial(self.image_explanation,file="testing_tray.png")),
@@ -119,17 +121,18 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             self.current_step_index += 1
         else:
             # Handle case where all steps are completed
+            self.is_data_collection_complete = True
             self.parent().setCurrentIndex(8)
-            txt = "You are done"
+            # txt = "You are done"
             # txt = f'Temperature: {self.collected_values[0]:.1f}°F\nTurbidity: {self.collected_values[1]:.1f} NTU\nTDS: {self.collected_values[2]:.1f} ppm\npH: {self.collected_values[3]:.1f}'
-            utils.archie_sampling(self.label_image)
-            self.label_explanation_side.setText(txt)
-            self.label_explanation_side.show()
-            self.label_explanation_middle.hide()
-            self.label_title.hide()
-            self.label_image.show()
-            self.pushButton_back.show()
-            self.pushButton_bottom.hide()
+            # utils.archie_sampling(self.label_image)
+            # self.label_explanation_side.setText(txt)
+            # self.label_explanation_side.show()
+            # self.label_explanation_middle.hide()
+            # self.label_title.hide()
+            # self.label_image.show()
+            # self.pushButton_back.show()
+            # self.pushButton_bottom.hide()
 
     def image_explanation(self, file):
         self.label_explanation_middle.hide()
@@ -176,6 +179,9 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
     def get_collected_data(self):
         return self.collected_values
+    
+    def get_data_bool(self):
+        return self.is_data_collection_complete
 
     def countdown_30(self):
         self.label_explanation_side.show()
