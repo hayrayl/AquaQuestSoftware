@@ -66,11 +66,15 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         self.label_explanation_side.setText(txt[:-1])
 
     def get_collected_data(self):
-        parent = self.parentWidget()
+    # Use self.parentWidget() to access the MainWindow
+        parent = self.parentWidget()  # This now refers to the MainWindow
         if parent:
-            print(f"Parent widget detected: {type(parent)}")
+            sensor_data = parent.get_sensor_results()  # Works because MainWindow has this method
+            strips_data = parent.get_teststrip_results()
+            self.collected_data = {**sensor_data, **strips_data}
+            print(f'\nCollected Data:\n{self.collected_data}')
         else:
-            print("Parent widget is None!")
+            print("Parent widget not found. Unable to retrieve data.")
 
         # parent = self.parentWidget()
         # if parent: 
