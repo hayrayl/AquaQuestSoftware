@@ -10,9 +10,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from analyze import Ui_analyze_data  # Import the generated UI class
 
 class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
-    def __init__(self, parent=None):
+    def __init__(self, main_window, parent=None):
         super().__init__(parent)
         self.setupUi(self)  # Call the setupUi method
+        self.main_window = main_window
 
         self.count = 0
         self.collected_data = {}
@@ -67,14 +68,12 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
     def get_collected_data(self):
     # Use self.parentWidget() to access the MainWindow
-        parent = self.parentWidget()  # This now refers to the MainWindow
-        if parent:
-            sensor_data = parent.get_sensor_results()  # Works because MainWindow has this method
-            strips_data = parent.get_teststrip_results()
-            self.collected_data = {**sensor_data, **strips_data}
-            print(f'\nCollected Data:\n{self.collected_data}')
-        else:
-            print("Parent widget not found. Unable to retrieve data.")
+    # Use self.main_window to access MainWindow methods
+        sensor_data = self.main_window.get_sensor_results()
+        strips_data = self.main_window.get_teststrip_results()
+        self.collected_data = {**sensor_data, **strips_data}
+        print(f'\nCollected Data:\n{self.collected_data}')
+
 
         # parent = self.parentWidget()
         # if parent: 
