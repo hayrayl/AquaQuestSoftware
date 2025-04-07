@@ -13,14 +13,12 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)  # Call the setupUi method
-        
-        self.design_setup()
 
         self.sensor_data = parent.get_sensor_results()
         self.strips_data = parent.get_teststrip_results()
 
         self.count = 0
-        self.collected_data = self.get_collected_data
+        self.collected_data = {}
 
         self.pushButton_back.clicked.connect(self.go_to_home)
         self.pushButton_next.clicked.connect(self.pb_next)
@@ -40,6 +38,10 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
             "Cadmium": "mg/L",
             "Calcium": "mg/L",
         }
+
+        self.design_setup()
+        self.get_collected_data()
+        self.display_data()
         
     def go_to_home(self):
         self.parentWidget().setCurrentIndex(0)  
@@ -55,9 +57,11 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
         if self.count == 0:
             keys = ["Temperature", "Turbidity", "TDS", "pH"]
+            self.label_title.setText("Sensor Data")
 
         if self.count == 1: 
             keys = ["Nitrite", "Nitrate" , "Lead", "Mercury", "Chromium", "Magnesium", "Cadmium", "Calcium"]
+            self.label_title.setText("Test Strip Data")
 
         txt = ""
         for key in keys: 
@@ -69,7 +73,7 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
         
         self.collected_data = self.sensor_data.copy()  # Start with a copy of collected_values
         self.collected_data.update(self.strips_data)
-        print(self.collected_data)
+        print(f'\nCOLLECTED DATA \n\n{self.collected_data}')
 
 
     def design_setup(self):
