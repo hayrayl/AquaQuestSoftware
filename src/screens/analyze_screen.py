@@ -44,10 +44,11 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
     def pb_next(self):
         self.count = 1
+        self.display_data()
 
     def pb_previous(self):
         self.count = 0
-        self.display_data
+        self.display_data()
 
     def display_data(self):
         utils.archie_sampling(self.label_image)
