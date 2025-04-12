@@ -39,6 +39,10 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
 
             utils.how_pol_background(self.background, screen)
             self.label_explanation.setText(explanation)
+            self.label_explanation.setWordWrap(True)  # Allow text wrapping
+            self.label_explanation.setMaximumWidth(560)  # Set a maximum width (adjust to your needs)
+            self.label_explanation.adjustSize()  # Resize within the constraints
+
             self.label_explanation.adjustSize()
 
         except:
