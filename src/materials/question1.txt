@@ -54,7 +54,7 @@ To check for water clarity
 3
 Correct! Turbidity tells us how clear or cloudy the water is. Clear water helps plants grow and keeps animals healthy.
 
-What does pH test in water?
+what does the pH value say about the water?
 How deep the water is
 How basic or acidic the water is
 If there’s lava nearby
@@ -91,7 +91,7 @@ Correct! Water temperature goes up in the summer and down in the winter. It also
 
 What can happen if there’s too much algae in the water?
 It gives XP like in Minecraft
-It blocks sunlight and uses up oxygen
+It blocks sun and uses up oxygen
 Bowser eats it
 2
 Correct! Algae blooms can block sunlight from plants and take oxygen from fish — not very super!
