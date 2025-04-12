@@ -36,8 +36,10 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
 
         # Define steps as a list of tuples: (step description, function to run)
         self.steps = [
-            ("Setup","Place the beakers, 4.00 pH solution, and test tube in the tray", partial(self.image_explanation,file="testing_tray.png")),
-            ("Setup","Use the dropper to fill the Test Tube with Sample Water", partial(self.image_explanation,file="test_tube.jpg")),
+            ("Setup","Build the testing tray and place on the side of the testing kit", partial(self.image_explanation,file="testing_tray.png")),
+            ("Setup","Place 2 beakers into the testing tray", partial(self.image_explanation,file="setup_beakers.png")),
+            ("Setup","Place a testing tube into the tray", partial(self.image_explanation,file="setup_tube.png")),
+            ("Setup","Place the red 4.0 pH solution into the tray", partial(self.image_explanation,file="setup_phbottle.png")),
             ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
             ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
             ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
