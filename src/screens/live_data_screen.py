@@ -160,7 +160,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.setText(f'Reading {parameter}:\n {value:.1f}{units}')
 
     def show_next_button(self, value, parameter, units):
-        self.label_title.setText(f'{parameter}: {value:.1f} {units}')
+        self.label_title.setText(f'{parameter}:\n{value:.1f} {units}')
         self.label_explanation_middle.setText(f"{parameter} Collection Complete!")
         if parameter == "Voltage":
             print("We are in the show_next_button under voltage")
