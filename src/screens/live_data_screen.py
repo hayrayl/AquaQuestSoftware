@@ -40,31 +40,59 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup","Place 2 beakers into the testing tray", partial(self.image_explanation,file="setup_beakers.png")),
             ("Setup","Place a testing tube into the tray", partial(self.image_explanation,file="setup_tube.png")),
             ("Setup","Place the red 4.0 pH solution into the tray", partial(self.image_explanation,file="setup_phbottle.png")),
-            ("Setup","Pour Sample water into Beaker #1 up to the 100mL mark ", partial(self.image_explanation,file="beaker1.jpg")),
-            ("Setup","Pour Distilled “Clean” Water into Beaker #2 up to the 100mL mark ", partial(self.image_explanation,file="beaker2.jpg")),
-            ("Temperature","Place the metal temperature probe into the water sample and select next to start reading.", partial(self.image_explanation,file="temp_probe.png")),
+            ("Setup","Pour Distilled “Clean” Water into the beaker up to the fill line ", partial(self.image_explanation,file="fill_clean.png")),
+            ("Setup","Pour the collected water sample into the other beaker up to the fill line.", partial(self.image_explanation,file="fill_sample.png")),
+            ("Setup Complete","The initial setup is complete. Now sensors will be used to test!", partial(self.image_explanation,file="setup_done.png")),
+            
+            ("pH Calibration","We need to calibrate the first sensor!\nBut what is Calibration?\nIt's like teaching the sensor the \"correct answers\" so it doesn’t guess wrong!",partial(self.only_explanation)),
+            ("pH Calibration","Why do we need it?\nIf we don’t train the sensor, it might think lemonade is water!\nWe use special pH solutions (4, 7, and 10) to help it \"learn!\"",partial(self.only_explanation)),
+
+            ("pH Calibration","Get the pH sensor out and remove the bottom part holding the storage solution.", partial(self.image_explanation,file="ph_sensor.png")),
+            ("pH Calibration 4.00","The 4.00 (red) buffer solution should be in the test tray. Take the lid off.", partial(self.image_explanation,file="ph_40.png")),
+            ("pH Calibration 4.00","Hold the sensor in the 4.00 buffer solution and press next.", partial(self.image_explanation,file="ph_40_sensor.png")),
+            ("pH Calibration 4.00", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+
+            (None,"You can now remove the sensor from the solution and put the lid back on the 4.00 buffer solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"Dip pH sensor into clean water and dry with a paper towel", partial(self.image_explanation,file="ph_clean.png")),
+            
+            ("pH Calibration 7.00","Put the 7.00 (clear) buffer solution in the tray. Take the lid off.", partial(self.image_explanation,file="ph_70.png")),
+            ("pH Calibration 7.00","Hold the sensor in the 7.00 buffer solution and press next.", partial(self.image_explanation,file="ph_70_sensor.png")),
+            ("pH Calibration 7.00", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+
+            (None,"You can now remove the sensor from the solution and put the lid back on the 7.00 buffer solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"Dip pH sensor into clean water and dry with a paper towel", partial(self.image_explanation,file="ph_clean.png")),
+            
+            ("pH Calibration 10.01","Put the 10.01 (blue) buffer solution in the tray. Take the lid off.", partial(self.image_explanation,file="ph_1001.png")),
+            ("pH Calibration 10.01","Hold the sensor in the 10.01 buffer solution and press next.", partial(self.image_explanation,file="ph_1001_sensor.png")),
+            ("pH Calibration 10.01", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+
+            (None,"You can now remove the sensor from the solution and put the lid back on the 7.00 buffer solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"Dip pH sensor into clean water and dry with a paper towel", partial(self.image_explanation,file="ph_clean.png")),
+            
+            ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
+            
+            ("pH","Hold the pH sensor in the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="ph_test.png")),
+            ("pH", "", partial(self.read_sensor, function= self.sensorRead.get_ph, measurement = 'pH', unit=None)),
+            (None,"Great work! You can now remove the sensor from the solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"Dip pH sensor into clean water and dry with a paper towel.", partial(self.image_explanation,file="ph_clean.png")),
+            (None,"You just tested for pH! Put the part with the storage solution back on to keep the sensor safe then we will move onto temperature!", partial(self.only_explanation)),
+
+            ("Temperature","Find the temperature probe like the one in the picture!", partial(self.image_explanation,file="temp_probe.png")),
+            ("Temperature","Hold the metal temperature probe into the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="temp_probe.png")),
             ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("Turbidity","Place the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
+            (None,"Nice! Temperature has been collected you may remove the temperatuer probe!", partial(self.image_explanation,file="temp_probe.png")),
+            (None,"You just tested for temperature! Make sure to dip the temperature probe in the clean water and dry it off! It is important to take care of our equiptment!", partial(self.only_explanation)),
+            
+            ("Turbidity","Next up is Turbidity!\nPlace the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
             ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
             ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
             ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("pH Calibration","We need to calibrate the last sensor!\nBut what is Calibration?\nIt's like teaching the sensor the \"correct answers\" so it doesn’t guess wrong!",partial(self.only_explanation)),
-            ("pH Calibration","Why do we need it?\nIf we don’t train the sensor, it might think lemonade is water!\nWe use special pH solutions (4, 7, and 10) to help it \"learn!\"",partial(self.only_explanation)),
-            ("pH Calibration","Get the red 4.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
-            ("pH Calibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
+
+            
             (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("pH Calibration","Get the clear 7.0 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
-            ("pH Calibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("pH Calibration","Get the blue 10.01 buffer solution. Insert the pH sensor into the solution and press next to begin", partial(self.image_explanation,file="buffer_solution.jpg")),
-            ("pH Calibration", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
-            ("pH", "", partial(self.read_sensor, function= self.sensorRead.get_ph, measurement = 'pH', unit=None)),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
+
             ("Test Strips","Another way to test water is using things called test strips. These test strips are like detectives, they look for clues in water to find out if there are any \"bad guys\" like heavy metals (lead, mercury, etc.) or nitrates/nitrites.", partial(self.only_explanation)),
             ("Test Strips Setup","Pour the water sample collected into the test tube on the side of the testing tray. We need to use the test tube to dip the test strips in the water completely.", partial(self.image_explanation,file="test_tube_strips.jpg")),
             ("Nitrates/Nitrites","Open the Nitrate/Nitrite bottle and grab out one of the test strips", partial(self.image_explanation,file="nitrate_bottle.jpg")),
