@@ -28,7 +28,7 @@ These are metals from the periodic table with high density and atomic weight. Th
 Why heavy metals?
 Testing for heavy metals is important for both natural and public health. Because of their chemical properties they react badly with most forms of life and cause extreme sickness and even death for many living organisms.
 
-Total Dissolved Solids (TDS)
+Total Dissolved Solids
 This is the total solvents that are dissolved within the water. These can be organic matter, from plants and animals, or inorganic matter, like salt and metals.
 
 Why TDS?
