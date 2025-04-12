@@ -32,3 +32,44 @@ It has fish swimming in it
 It feels cold 
 1
 Correct! This is due to the presence of contaminants, such as chemicals, waste, or harmful microorganisms. 
+
+Why do we test Turbidity?
+It means the water has pollution
+It is an indicator of animal use
+It affects organisms sensitive to light
+3
+Correct! Turbidity measures how clear the water is and can affect what plants and animals can grow in the local ecosystem.
+
+What does pH test in water?
+How deep the water is
+How basic or acidic the water is
+How clean the water is
+2
+Correct! The pH test sees how high or low the water is on the pH scale. With lower numbers being more acidic and higher numbers being more basic.
+
+What does a high amount of Nitrates/Nitrites indicate?
+The water has agricultural runoff
+The water is very clean
+The water has a lot of fish in it
+1
+Correct! Nitrates/Nitrites are commonly found in farming chemical treatments so if a higher amount of those chemicals are in the water then they are likely caused by farming runoff.
+
+Which metals are we detecting with the Heavy Metals test?
+Copper and Iron
+Silver and Gold
+Lead and Chromium
+3
+Correct! These metals are higher on the periodic table and can have very adverse affects for not only humans, but any living organisms that use the water regularly.
+
+Which water quality parameter can be affected by sunlight and time of year?
+Nitrates/Nitrites
+TDS
+Temperature
+3
+Correct! The water can absorb sunlight and be affected by the ambient temperature of the environment around it.
+
+Did you have fun?
+Yes
+No
+1
+I'm glad you had fun! The more you know, the better we can protect our water. Keep testing, keep learning, and always stay curious! 
