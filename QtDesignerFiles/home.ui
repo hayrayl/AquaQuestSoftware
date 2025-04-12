@@ -50,31 +50,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_H_LiveData">
-    <property name="font">
-     <font>
-      <family>Cooper Black</family>
-      <pointsize>28</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string>Live Data</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_H_Learn">
     <property name="font">
      <font>
@@ -88,7 +63,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>Learning Module</string>
+     <string>Learning Modules</string>
     </property>
     <property name="iconSize">
      <size>
@@ -114,6 +89,31 @@
     </property>
     <property name="text">
      <string>Quiz</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>16</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_H_LiveData">
+    <property name="font">
+     <font>
+      <family>Cooper Black</family>
+      <pointsize>28</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>Let's Test!</string>
     </property>
     <property name="iconSize">
      <size>
