@@ -10,7 +10,7 @@ Rain
 Trash and chemicals  
 Sunlight
 2
-Correct! That is why it is important to throw away and recycle propperly!!
+Correct! That’s why it’s important to throw away trash and recycle properly — it helps keep our water clean!
 
 What happens when water gets dirty? 
 It tastes better  
@@ -24,7 +24,7 @@ It stays in our pipes
 It goes to a water treatment plant  
 It disappears into thin air  
 2
-Correct! At these plants, the water is treated and cleaned before being released back into the environment.
+Correct! Dirty water goes to a treatment plant, where it's cleaned before being safely returned to rivers, lakes, or the ground.
 
 Which of these is a sign that water is polluted? 
 It smells bad and looks dirty  
@@ -33,12 +33,12 @@ It feels cold
 1
 Correct! This is due to the presence of contaminants, such as chemicals, waste, or harmful microorganisms. 
 
-Why do we test Turbidity?
-It means the water has pollution
-It is an indicator of animal use
-It affects organisms sensitive to light
+why do we test for turbidity in water?
+It means the water is polluted
+It shows how fast the water is moving
+It tells us how clear the water is
 3
-Correct! Turbidity measures how clear the water is and can affect what plants and animals can grow in the local ecosystem.
+Correct! Turbidity is how cloudy the water is. Clear water helps sunlight reach underwater plants and is better for fish and other animals.
 
 What does pH test in water?
 How deep the water is
@@ -47,30 +47,30 @@ How clean the water is
 2
 Correct! The pH test sees how high or low the water is on the pH scale. With lower numbers being more acidic and higher numbers being more basic.
 
-What does a high amount of Nitrates/Nitrites indicate?
-The water has agricultural runoff
+What can high levels of nitrates and nitrites in water mean?
+There’s poop or fertilizer from farms in the water
 The water is very clean
-The water has a lot of fish in it
+The water has a lot of fish
 1
-Correct! Nitrates/Nitrites are commonly found in farming chemical treatments so if a higher amount of those chemicals are in the water then they are likely caused by farming runoff.
+Correct! Nitrates and nitrites often come from animal poop or fertilizer used on farms. Rain can wash these into rivers and lakes, which can hurt water quality.
 
-Which metals are we detecting with the Heavy Metals test?
+Which metals are we checking for in the heavy metals test?
 Copper and Iron
 Silver and Gold
 Lead and Chromium
 3
-Correct! These metals are higher on the periodic table and can have very adverse affects for not only humans, but any living organisms that use the water regularly.
+Correct! We check for metals like lead and chromium because they can be dangerous to people, animals, and plants if there’s too much.
 
-Which water quality parameter can be affected by sunlight and time of year?
-Nitrates/Nitrites
-TDS
+Which part of water quality can change with the seasons or sunlight?
+Nitrates and Nitrites
+TDS (Total Dissolved Solids)
 Temperature
 3
-Correct! The water can absorb sunlight and be affected by the ambient temperature of the environment around it.
+Correct! Water temperature goes up in the summer and down in the winter. It also changes if the water is in the sun or shade.
 
 Did you have fun?
 Yes
 No
 grrr
 1
-I'm glad you had fun! The more you know, the better we can protect our water. Keep testing, keep learning, and always stay curious! 
+I'm glad you had fun! The more you know, the better we can protect our water. Keep testing, keep learning, and always stay curious!
