@@ -1,9 +1,16 @@
 What is the main source of water on Earth? 
 Rivers and Lakes  
 The Moon  
-The Ground  
+Squirtle 
 1
 Correct! Water from rivers and lakes serves as the primary source for drinking water and other uses!! 
+
+Why is clear water better for underwater plants?
+Sunlight can reach them
+Spawns dolphins in Minecraft
+Mario can breathe underwater
+1
+Correct! Clear water helps sunlight reach plants, which they need to grow and produce oxygen for animals too.
 
 What can pollute our water?  
 Rain 
@@ -24,7 +31,14 @@ A dishwasher
 A water treatment plant 
 Leaving it out in the sun 
 2
-Correct! A water treatment plant cleans the water by removing harmful stuff, so it’s safe to use again for things like drinking, cleaning, or going back into nature.
+Correct! A water treatment plant cleans dirty water so it’s safe to drink, use, or return to nature.
+
+What might happen if water gets too warm?
+Fish can get stressed or sick
+It turns into a lava block
+Mario gets power-ups
+1
+Correct! Warmer water holds less oxygen and can make it harder for fish and other animals to survive.
 
 Which of these is a sign that water is polluted? 
 It smells bad and looks dirty  
@@ -33,33 +47,40 @@ It feels cold
 1
 Correct! Polluted water can smell gross or look cloudy because it might have chemicals, trash, or even germs in it.
 
-why do we test for turbidity in water?
-It means the water is polluted
-How fast the water is moving
-It tells us how clear the water is
+why do we test turbidity in water?
+To find an Infinity Stone
+To check for bubbles
+To check for water clarity
 3
-Correct! Turbidity is how cloudy the water is. Clear water helps sunlight reach underwater plants and is better for fish and other animals.
+Correct! Turbidity tells us how clear or cloudy the water is. Clear water helps plants grow and keeps animals healthy.
 
 What does pH test in water?
 How deep the water is
 How basic or acidic the water is
-How clean the water is
+If there’s lava nearby
 2
-Correct! The pH test sees how high or low the water is on the pH scale. With lower numbers being more acidic and higher numbers being more basic.
+Correct! The pH scale tells us if water is acidic (like lemon juice) or basic (like soap). Balanced pH is better for living things.
+
+What does TDS stand for?
+Total Donut Supply
+Total Dissolved Solids
+Totally Disgusting Stuff
+2
+Correct! TDS means Total Dissolved Solids — tiny things like minerals and salts that are dissolved in water. Some are okay, but too much can be a problem.
 
 What can high levels of nitrates and nitrites in water mean?
-There’s poop or fertilizer in the water
+It might have poop in it
 The water is very clean
 The water has a lot of fish
 1
-Correct! Nitrates and nitrites often come from animal poop or fertilizer used on farms. Rain can wash these into rivers and lakes, which can hurt water quality.
+Correct! Nitrates and nitrites often come from animal waste or fertilizer, which can get into water from farm runoff.
 
-Which metals are we checking for in the heavy metals test?
-Copper and Iron
+Which metal(s) are we checking for in the heavy metals test?
+Vibranium 
 Silver and Gold
 Lead and Chromium
 3
-Correct! We check for metals like lead and chromium because they can be dangerous to people, animals, and plants if there’s too much.
+Correct! We check for metals like lead and chromium because too much of them can be harmful to people, animals, and the environment.
 
 Which part of water quality can change with the seasons or sunlight?
 Nitrates and Nitrites
@@ -67,6 +88,13 @@ TDS (Total Dissolved Solids)
 Temperature
 3
 Correct! Water temperature goes up in the summer and down in the winter. It also changes if the water is in the sun or shade.
+
+What can happen if there’s too much algae in the water?
+It gives XP like in Minecraft
+It blocks sunlight and uses up oxygen
+Bowser eats it
+2
+Correct! Algae blooms can block sunlight from plants and take oxygen from fish — not very super!
 
 Did you have fun?
 Yes
