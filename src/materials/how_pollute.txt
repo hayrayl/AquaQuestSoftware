@@ -4,6 +4,9 @@ Welcome, friend! We’re about to learn what pollutes our water — and how we c
 images/background/Farm_Pesticides.png
 Fertilizers and Pesticides:\nHere in Indiana, farms are a big part of our land — from cornfields to soybean patches. Farmers use fertilizers to help crops grow and pesticides to keep bugs away. But when it rains, those chemicals can wash off the fields and into nearby creeks, rivers, and lakes. That can make the water unsafe for fish, turtles like me, and plants trying to grow downstream.
 
+images/background/Farm_Pesticides.png
+Snappy Fun Fact:\nDid you know fertilizer is often made from poop? Yep — animal waste and other nutrients help crops grow, but when it rains, that poop can wash into the water and cause problems. So next time you see a farm field after a storm… just imagine what’s floating downstream!
+
 images/background/plastic.png
 Plastic Trash:\nPlastic items — like bottles, straws, and snack wrappers — sometimes get tossed on the ground or blown out of trash cans. Eventually, they can end up in places like the Wabash River or Eagle Creek. Since plastic doesn’t break down easily, it can float around for a long time and hurt animals that mistake it for food — I once saw a raccoon try to eat a chip bag. Not pretty.
 
