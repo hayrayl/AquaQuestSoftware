@@ -62,7 +62,7 @@ class Ui_How_Pollute(object):
         self.archie.setScaledContents(False)
         self.archie.setObjectName("archie")
         self.label_explanation = QtWidgets.QLabel(How_Pollute)
-        self.label_explanation.setGeometry(QtCore.QRect(410, 20, 561, 321))
+        self.label_explanation.setGeometry(QtCore.QRect(410, 20, 561, 391))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
         font.setPointSize(20)
