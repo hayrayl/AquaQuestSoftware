@@ -23,13 +23,13 @@ def simulation_explanation_change(label, color):
 def slider(slider):
     slider.setStyleSheet("""
         QSlider::groove:vertical {
-            background: black;  /* Change this to your desired color */
-            width: 20px;  /* Adjust the width of the pole */
+            background: #45C6E1;  /* Change this to your desired color */
+            width: 12px;  /* Adjust the width of the pole */
         }
 
         QSlider::handle:vertical {
-            background: orange;  /* Change this to your desired color */
-            border: 5px solid black;
+            background: #E36800;  /* Change this to your desired color */
+            border: 5px solid #45C6E1;
             height: 80px;  /* Adjust the height of the slider handle */
             width: 25px;  /* Adjust the width of the slider handle */
             margin: -30px;  /* Move the slider handle in/out */
