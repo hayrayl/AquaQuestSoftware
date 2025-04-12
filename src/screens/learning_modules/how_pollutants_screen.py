@@ -100,13 +100,12 @@ class HowPolluteScreen(QtWidgets.QWidget, Ui_How_Pollute):
 
             with open(file_path, 'r') as file:
                 content = file.read().strip().split('\n\n')  # Split by double newlines to separate question blocks
-                formatted_content = [line.replace('\\n', '\n') for line in content]
 
             topics = []
-            for block in formatted_content:
+            for block in content:
                 lines = block.strip().split('\n')
                 screen = lines[0]
-                explanation = lines[1]
+                explanation = lines[1].replace('\\n', '\n')
                 topics.append((screen, explanation))
 
             return topics
