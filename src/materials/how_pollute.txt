@@ -1,14 +1,14 @@
 images/background/First_Last.png
-Welcome! We are going to learn about what pollutes our water! Join me on a walk around town! 
+Welcome, friend! We’re about to learn what pollutes our water — and how we can help keep it clean. Come take a stroll with me through our town right here in Indiana, and I’ll show you what to look out for!
 
 images/background/Farm_Pesticides.png
-Fertilizers and Pesticides:\nFarmers use fertilizers to help their crops grow and pesticides to keep bugs away. When it rains, these chemicals can wash into rivers and lakes, making the water dirty and unsafe for fish and plants.
+Fertilizers and Pesticides:\nHere in Indiana, farms are a big part of our land — from cornfields to soybean patches. Farmers use fertilizers to help crops grow and pesticides to keep bugs away. But when it rains, those chemicals can wash off the fields and into nearby creeks, rivers, and lakes. That can make the water unsafe for fish, turtles like me, and plants trying to grow downstream.
 
 images/background/plastic.png
-Plastic Trash:\nMany plastic items, like straws, bottles, and bags, end up in the water. Plastic doesn't break down easily, so it stays in the water for a long time and can hurt animals that mistake it for food.
+Plastic Trash:\nPlastic items — like bottles, straws, and snack wrappers — sometimes get tossed on the ground or blown out of trash cans. Eventually, they can end up in places like the Wabash River or Eagle Creek. Since plastic doesn’t break down easily, it can float around for a long time and hurt animals that mistake it for food — I once saw a raccoon try to eat a chip bag. Not pretty.
 
 images/background/factories.png
-Chemicals from Factories:\nFactories sometimes use chemicals to make things like clothes, paper, and other products. When these chemicals aren't disposed of properly, they can get into rivers and lakes.
+Chemicals from Factories:\nIndiana has lots of factories that make things like cars, paper, and food packaging. Sometimes, these factories use strong chemicals during the process. If those chemicals aren’t thrown away properly, they can sneak into the water and cause big problems for the environment — even far from where they started.
 
 images/background/First_Last.png
-That is all we have for today! Remember to recycle and keep our waters clean! 
+That is all we have for today! Remember to recycle, pick up trash, and help keep Indiana’s rivers, lakes, and ponds clean — from the Wabash to Tippecanoe. Every little bit helps our water and the creatures (like me!) who call it home.
