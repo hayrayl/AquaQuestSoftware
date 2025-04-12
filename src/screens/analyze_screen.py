@@ -86,7 +86,6 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
         utils.text_blue(self.label_title)
         utils.text_blue(self.label_explanation_side)
-        utils.text_blue(self.label_image)
         utils.blue_background_White_text(self.pushButton_back)
         utils.blue_background_White_text(self.pushButton_next)
         utils.blue_background_White_text(self.pushButton_previous)

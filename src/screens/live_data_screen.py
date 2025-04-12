@@ -66,16 +66,16 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("pH Calibration 10.01","Hold the sensor in the 10.01 buffer solution and press next.", partial(self.image_explanation,file="ph_1001_sensor.png")),
             ("pH Calibration 10.01", "", partial(self.read_sensor, function= self.sensorRead.get_cal_ph, measurement = 'Voltage', unit='V')),
 
-            (None,"You can now remove the sensor from the solution and put the lid back on the 7.00 buffer solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"You can now remove the sensor from the solution and put the lid back on the 10.01 buffer solution.", partial(self.image_explanation,file="ph_remove.png")),
             (None,"Dip pH sensor into clean water and dry with a paper towel", partial(self.image_explanation,file="ph_clean.png")),
             
             ("pH Calibration","You have successfully calibrated the pH probe! Nice work! Now we are ready to measure the pH!!", partial(self.only_explanation)),
             
             ("pH","Hold the pH sensor in the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="ph_test.png")),
             ("pH", "", partial(self.read_sensor, function= self.sensorRead.get_ph, measurement = 'pH', unit=None)),
-            (None,"Great work! You can now remove the sensor from the solution.", partial(self.image_explanation,file="ph_remove.png")),
+            (None,"Great work! You can now remove the sensor from the water sample.", partial(self.image_explanation,file="ph_remove.png")),
             (None,"Dip pH sensor into clean water and dry with a paper towel.", partial(self.image_explanation,file="ph_clean.png")),
-            (None,"You just tested for pH! Put the part with the storage solution back on to keep the sensor safe then we will move onto temperature!", partial(self.only_explanation)),
+            (None,"You just tested for pH! Put the part with the storage solution back on. This keeps the sensor safe. Now we will move onto temperature!", partial(self.only_explanation)),
 
             ("Temperature","Find the temperature probe like the one in the picture!", partial(self.image_explanation,file="temp_probe.png")),
             ("Temperature","Hold the metal temperature probe into the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="temp_probe.png")),
@@ -86,7 +86,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Turbidity","Next up is Turbidity!\nFind the turbidity sensor shown in the image", partial(self.image_explanation,file="turb_1.png")),
             ("Turbidity","Hold the turbidity sensor in the water sample with the pegs on the edge of the beaker. Select \"next\" to start collecting data!", partial(self.image_explanation,file="turb_2.png")),
             ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
-            (None,"Yay! Turbidity has been collected you may remove the sensor!", partial(self.image_explanation,file="temp_probe.png")),
+            (None,"Yay! Turbidity has been collected. You may remove the sensor!", partial(self.image_explanation,file="turb_2.png")),
             (None,"Make sure to dip the sensor in the clean water and dry it off! It is important to take care of our equiptment!", partial(self.image_explanation,file="clean.png")),
             
             
@@ -105,11 +105,11 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Setup Complete","Great Job! Setup is done! This will be used to submerge the test strips!!", partial(self.image_explanation,file="strip_setup.png")),
 
             ("Nitrates/Nitrites","Open the Nitrate/Nitrite bottle and grab out one of the test strips", partial(self.image_explanation,file="nitrate_bottle.jpg")),
-            ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nn_strip.png")),
-            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
-            ("Heavy Metal","Now for the next test strip! Open the Heavy Metals Test Strip bottle and grab out one of the test strips", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
-            ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="hm_strip.png")),
-            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
+            ("Nitrates/Nitrites","Hold the test strip in the water\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nn_strip.png")),
+            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strip" ,partial(self.countdown_30)),
+            ("Heavy Metal","Now for the next test strip! Open the Heavy Metals Test Strip bottle and grab one", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
+            ("Heavy Metals","Hold the test strip in the water\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="hm_strip.png")),
+            ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strip" ,partial(self.countdown_30)),
             ("Well Done!","This completes the testing! Are you ready to see the results?!", partial(self.go_to_testing_strips, file= None)),
             
             # To 
@@ -237,7 +237,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_image.setText(f'{value} seconds')
 
     def timer_end(self):
-        self.label_explanation_side.setText("Now you can start comparing the colors on the test stip to the color chart on the bottle!")
+        self.label_explanation_side.setText("Now you can start comparing the colors on the test strip to the color chart on the bottle!")
         utils.new_image(image=self.label_image, file="compare_color.png")
         self.pushButton_bottom.show()
 
