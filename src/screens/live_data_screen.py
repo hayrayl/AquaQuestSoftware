@@ -81,25 +81,34 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Temperature","Hold the metal temperature probe into the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="temp_probe.png")),
             ("Temperature", "", partial(self.read_sensor, function= self.sensorRead.get_temperature, measurement = 'Temperature', unit='°F')),
             (None,"Nice! Temperature has been collected you may remove the temperatuer probe!", partial(self.image_explanation,file="temp_probe.png")),
-            (None,"You just tested for temperature! Make sure to dip the temperature probe in the clean water and dry it off! It is important to take care of our equiptment!", partial(self.only_explanation)),
+            (None,"Now we must clean our sensor! To clean it, dip it in the clean water and dry it off.", partial(self.image_explanation,file="clean.png")),
             
-            ("Turbidity","Next up is Turbidity!\nPlace the turbidity sensor in the water and select next to start reading", partial(self.image_explanation,file="turbidity.jpg")),
+            ("Turbidity","Next up is Turbidity!\nFind the turbidity sensor shown in the image", partial(self.image_explanation,file="turb_1.png")),
+            ("Turbidity","Hold the turbidity sensor in the water sample with the pegs on the edge of the beaker. Select \"next\" to start collecting data!", partial(self.image_explanation,file="turb_2.png")),
             ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-            ("Total Dissolved Solids - TDS","Remove cover from the TDS sensor to expose metal prongs. Place the TDS sensor into the water and select next to start reading", partial(self.image_explanation,file="tds.jpg")),
-            ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-
+            (None,"Yay! Turbidity has been collected you may remove the sensor!", partial(self.image_explanation,file="temp_probe.png")),
+            (None,"Make sure to dip the sensor in the clean water and dry it off! It is important to take care of our equiptment!", partial(self.image_explanation,file="clean.png")),
             
-            (None,"Rinse probe in the Clean Water and paper towel dry", partial(self.image_explanation,file="clean.jpg")),
-
+            
+            ("Total Dissolved Solids - TDS","Our last sensor is for TDS! Remove cover from the TDS sensor to expose metal prongs.", partial(self.image_explanation,file="tds_2.png")),
+            ("Total Dissolved Solids - TDS","Hold the metal prongs in the water sample and select \"next\" to start collecting data!", partial(self.image_explanation,file="tds_1.png")),
+            ("TDS", "", partial(self.read_sensor, function= self.sensorRead.get_tds, measurement = 'TDS', unit='ppm')),
+            (None,"TDS has been collected, you may remove it from the water! That was the last sensor!", partial(self.image_explanation,file="tds_1.png")),
+            (None,"Time to clean the sensor and dry it off! Remember to put the cover back on the metal prongs!", partial(self.image_explanation,file="clean.png")),
+            
             ("Test Strips","Another way to test water is using things called test strips. These test strips are like detectives, they look for clues in water to find out if there are any \"bad guys\" like heavy metals (lead, mercury, etc.) or nitrates/nitrites.", partial(self.only_explanation)),
-            ("Test Strips Setup","Pour the water sample collected into the test tube on the side of the testing tray. We need to use the test tube to dip the test strips in the water completely.", partial(self.image_explanation,file="test_tube_strips.jpg")),
+            ("Test Strips Setup","We will use the test tube to completely submerge the test strips in the water!", partial(self.image_explanation,file="setup_tube.png")),
+
+            ("Test Strips Setup","To fill the test tube, we need to grab a pipette", partial(self.image_explanation,file="pipette.png")),
+            ("Test Strips Setup","Fill the pipette with the water sample", partial(self.image_explanation,file="pipette_fill.png")),
+            ("Test Strips Setup","Empty the pipette into the test tube up to the fill line!", partial(self.image_explanation,file="pipette_empty.png")),
+            ("Setup Complete","Great Job! Setup is done! This will be used to submerge the test strips!!", partial(self.image_explanation,file="strip_setup.png")),
+
             ("Nitrates/Nitrites","Open the Nitrate/Nitrite bottle and grab out one of the test strips", partial(self.image_explanation,file="nitrate_bottle.jpg")),
-            ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nitrate_bottle.jpg")),
+            ("Nitrates/Nitrites","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="nn_strip.png")),
             ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
             ("Heavy Metal","Now for the next test strip! Open the Heavy Metals Test Strip bottle and grab out one of the test strips", partial(self.go_to_testing_strips, file= "heavy_metal_bottle.png")),
-            ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="heavy_metal_bottle.png")),
+            ("Heavy Metals","Fully submerge the test strip into the water in the test tube\n\nCount to 2!!\n\nRemove test strip from the water", partial(self.image_explanation,file="hm_strip.png")),
             ("Wait","We need to wait 30 seconds to allow the colors to come through and show the results on the test strips" ,partial(self.countdown_30)),
             ("Well Done!","This completes the testing! Are you ready to see the results?!", partial(self.go_to_testing_strips, file= None)),
             
