@@ -12,3 +12,15 @@ Protecting Animals and Plants! Many creatures live in lakes, rivers, and ponds. 
 
 images/background/treatment_plant.png
 Safe Drinking Water! We need fresh water to drink and stay healthy. Testing helps us know if water is clean or if it needs to be treated before we use it. Treatment plants are used to make the water safe to use!
+
+images/background/find_pollutants.png
+Spot Problems Early! Pollution can sneak into water from farms, factories, or cities. Testing helps us find these problems before they hurt animals, people, or the environment.
+
+images/background/kids_playing.png
+Keep Water Fun and Safe! We swim, play, and splash in water. Testing ensures it’s safe for play and free from things that might make us sick.
+
+images/background/kid_wildlife.png
+Testing fresh water is like being a water protector, ensuring it stays clean, safe, and healthy for everyone.By checking its temperature, clarity, and contents, we can keep animals thriving, ecosystems balanced, and people safe. 
+
+images/background/kid_wildlife.png
+Every test helps us solve the mystery of what’s in the water, making sure it’s ready for drinking, playing, and supporting life. Together, we can take care of this precious resource and protect it for the future!
