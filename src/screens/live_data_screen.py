@@ -160,7 +160,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
         self.label_explanation_middle.setText(f'Reading {parameter}: {value:.1f}{units}')
 
     def show_next_button(self, value, parameter, units):
-        self.label_title.setText(f'{parameter}: {value:.1f}{units}')
+        self.label_title.setText(f'{parameter}: {value:.1f} {units}')
         self.label_explanation_middle.setText(f"{parameter} Collection Complete!")
         if parameter == "Voltage":
             print("We are in the show_next_button under voltage")
@@ -247,12 +247,12 @@ class SensorReaderThread(QThread):
     def get_temp(self):
         readings = []
         start_time = time.time()
-        while (time.time() - start_time) < 10:
+        while (time.time() - start_time) < 12:
             value = self.read_function()
             readings.append(value)
             self.value_signal.emit(value, self.parameter, self.units)
             time.sleep(1)
-        final_value = sum(readings[-5:]) / 5
+        final_value = readings[-1]
         return final_value
         # self.finished_signal.emit(final_value, self.parameter, self.units)
 

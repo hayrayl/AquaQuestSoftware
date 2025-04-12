@@ -63,7 +63,8 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
         txt = ""
         for key in keys: 
-            txt += f'{key}: {self.collected_data[key]} {self.units[key]}\n'
+            value = float(self.collected_data[key])
+            txt += f'{key}: {value:.1f} {self.units[key]}\n'
 
         self.label_explanation_side.setText(txt[:-1])
 
