@@ -101,6 +101,7 @@ class QuizScreen(QtWidgets.QWidget, Ui_quiz_ui):
             self.label_Q_results.setText("Incorrect. Try again! You've got this!")
             self.label_Q_results.adjustSize()
             utils.archie_sampling_nervous(self.archie)
+            self.pushButton_Q_next.hide()
 
     def next(self):
         print("Next button")

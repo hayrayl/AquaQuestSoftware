@@ -9,6 +9,7 @@ from screens.learning_modules.classroom_screen import ClassroomScreen
 from screens.learning_modules.how_pollutants_screen import HowPolluteScreen
 from screens.test_strips_screen import TestStripScreen
 from screens.analyze_screen import AnalyzeScreen
+from screens.intro_screen import IntroScreen
 
 
 # Index for which screen: 
@@ -37,6 +38,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.howPollute_screen = HowPolluteScreen(self)
         self.test_strip_screen = TestStripScreen(self)
         self.analyze_data_screen = AnalyzeScreen(self)
+        self.intro_screen = IntroScreen(self)
         
         self.stackedWidget.addWidget(self.home_screen)          # 0
         self.stackedWidget.addWidget(self.simulation_screen)    # 1
@@ -47,8 +49,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stackedWidget.addWidget(self.howPollute_screen)    # 6 
         self.stackedWidget.addWidget(self.test_strip_screen)    # 7 
         self.stackedWidget.addWidget(self.analyze_data_screen)  # 8
+        self.stackedWidget.addWidget(self.intro_screen)         # 9 
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(9)
 
         self.resize(1024,538) # setting the size of the screen 
         self.setMaximumSize(1024,538)

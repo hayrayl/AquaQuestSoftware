@@ -342,10 +342,10 @@ class SensorReaderThread(QThread):
         print("default function")
 
     def count_30(self):
-        count = 4 
+        count = 30 
         while count > 0:
             self.timer_signal.emit(count)
-            time.sleep(0.5)
+            time.sleep(1)
             count -= 1
         self.timer_finished.emit()
 

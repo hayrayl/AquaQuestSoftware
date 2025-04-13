@@ -44,10 +44,14 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
 
     def pb_next(self):
         self.count = 1
+        self.pushButton_next.hide()
+        self.pushButton_previous.show()
         self.display_data()
 
     def pb_previous(self):
         self.count = 0
+        self.pushButton_next.show()
+        self.pushButton_previous.hide()
         self.display_data()
 
     def display_data(self):
