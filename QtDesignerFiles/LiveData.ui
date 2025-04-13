@@ -131,7 +131,7 @@
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>22</pointsize>
+     <pointsize>24</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -140,7 +140,7 @@
     <number>-3</number>
    </property>
    <property name="text">
-    <string>SIDE</string>
+    <string>side</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

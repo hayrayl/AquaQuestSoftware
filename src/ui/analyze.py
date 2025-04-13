@@ -59,7 +59,7 @@ class Ui_analyze_data(object):
         self.label_explanation_side.setGeometry(QtCore.QRect(50, 120, 500, 320))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(22)
+        font.setPointSize(24)
         font.setBold(False)
         font.setWeight(50)
         self.label_explanation_side.setFont(font)
