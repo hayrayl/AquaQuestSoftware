@@ -25,8 +25,9 @@ class IntroScreen(QtWidgets.QWidget, Ui_Form):
         self.parentWidget().setCurrentIndex(0)  
 
     def design_setup(self):
-        utils.water_background(self.background)
+        utils.set_background(self.background)
 
         utils.text_blue(self.label_explanation)
+        utils.archie_arm_out(self.archie)
         utils.blue_background_White_text(self.pushButton_bottom)
         
