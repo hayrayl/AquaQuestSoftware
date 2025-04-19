@@ -36,7 +36,7 @@ class Ui_Form(object):
         self.label_explanation.setGeometry(QtCore.QRect(380, 30, 601, 401))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(19)
+        font.setPointSize(17)
         font.setBold(False)
         font.setWeight(50)
         self.label_explanation.setFont(font)

@@ -182,7 +182,10 @@ class TestStripScreen(QtWidgets.QWidget, Ui_test_strip):
     
     # return back to the live data section 
     def go_to_live_data(self):
-        self.parentWidget().setCurrentIndex(2)  # Use parentWidget() to refer to QStackedWidget
+        if self.count < 4:
+            self.update_screen()
+        else: 
+            self.parentWidget().setCurrentIndex(7)  # Use parentWidget() to refer to QStackedWidget
     
     def design_setup(self):
         utils.water_background(self.background)

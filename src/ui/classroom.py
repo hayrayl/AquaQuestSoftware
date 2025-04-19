@@ -55,7 +55,7 @@ class Ui_Classroom(object):
         self.label_chalkboard.setGeometry(QtCore.QRect(390, 130, 461, 201))
         font = QtGui.QFont()
         font.setFamily("Cooper Black")
-        font.setPointSize(16)
+        font.setPointSize(14)
         font.setBold(False)
         font.setWeight(50)
         self.label_chalkboard.setFont(font)

@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from screens.home_screen import HomeScreen  
 from screens.simulation_screen import SimulationScreen 
 from screens.learning_screen import LearningScreen
-from screens.live_data_screen import LiveDataScreen
+# from screens.live_data_screen import LiveDataScreen
 from screens.quiz_screen import QuizScreen
 from screens.learning_modules.classroom_screen import ClassroomScreen
 from screens.learning_modules.how_pollutants_screen import HowPolluteScreen
@@ -31,7 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.home_screen = HomeScreen(self)
         self.simulation_screen = SimulationScreen(self)
-        self.live_data_screen = LiveDataScreen(self)
+        # self.live_data_screen = LiveDataScreen(self)
         self.quiz_screen = QuizScreen(self)
         self.learning_screen = LearningScreen(self)
         self.classroom_screen = ClassroomScreen(self)
@@ -42,16 +42,18 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.stackedWidget.addWidget(self.home_screen)          # 0
         self.stackedWidget.addWidget(self.simulation_screen)    # 1
-        self.stackedWidget.addWidget(self.live_data_screen)     # 2
+        # self.stackedWidget.addWidget(self.live_data_screen)     # 2
+        self.stackedWidget.addWidget(self.test_strip_screen)    # 2 
+
         self.stackedWidget.addWidget(self.quiz_screen)          # 3
         self.stackedWidget.addWidget(self.learning_screen)      # 4
         self.stackedWidget.addWidget(self.classroom_screen)     # 5 
         self.stackedWidget.addWidget(self.howPollute_screen)    # 6 
-        self.stackedWidget.addWidget(self.test_strip_screen)    # 7 
-        self.stackedWidget.addWidget(self.analyze_data_screen)  # 8
-        self.stackedWidget.addWidget(self.intro_screen)         # 9 
+        
+        self.stackedWidget.addWidget(self.analyze_data_screen)  # 7
+        self.stackedWidget.addWidget(self.intro_screen)         # 8 
 
-        self.stackedWidget.setCurrentIndex(9)
+        self.stackedWidget.setCurrentIndex(8)
 
         self.resize(1024,538) # setting the size of the screen 
         self.setMaximumSize(1024,538)
@@ -64,11 +66,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def get_teststrip_results(self):
         return self.test_strip_screen.get_results()
     
-    def get_sensor_results(self):
-        return self.live_data_screen.get_collected_data()
+    # def get_sensor_results(self):
+    #     return self.live_data_screen.get_collected_data()
 
-    def get_is_collection_complete(self):
-        return self.live_data_screen.get_data_bool()
+    # def get_is_collection_complete(self):
+    #     return self.live_data_screen.get_data_bool()
     
     def get_learning_module(self):
         return self.learning_screen.get_learning_module()

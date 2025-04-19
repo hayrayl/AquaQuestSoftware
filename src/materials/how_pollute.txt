@@ -1,17 +1,17 @@
 images/background/First_Last.png
-We’re about to learn what pollutes our water — and how we can help keep it clean. Come take a stroll with me through our town right here in Indiana, and I’ll show you what to look out for!
+We are about to learn what pollutes our water, and how we can help keep it clean. Come take a stroll with me through our town right here in Indiana, and I will show you what to look out for!
 
 images/background/Farm_Pesticides.png
-Fertilizers and Pesticides:\nHere in Indiana, farms are everywhere — full of corn, soybeans, and more. Farmers use fertilizer and bug spray to help crops grow, but when it rains, those chemicals can wash into rivers and lakes. That can make the water unsafe for fish, plants, and turtles like me.
+Fertilizers and Pesticides:\nHere in Indiana, farms are everywhere; full of corn, soybeans, and more. Farmers use fertilizer and bug spray to help crops grow, but when it rains, those chemicals can wash into rivers and lakes. That can make the water unsafe for fish, plants, and turtles like me.
 
 images/background/Farm_Pesticides.png
-Snappy Fun Fact:\nDid you know fertilizer is often made from poop? Yep — animal waste and other nutrients help crops grow, but when it rains, that poop can wash into the water and cause problems. So next time you see a farm field after a storm… just imagine what’s floating downstream!
+Snappy Fun Fact:\nDid you know fertilizer is often made from poop? Yep, animal waste and other nutrients help crops grow, but when it rains, that poop can wash into the water and cause problems. So next time you see a farm field after a storm... just imagine what is floating downstream!
 
 images/background/plastic.png
-Plastic Trash:\nPlastic like bottles and wrappers can blow out of trash cans and end up in places like the Wabash River. Since plastic doesn’t break down, it can float around for years — and animals might mistake it for food. I once saw a raccoon try to eat a chip bag. Yikes.
+Plastic Trash:\nPlastic like bottles and wrappers can blow out of trash cans and end up in places like the Wabash River. Since plastic doesn’t break down, it can float around for years, and animals might mistake it for food. I once saw a raccoon try to eat a chip bag. Yikes.
 
 images/background/factories.png
 Chemicals from Factories:\nIndiana has factories that make things like cars and paper, and some use strong chemicals. If those chemicals aren’t handled right, they can sneak into rivers and cause big problems for the environment.
 
 images/background/First_Last.png
-That is all we have for today! Remember to recycle, pick up trash, and help keep Indiana’s rivers, lakes, and ponds clean. Every little bit helps our water and the creatures (like me!) who call it home.
+That is all we have for today! Remember to recycle, pick up trash, and help keep Indiana rivers, lakes, and ponds clean. Every little bit helps our water and the creatures (like me!) who call it home.

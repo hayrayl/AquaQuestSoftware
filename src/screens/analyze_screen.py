@@ -75,7 +75,13 @@ class AnalyzeScreen(QtWidgets.QWidget, Ui_analyze_data):
     def get_collected_data(self):
     # Use self.parentWidget() to access the MainWindow
     # Use self.main_window to access MainWindow methods
-        sensor_data = self.main_window.get_sensor_results()
+        # sensor_data = self.main_window.get_sensor_results()
+        sensor_data = {
+            "Temperature": 63.4,
+            'Turbidity': 34.7,
+            'TDS': 1534.7,
+            'pH': 7.6,
+        }
         strips_data = self.main_window.get_teststrip_results()
         self.collected_data = {**sensor_data, **strips_data}
         print(f'\nCollected Data:\n{self.collected_data}')

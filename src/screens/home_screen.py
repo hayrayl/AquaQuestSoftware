@@ -26,10 +26,12 @@ class HomeScreen(QtWidgets.QWidget, Ui_Home_ui):
         self.parentWidget().setCurrentIndex(1)  # Use parentWidget() to refer to QStackedWidget
 
     def go_to_live_data(self):
-        if self.main_window.get_is_collection_complete():
-            self.parentWidget().setCurrentIndex(8)
-        else:
-            self.parentWidget().setCurrentIndex(2)
+        self.parentWidget().setCurrentIndex(2)
+        
+        # if self.main_window.get_is_collection_complete():
+        #     self.parentWidget().setCurrentIndex(8)
+        # else:
+        #     self.parentWidget().setCurrentIndex(2)
     
     def go_to_quiz(self):
         self.parentWidget().setCurrentIndex(3)
