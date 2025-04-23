@@ -123,7 +123,7 @@
    <property name="font">
     <font>
      <family>Cooper Black</family>
-     <pointsize>16</pointsize>
+     <pointsize>22</pointsize>
     </font>
    </property>
    <property name="text">
@@ -162,7 +162,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_S_HeavyMetals">
+     <widget class="QPushButton" name="pushButton_S_TDS">
       <property name="font">
        <font>
         <family>Cooper Black</family>
@@ -172,7 +172,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Heavy Metals</string>
+       <string>TDS</string>
       </property>
      </widget>
     </item>
