@@ -21,11 +21,21 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
 
         self.pushButton_back.clicked.connect(self.go_back)
 
+        self.thresholds, self.value_ranges = self.load_thresholds()
+
+        self.current_param = "temperature"
+
         # Connect buttons to their respective functions
         self.pushButton_S_Temperature.clicked.connect(self.show_temperature)
         self.pushButton_S_Ph.clicked.connect(self.show_ph)
         self.pushButton_S_Turbidity.clicked.connect(self.show_turbidity)
-        self.pushButton_S_HeavyMetals.clicked.connect(self.show_heavyMetals)
+        self.pushButton_S_TDS.clicked.connect(self.show_tds)
+        self.pushButton_S_Nitrite.clicked.connect(self.show_nitrite)
+        self.pushButton_S_Mercury.clicked.connect(self.show_mercury)
+
+
+        # connect the slider movement 
+        self.sim_slider.valueChanged.connect(self.update_slider_value)
 
         # Initialize the simulation by showing temperature
         self.show_temperature()
@@ -38,10 +48,12 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
         utils.text_blue(self.label_S_sliderValue)
 
         utils.blue_background_White_text(self.pushButton_back)
-        utils.blue_background_White_text(self.pushButton_S_HeavyMetals)
+        utils.blue_background_White_text(self.pushButton_S_TDS)
         utils.blue_background_White_text(self.pushButton_S_Ph)
         utils.blue_background_White_text(self.pushButton_S_Temperature)
         utils.blue_background_White_text(self.pushButton_S_Turbidity)
+        utils.blue_background_White_text(self.pushButton_S_Mercury)
+        utils.blue_background_White_text(self.pushButton_S_Nitrite)
 
         self.label_S_explanation.setWordWrap(True)
         utils.blue_background_White_text(self.label_S_explanation)
@@ -49,137 +61,125 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
     def go_back(self):
         self.parent().setCurrentIndex(0)  # Assuming the main screen is at index 0 in the QStackedWidget
 
+
     def show_temperature(self):
+        self.current_param = "temperature"
         self.label_S_CurrentSimulating.setText("Temperature:")
         self.label_S_CurrentSimulating.adjustSize()
-        try:
-            self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
-        except TypeError:
-            pass  # Ignore if no connection exists
-        self.sim_slider.valueChanged.connect(self.update_temperature)
-        self.update_temperature(self.sim_slider.value())  # Update immediately to reflect current value
+        self.update_slider_value(self.sim_slider.value())
 
     def show_ph(self):
+        self.current_param = "pH"
         self.label_S_CurrentSimulating.setText("Ph:")
         self.label_S_CurrentSimulating.adjustSize()
-        try:
-            self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
-        except TypeError:
-            pass  # Ignore if no connection exists
-        self.sim_slider.valueChanged.connect(self.update_ph)
-        self.update_ph(self.sim_slider.value())  # Update immediately to reflect current value
+        self.update_slider_value(self.sim_slider.value())
 
     def show_turbidity(self):
+        self.current_param = "turbidity"
         self.label_S_CurrentSimulating.setText("Turbidity:")
         self.label_S_CurrentSimulating.adjustSize()
+        self.update_slider_value(self.sim_slider.value())
+
+    def show_tds(self):
+        self.current_param = "tds"
+        self.label_S_CurrentSimulating.setText("TDS:")
         self.label_S_CurrentSimulating.adjustSize()
-        try:
-            self.sim_slider.valueChanged.disconnect()  # Disconnect any previous connections
-        except TypeError:
-            pass  # Ignore if no connection exists
-        self.sim_slider.valueChanged.connect(self.update_turbidity)
-        self.update_turbidity(self.sim_slider.value())  # Update immediately to reflect current value
-    
-    def show_heavyMetals(self):
-        self.label_S_CurrentSimulating.setText("Heavy Metals:")
+        self.update_slider_value(self.sim_slider.value())
+
+    def show_nitrite(self):
+        self.current_param = "nitrite"
+        self.label_S_CurrentSimulating.setText("Nitrite:")
         self.label_S_CurrentSimulating.adjustSize()
-        try:
-            self.sim_slider.valueChanged.disconnect()
-        except TypeError:
-            pass
-        self.sim_slider.valueChanged.connect(self.update_heavyMetals)
-        self.update_heavyMetals(self.sim_slider.value())
+        self.update_slider_value(self.sim_slider.value())
 
-    def update_temperature(self, value):
-        self.label_S_sliderValue.setText(f"{value} °F")
+    def show_mercury(self):
+        self.current_param = "mercury"
+        self.label_S_CurrentSimulating.setText("Mercury:")
+        self.label_S_CurrentSimulating.adjustSize()
+        self.update_slider_value(self.sim_slider.value())
 
-        if value < 32:
-            self.label_S_explanation.setText("Water is frozen and generally considered safe from bacterial contamination. However, other contaminants may still be present.")
-            self.border_darkblue()
-        elif 32 <= value <= 39:
-            self.label_S_explanation.setText("Water is cold. Bacterial growth is slow, but chemical contaminants may still be present.")
-            self.border_blue()
-        elif 40 <= value <= 60:
-            self.label_S_explanation.setText("Water is at a cool temperature. Some bacteria can start to grow, but contamination risk is moderate.")
-            self.border_green()
-        elif 61 <= value <= 75:
-            self.label_S_explanation.setText("Water is at a mild temperature. This is an optimal range for bacterial growth, and the risk of contamination increases.")
-            self.border_yellow()
-        elif 76 <= value <= 95:
-            self.label_S_explanation.setText("Water is warm. Bacterial and microbial contamination risk is high. Chemical contaminants may also be present.")
-            self.border_orange()
-        elif value > 95:
-            self.label_S_explanation.setText("Water is hot. Some bacteria may be killed at these temperatures, but others can thrive, and chemical contamination is still a concern.")
-            self.border_red()
+
+
+    # def update_slider_value(self, value):
+    #     param = self.current_param.lower()
+
+    #     # Convert value depending on parameter
+    #     if param == "pH":
+    #         scaled_value = value * 0.14
+    #         self.label_S_sliderValue.setText(f"{scaled_value:.1f} pH")
+    #     elif param == "turbidity":
+    #         scaled_value = int(value * 0.6)
+    #         self.label_S_sliderValue.setText(f"{scaled_value} NTU")
+    #     elif param == "tds":
+    #         scaled_value = int(value * 0.6)
+    #         self.label_S_sliderValue.setText(f"{scaled_value} ppm")
+    #     else:  # temperature
+    #         scaled_value = value
+    #         self.label_S_sliderValue.setText(f"{scaled_value} °F")
+
+    #     self.apply_threshold(param, scaled_value)
+
+    def update_slider_value(self, slider_value):
+        param = self.current_param.lower()
+
+        # Get min/max from thresholds
+        if param in self.value_ranges:
+            min_val, max_val = self.value_ranges[param]
         else:
-            self.label_S_explanation.setText("Water temperature is unknown.")
-            self.border_none()
-            
+            min_val, max_val = 0, 100  # fallback
 
-    def update_ph(self, value):
-        ph = value * 0.14  # Adjust according to your slider range
-        self.label_S_sliderValue.setText(f"{ph:.1f} pH")
+        # Scale slider (0–100) to true range
+        scaled_value = min_val + (slider_value / 100.0) * (max_val - min_val)
 
-        if ph < 3.0:
-            self.label_S_explanation.setText("Water is highly acidic. Unsafe for most aquatic life and can cause severe health issues.")
-            self.border_red()
-        elif 3.0 <= ph < 6.0:
-            self.label_S_explanation.setText("Water is acidic. Unsafe for many aquatic organisms and can cause irritation or health problems.")
-            self.border_orange()
-        elif 6.0 <= ph <= 8.5:
-            self.label_S_explanation.setText("Water is neutral. Safe for drinking and most aquatic life.")
-            self.border_green()
-        elif 8.5 < ph <= 12.0:
-            self.label_S_explanation.setText("Water is alkaline. May be unsafe for some aquatic life and can cause health issues.")
-            self.border_yellow()
-        elif ph > 12.0:
-            self.label_S_explanation.setText("Water is highly alkaline. Unsafe for most aquatic life and can cause severe health issues.")
-            self.border_red()
-        else:
-            self.label_S_explanation.setText("Water pH level is unknown.")
-            self.border_none()
+        # Format for display
+        if param == "ph":
+            self.label_S_sliderValue.setText(f"{scaled_value:.1f}")
+        elif param == "turbidity":
+            self.label_S_sliderValue.setText(f"{int(scaled_value)} NTU")
+        elif param == "tds":
+            self.label_S_sliderValue.setText(f"{int(scaled_value)} ppm")
+        elif param == "nitrite":
+            self.label_S_sliderValue.setText(f"{scaled_value:.3f} ppm")
+        elif param == "mercury":
+            self.label_S_sliderValue.setText(f"{scaled_value:.3f} mg/L")
+        else:  # temperature
+            self.label_S_sliderValue.setText(f"{scaled_value:.1f} °F")
 
-    def update_turbidity(self, value):
-        turbidity = int(value * 0.6)
+        
+        self.label_S_sliderValue.setMaximumWidth(420)  # Set a maximum width (adjust to your needs)
+        self.label_S_sliderValue.adjustSize()  # Resize within the constraints
 
-        self.label_S_sliderValue.setText(f"{turbidity} NTU")
+        self.apply_threshold(param, scaled_value)
 
-        if turbidity <= 5:
-            self.label_S_explanation.setText("Water is clear. Safe for drinking and most aquatic life.")
-            self.border_green()
-        elif 6 <= turbidity <= 25:
-            self.label_S_explanation.setText("Water is slightly cloudy. Generally safe but may affect some sensitive aquatic organisms.")
-            self.border_yellow()
-        elif 26 <= turbidity <= 50:
-            self.label_S_explanation.setText("Water is cloudy. Unsafe for drinking and may harm aquatic life.")
-            self.border_orange()
-        elif turbidity > 50:
-            self.label_S_explanation.setText("Water is very cloudy. Unsafe for drinking and harmful to most aquatic life.")
-            self.border_red()
-        else:
-            self.label_S_explanation.setText("Water turbidity level is unknown.")
-            self.border_none()
 
-    def update_heavyMetals(self,value):
-        heavyMetals = int(value * 0.6)
+    def load_thresholds(self):
+        thresholds = {}
+        value_ranges = {}  
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        filepath = os.path.join(current_dir, "../materials/thresholds.txt")
+        with open(filepath, 'r') as file:
+            for line in file:
+                if line.strip():
+                    param, low, high, message, mood = line.strip().split(',', 4)
+                    low = float(low)
+                    high = float(high)
+                    key = param.lower()
+                    thresholds.setdefault(key, []).append({
+                        'low': low,
+                        'high': high,
+                        'message': message,
+                        'mood': mood.lower()
+                    })
 
-        self.label_S_sliderValue.setText(f"{heavyMetals} ppb")
+                    # Update range
+                    if key not in value_ranges:
+                        value_ranges[key] = [low, high]
+                    else:
+                        value_ranges[key][0] = min(value_ranges[key][0], low)
+                        value_ranges[key][1] = max(value_ranges[key][1], high)
 
-        if heavyMetals <= 5:
-            self.label_S_explanation.setText("Heavy metals concentration is low. Water is safe for drinking and most aquatic life.")
-            self.border_green()
-        elif 6 <= heavyMetals <= 25:
-            self.label_S_explanation.setText("Heavy metals concentration is slightly elevated. Generally safe for most purposes, but caution is advised.")
-            self.border_yellow()
-        elif 26 <= heavyMetals <= 50:
-            self.label_S_explanation.setText("Heavy metals concentration is high. Unsafe for drinking and harmful to aquatic life")
-            self.border_orange()
-        elif heavyMetals > 50:
-            self.label_S_explanation.setText("Heavy metals concentration is very high. Unsafe for drinking and highly toxic to most aquatic life.")
-            self.border_red()
-        else:
-            self.label_S_explanation.setText("Heavy metal level is unknown.")
-            self.border_none()
+        return thresholds, value_ranges
+
 
     def border_green(self):
         utils.simulation_explanation_change(self.label_S_explanation,"#84DC7D")
@@ -209,3 +209,43 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
         utils.simulation_explanation_change(self.label_S_explanation,"#1E2F97")
         utils.archie_sampling(self.archie)
     
+    def apply_threshold(self, param, value):
+        param = param.lower()
+        thresholds = self.thresholds.get(param, [])
+        for entry in thresholds:
+            if entry['low'] <= value <= entry['high']:
+                self.label_S_explanation.setText(entry['message'])
+                self.set_border_by_mood(entry['mood'])
+                return
+        self.label_S_explanation.setText("No matching threshold found.")
+        self.border_none()
+
+    def set_border_by_mood(self, mood):
+        if mood == 'happy':
+            self.border_green()
+        elif mood == 'nervous':
+            self.border_yellow()
+        elif mood == 'scared':
+            self.border_red()
+        else:
+            self.border_none()
+
+
+    # def load_thresholds(self):
+    #     thresholds = {}
+    #     current_dir = os.path.dirname(os.path.abspath(__file__))
+    #     file_path = os.path.join(current_dir, "../materials/thresholds.txt")
+
+    #     with open(file_path, 'r') as file:
+    #         for line in file:
+    #             if line.strip():
+    #                 param, low, high, message, mood = line.strip().split(',', 4)
+    #                 thresholds.setdefault(param.lower(), []).append({
+    #                     'low': float(low),
+    #                     'high': float(high),
+    #                     'message': message,
+    #                     'mood': mood.lower()
+    #                 })
+
+    #     print(thresholds)
+    #     return thresholds
