@@ -139,14 +139,29 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>410</y>
-     <width>941</width>
-     <height>112</height>
+     <x>30</x>
+     <y>400</y>
+     <width>971</width>
+     <height>141</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButton_S_Ph">
+      <property name="font">
+       <font>
+        <family>Cooper Black</family>
+        <pointsize>22</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>pH</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <widget class="QPushButton" name="pushButton_S_Temperature">
       <property name="font">
        <font>
@@ -161,8 +176,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_S_HeavyMetals">
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton_S_Mercury">
       <property name="font">
        <font>
         <family>Cooper Black</family>
@@ -172,26 +187,11 @@
        </font>
       </property>
       <property name="text">
-       <string>Heavy Metals</string>
+       <string>Turbidity</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_S_Ph">
-      <property name="font">
-       <font>
-        <family>Cooper Black</family>
-        <pointsize>22</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Ph</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
+    <item row="2" column="0">
      <widget class="QPushButton" name="pushButton_S_Turbidity">
       <property name="font">
        <font>
@@ -203,6 +203,36 @@
       </property>
       <property name="text">
        <string>Turbidity</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pushButton_S_Nitrite">
+      <property name="font">
+       <font>
+        <family>Cooper Black</family>
+        <pointsize>22</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Nitrite</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_S_TDS">
+      <property name="font">
+       <font>
+        <family>Cooper Black</family>
+        <pointsize>22</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TDS</string>
       </property>
      </widget>
     </item>
@@ -228,7 +258,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>90</y>
+     <y>80</y>
      <width>320</width>
      <height>320</height>
     </rect>
