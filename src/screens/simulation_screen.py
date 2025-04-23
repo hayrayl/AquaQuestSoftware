@@ -8,10 +8,6 @@ import utils
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ui'))
 from simulation import Ui_simulation_ui  # Import the generated UI class
 
-
-
-
-
 class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -32,7 +28,6 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
         self.pushButton_S_TDS.clicked.connect(self.show_tds)
         self.pushButton_S_Nitrite.clicked.connect(self.show_nitrite)
         self.pushButton_S_Mercury.clicked.connect(self.show_mercury)
-
 
         # connect the slider movement 
         self.sim_slider.valueChanged.connect(self.update_slider_value)
@@ -99,26 +94,6 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
         self.update_slider_value(self.sim_slider.value())
 
 
-
-    # def update_slider_value(self, value):
-    #     param = self.current_param.lower()
-
-    #     # Convert value depending on parameter
-    #     if param == "pH":
-    #         scaled_value = value * 0.14
-    #         self.label_S_sliderValue.setText(f"{scaled_value:.1f} pH")
-    #     elif param == "turbidity":
-    #         scaled_value = int(value * 0.6)
-    #         self.label_S_sliderValue.setText(f"{scaled_value} NTU")
-    #     elif param == "tds":
-    #         scaled_value = int(value * 0.6)
-    #         self.label_S_sliderValue.setText(f"{scaled_value} ppm")
-    #     else:  # temperature
-    #         scaled_value = value
-    #         self.label_S_sliderValue.setText(f"{scaled_value} °F")
-
-    #     self.apply_threshold(param, scaled_value)
-
     def update_slider_value(self, slider_value):
         param = self.current_param.lower()
 
@@ -150,7 +125,6 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
         self.label_S_sliderValue.adjustSize()  # Resize within the constraints
 
         self.apply_threshold(param, scaled_value)
-
 
     def load_thresholds(self):
         thresholds = {}
@@ -229,23 +203,3 @@ class SimulationScreen(QtWidgets.QWidget, Ui_simulation_ui):
             self.border_red()
         else:
             self.border_none()
-
-
-    # def load_thresholds(self):
-    #     thresholds = {}
-    #     current_dir = os.path.dirname(os.path.abspath(__file__))
-    #     file_path = os.path.join(current_dir, "../materials/thresholds.txt")
-
-    #     with open(file_path, 'r') as file:
-    #         for line in file:
-    #             if line.strip():
-    #                 param, low, high, message, mood = line.strip().split(',', 4)
-    #                 thresholds.setdefault(param.lower(), []).append({
-    #                     'low': float(low),
-    #                     'high': float(high),
-    #                     'message': message,
-    #                     'mood': mood.lower()
-    #                 })
-
-    #     print(thresholds)
-    #     return thresholds
