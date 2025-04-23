@@ -1,0 +1,42 @@
+Temperature,0.0,31.99,The water is frozen! Archie's hibernating.,scared
+Temperature,32.0,49.99,Brrr... it's cold! Archie's awake but shivering.,nervous
+Temperature,50.0,64.99,Nice and cool - some fish are loving it.,happy
+Temperature,65.0,74.99,Fish are dancing because they're happy!,happy
+Temperature,75.0,84.99,Getting warm! Some cold-water fish are nervous.,nervous
+Temperature,85.0,100.0,Too hot! Archie's sweating in his scales.,scared
+
+pH,0.0,3.99,Archie is hiding - the water is dangerously acidic!,scared
+pH,4.0,5.99,Archie is stressed! It's too acidic for comfort.,nervous
+pH,6.0,6.49,Almost there! But still a little too sour.,nervous
+pH,6.5,7.49,Archie is happy! Perfect pH.,happy
+pH,7.5,8.5,Still great! Balanced and calm.,happy
+pH,8.51,9.49,Getting a bit basic - Archie is unsure.,nervous
+pH,9.5,14.0,Whoa! Too basic. Archie is floating backwards!,scared
+
+Turbidity,0.0,25.0,Crystal clear! Archie can see his reflection.,happy
+Turbidity,25.1,100.0,Still clear enough for fishy feasts!,happy
+Turbidity,100.1,250.0,It’s getting cloudy - Archie is a little unsure.,nervous
+Turbidity,250.1,500.0,Hard to see! Archie is getting concerned.,nervous
+Turbidity,500.1,1000.0,No light! The pond is way too murky.,scared
+
+TDS,0.0,49.99,Not enough nutrients - water is too pure!,scared
+TDS,50.0,99.0,Still low. Archie is worried about his plants.,nervous
+TDS,100.0,300.0,Just right - Archie is having a bubble party!,happy
+TDS,301.0,500.0,Still safe - snacks are plentiful.,happy
+TDS,501.0,999.0,Starting to get murky. Some friends are uncomfortable.,nervous
+TDS,1000.0,1499.0,Archie is concerned about his environment.,nervous
+TDS,1500.0,10000.0,Danger zone! Archie is floating away in stress.,scared
+
+Nitrite,0.0,0.0,Crystal clear! Archie's loving the low nitrite levels - no poop in sight.,happy
+Nitrite,0.01,0.49,Slight traces of waste - Archie smells something fishy...,nervous
+Nitrite,0.5,0.99,There might be poop in the water! Archie's not thrilled.,nervous
+Nitrite,1.0,4.99,Archie spotted poop particles - and his friends are gasping!,nervous
+Nitrite,5.0,9.99,It's full-on sewage vibes... Archie's in panic mode!,scared
+Nitrite,10.0,25.0,Archie is swimming through a poop swamp. Danger levels critical!,scared
+
+Mercury,0.0,0.001,Archie's waters are crystal clean - not a trace of mercury!,happy
+Mercury,0.0011,0.003,Archie is a little suspicious… is that industrial runoff?,nervous
+Mercury,0.0031,0.007,There's mercury in the water! Archie's friends are twitchy.,nervous
+Mercury,0.0071,0.015,This is getting toxic! Archie's scales are tingling...,nervous
+Mercury,0.0151,0.035,Severe mercury contamination! Archie's brain feels foggy.,scared
+Mercury,0.0351,0.08,Mercury overload! Archie is fleeing the pond!,scared
