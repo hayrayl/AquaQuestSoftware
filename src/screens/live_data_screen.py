@@ -86,7 +86,7 @@ class LiveDataScreen(QtWidgets.QWidget, Ui_live_data_ui):
             ("Turbidity","Next up is Turbidity!\nFind the turbidity sensor shown in the image", partial(self.image_explanation,file="turb_1.png")),
             ("Turbidity","Hold the turbidity sensor in the water sample with the pegs on the edge of the beaker. Select \"next\" to start collecting data!", partial(self.image_explanation,file="turb_2.png")),
             ("Turbidity", "", partial(self.read_sensor, function= self.sensorRead.get_turbidity, measurement = 'Turbidity', unit='NTU')),
-            (None,"Yay! Turbidity has been collected. You may remove the sensor!", partial(self.image_explanation,file="turb_2.png")),
+            (None,"Yay! Turbidity has been collected. You may remove the sensor!", partial(self.image_explanation,file="turb_3.png")),
             (None,"Make sure to dip the sensor in the clean water and dry it off! It is important to take care of our equiptment!", partial(self.image_explanation,file="clean.png")),
             
             
