@@ -8,7 +8,7 @@ Archie’s AquaQuest is an interactive water quality testing and education platf
   Interactive screens that teach about water quality parameters (like pH, temperature, TDS, turbidity, nitrates, nitrites, heavy metals), how water gets polluted, and why testing is important. 
 
 - **Live Data Collection**  
-  Guides the user through setting up and calibrating sensors, then collects data in real time using sensors (via ADS1263 ADC) and test strips. Visuals, sensor animations, and explanations update dynamically.
+  Guides the user through setting up and calibrating sensors, then collects data in real time using sensors (via ADS1263 ADC) and test strips. Visuals and explanations update dynamically.
 
 - **Simulation Mode**  
   Allows students to adjust parameters using a slider and see how Archie reacts. Each parameter change triggers threshold-based mood updates and educational messaging.
