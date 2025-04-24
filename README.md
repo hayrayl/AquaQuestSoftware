@@ -1,126 +1,83 @@
-```markdown
-# Archie's AquaQuest
+# Archie's AquaQuest: Water Sampling Educational UI
 
+## Project Overview
 Archie’s AquaQuest is an interactive water quality testing and education platform designed for children. It combines environmental science, sensor integration, and gamified learning through a touchscreen-based GUI powered by a Raspberry Pi. The project includes data acquisition, simulation, testing walkthroughs, and quizzes—all led by Archie, an alligator snapping turtle, an endangered species native to Indiana.
 
-## Key Features
+## Features
+- **Learning Modules**  
+  Interactive screens that teach about water quality parameters (like pH, temperature, TDS, turbidity, nitrates, nitrites, heavy metals), how water gets polluted, and why testing is important. 
 
-- **Live Sensor Data Collection**  
-  Collect real-time measurements for:
-  - pH
-  - Temperature
-  - Turbidity
-  - TDS (Total Dissolved Solids)
+- **Live Data Collection**  
+  Guides the user through setting up and calibrating sensors, then collects data in real time using sensors (via ADS1263 ADC) and test strips. Visuals, sensor animations, and explanations update dynamically.
 
-- **Test Strip Analysis**  
-  Input results from nitrate/nitrite and heavy metal test strips.
+- **Simulation Mode**  
+  Allows students to adjust parameters using a slider and see how Archie reacts. Each parameter change triggers threshold-based mood updates and educational messaging.
 
-- **Interactive Learning Modules**
-  - Explore what pollutes water
-  - Learn why testing matters
-  - Understand parameters through Archie’s chalkboard lessons
+- **Quiz Mode**  
+  A fun, multiple-choice quiz led by Archie that reinforces learning with feedback and humor. Designed for younger students.
 
-- **Simulation Module**
-  - Adjust environmental conditions with a slider
-  - See how parameters like temperature, pH, and heavy metals affect water health
+- **Archie the Mascot**  
+  Appears throughout the interface with different animations and emotional states (happy, nervous, scared) based on water quality thresholds. 
 
-- **Engaging Quiz System**
-  - Multiple-choice questions with fun feedback
-  - Educational reinforcement through humor and pop culture
-
-- **Child-Friendly UI**
-  - Large buttons, bright visuals, and guided walkthroughs with Archie as a host
-
----
-
-## Getting Started
-
-### Requirements
-
-- Python 3.8+
-- PyQt5
-- Raspberry Pi 4 or 5 (Recommended)
-- ADS1263 ADC HAT for sensor integration
-- Sensors for:
-  - Temperature (DS18B20)
-  - Turbidity
-  - TDS
-  - pH
-- Test strips for:
-  - Nitrate/Nitrite
-  - Lead, Mercury, Chromium, Magnesium, Cadmium, Calcium
-
-### Installation
-
-1. **Clone the repo:**
-
-   ```bash
-   git clone https://github.com/hayrayl/SeniorDesigUI.git
-   cd archies-aquaquest
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the main application:**
-
-   ```bash
-   python main.py
-   ```
-
----
-
-## Project Structure
-
-```plaintext
-├── main.py                      # Entry point
-├── screens/
+## File Structure
+```
+project-root/
+│
+├── main.py                        # Entry point for the GUI (manages screens via QStackedWidget)
+├── ui/                            # Auto-generated .py files from Qt Designer .ui files
+├── screens/                       # Contains all screen Python files
 │   ├── home_screen.py
-│   ├── live_data_screen.py
-│   ├── analyze_screen.py
-│   ├── test_strips_screen.py
-│   ├── quiz_screen.py
-│   ├── simulation_screen.py
+│   ├── intro_screen.py
 │   ├── learning_screen.py
 │   ├── classroom_screen.py
-│   └── how_pollutants_screen.py
-├── materials/                  # Educational and threshold data
+│   ├── how_pollutants_screen.py
+│   ├── live_data_screen.py
+│   ├── test_strips_screen.py
+│   ├── analyze_screen.py
+│   └── simulation_screen.py
+│
+├── materials/                     # Educational and data text files
 │   ├── parameters.txt
 │   ├── how_pollute.txt
 │   ├── why_test.txt
-│   ├── question1.txt
-│   └── thresholds.txt
-├── ui/                         # PyQt5 UI files (converted from .ui)
-├── images/                     # All background and asset images
-├── utils.py                    # Shared functions for GUI styling and image loading
-└── AD_HAT/
-    └── sensorRead.py           # Functions for reading ADC sensor data
+│   ├── thresholds.txt
+│   └── question1.txt
+│
+├── images/                        # Backgrounds, Archie animations, test strip photos
+├── AD_HAT/                        # SensorReader class to interface with ADS1263 and sensors
+├── utils.py                       # Utility functions for UI styling and image updates
+└── README.md                      # This file
 ```
 
----
+## Code and Development Info
+### Python Version
+Python 3.12.7
 
-## Developer Notes
+### Required Python Packages
+```
+PyQt5==5.15.11
+PyQt5-Qt5==5.15.2
+PyQt5_sip==12.17.0
+PyQt5Designer==5.14.1
+```
 
-- Use `.showEvent()` methods to reset state when switching between screens.
-- Data collected from `live_data_screen.py` and `test_strips_screen.py` is aggregated in `analyze_screen.py`.
-- The quiz system reads from `materials/question1.txt` and dynamically parses the format.
-- Threshold logic is centralized in `thresholds.txt` and supports dynamic color and mood responses from Archie.
+### Qt Designer Notes
+To design new UI screens:
+1. Run `designer` in the command line (after installing PyQt5Designer).
+2. Save your layout as a `.ui` file.
+3. Convert it to Python using:  
+   `pyuic5 -x filename.ui -o filename.py`
+   > ⚠️ This will overwrite the target `.py` file — make sure to commit or back up any manual changes before regenerating.
 
----
+### Git Practices
+- **Do not push directly to `main`.**
+- Create a branch for your feature, push changes there, and submit a merge request for review.
 
-## Credits
+## Educational Goal
+This project was developed to introduce students to environmental science, electronics, and data interpretation through an engaging and interactive platform. Archie helps guide students through the journey of learning why clean water matters and how to test it.
 
-Created by a senior design team at Purdue University as an educational tool for teaching water quality testing and environmental awareness to students aged 8-12.
-
-Archie, the alligator snapping turtle, is our mascot and guide. 
-
----
+## Authors
+Purdue ECE Senior Design Team (Spring 2025)
 
 ## Contact
-
-For questions, reach out to Haylie Rayl/hcrayl@purdue.edu or Ariana Hollis-Brau/ahollisb@purdue.edu.
-
-```
+For questions or contributions, reach out to Haylie Rayl/hcrayl@purdue.edu or Ariana Hollis-Brau/ahollisb@purdue.edu.
