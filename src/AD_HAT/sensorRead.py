@@ -123,7 +123,7 @@ class SensorReader:
         print(f"Raw voltage: {voltage:.4f} V")
 
         # New linear curve fit based on collected data
-        tds_value = 2784.1* compensated_voltage - 688.71
+        tds_value = 967.51* compensated_voltage - 198.23
 
         return max(tds_value, 0)  # Ensure no negative values
 
